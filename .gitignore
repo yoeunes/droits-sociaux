@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+ Gemfile.lock
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old files (can be removed after migration)
+assets/css/style.css
+assets/css/style-ar.css
+templates/
+*.html.bak

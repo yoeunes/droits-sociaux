@@ -1,0 +1,69 @@
+fr:
+  home:
+    title: "Accueil"
+    url: "/fr/home.html"
+  news:
+    title: "Actualités"
+    submenu:
+      - title: "Actualités CNSS"
+        url: "/fr/actualites-cnss.html"
+      - title: "Actualités CMR"
+        url: "/fr/actualites-cmr.html"
+      - title: "Actualités CNOPS"
+        url: "/fr/actualites-cnops.html"
+  simulators:
+    title: "Simulateurs"
+    submenu:
+      - section: "Pension & Retraite"
+        items:
+          - title: "Pension CNSS"
+            url: "/fr/simulateur-cnss.html"
+          - title: "Pension CMR"
+            url: "/fr/simulateur-cmr.html"
+      - section: "Maladie (AMO)"
+        items:
+          - title: "AMO CNSS"
+            url: "/fr/simulateur-amo-cnss.html"
+          - title: "AMO CNOPS"
+            url: "/fr/simulateur-amo-cnops.html"
+  about:
+    title: "Qui sommes-nous ?"
+    url: "/fr/qui-sommes-nous.html"
+  contact:
+    title: "Contact"
+    url: "/fr/contact.html"
+
+ar:
+  home:
+    title: "الرئيسية"
+    url: "/ar/home.html"
+  news:
+    title: "الأخبار"
+    submenu:
+      - title: "أخبار CNSS"
+        url: "/ar/actualites-cnss.html"
+      - title: "أخبار CMR"
+        url: "/ar/actualites-cmr.html"
+      - title: "أخبار CNOPS"
+        url: "/ar/actualites-cnops.html"
+  simulators:
+    title: "المحاكاة"
+    submenu:
+      - section: "المعاش والتقاعد"
+        items:
+          - title: "معاش CNSS"
+            url: "/ar/simulateur-cnss.html"
+          - title: "معاش CMR"
+            url: "/ar/simulateur-cmr.html"
+      - section: "المرض (AMO)"
+        items:
+          - title: "AMO CNSS"
+            url: "/ar/simulateur-amo-cnss.html"
+          - title: "AMO CNOPS"
+            url: "/ar/simulateur-amo-cnops.html"
+  about:
+    title: "من نحن ؟"
+    url: "/ar/qui-sommes-nous.html"
+  contact:
+    title: "اتصل بنا"
+    url: "/ar/contact.html"

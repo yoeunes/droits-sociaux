@@ -1,0 +1,68 @@
+title: Simulateurs Sociaux Maroc
+description: Plateforme indépendante de simulation des droits sociaux - CNSS, CMR, CNOPS
+author: Simulateurs Sociaux
+lang: fr
+languages: ["fr", "ar"]
+default_lang: fr
+
+url: "" # Remplacer par l'URL du site en production
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins (supportés par GitHub Pages)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Collections
+collections_dir: collections
+collections:
+  articles:
+    output: true
+    permalink: /:lang/articles/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: "article"
+  - scope:
+      path: "fr"
+    values:
+      lang: "fr"
+      direction: "ltr"
+  - scope:
+      path: "ar"
+    values:
+      lang: "ar"
+      direction: "rtl"
+
+# Exclude du build
+exclude:
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - assets/css/input.css
+
+# Inclure ces fichiers
+include:
+  - _pages
+
+# Sass configuration
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Permalinks
+permalink: pretty

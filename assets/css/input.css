@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-inter text-gray-800 bg-gray-50 antialiased;
+  }
+  
+  html[dir="rtl"] body {
+    @apply font-tajawal;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-cnss text-white hover:bg-cnss-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-cmr text-white hover:bg-cmr-dark;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-cnss text-cnss hover:bg-cnss hover:text-white;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300;
+  }
+  
+  .card:hover {
+    @apply shadow-lg -translate-y-1;
+  }
+  
+  .simulator-card {
+    @apply card p-6 text-center flex flex-col;
+  }
+  
+  .news-card {
+    @apply card p-4 flex items-center gap-4;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-cnss focus:border-transparent outline-none transition-all;
+  }
+  
+  .form-label {
+    @apply block mb-2 font-semibold text-gray-700;
+  }
+  
+  .hero-section {
+    @apply bg-gradient-to-r from-cnss to-cmr text-white text-center py-16 px-6 rounded-b-2xl;
+  }
+  
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-gray-800 text-center mb-8;
+  }
+  
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

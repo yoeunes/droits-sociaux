@@ -1,38 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="../assets/img/logo.png">
-    <title>Redirection...</title>
-
-    <script>
-        // Fonction de redirection automatique
-        (function() {
-            // Détecte la langue du navigateur
-            const userLang = navigator.language || navigator.userLanguage;
-
-            // Si la langue commence par "ar" (ar-MA, ar-SA, etc.)
-            if (userLang.startsWith('ar')) {
-                // Redirige vers la version arabe
-                window.location.replace('/ar/home.html');
-            } else {
-                // Pour tout le reste (fr, en, es...), redirige vers la version française
-                window.location.replace('/fr/home.html');
-            }
-        })();
-    </script>
-
-    <noscript>
-        <p>Veuillez choisir votre langue :</p>
-        <p>
-            <a href="/fr/home.html">Français</a>
-        </p>
-        <p>
-            <a href="/ar/home.html">العربية</a>
-        </p>
-    </noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirection...</title>
+  <link rel="icon" type="image/png" href="/assets/img/logo.png">
+  <script>
+    (function() {
+      var userLang = navigator.language || navigator.userLanguage;
+      if (userLang.startsWith('ar')) {
+        window.location.replace('/ar/home.html');
+      } else {
+        window.location.replace('/fr/home.html');
+      }
+    })();
+  </script>
+  <noscript>
+    <p>Veuillez choisir votre langue :</p>
+    <p><a href="/fr/home.html">Français</a></p>
+    <p><a href="/ar/home.html">العربية</a></p>
+  </noscript>
 </head>
 <body>
-    <p>Redirection en cours...</p>
+  <p>Redirection en cours...</p>
 </body>
 </html>

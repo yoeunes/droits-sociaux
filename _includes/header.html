@@ -1,0 +1,160 @@
+{% assign lang = page.lang | default: 'fr' %}
+{% assign nav = site.data.navigation[lang] %}
+{% assign t = site.data.translations[lang] %}
+{% assign direction = page.direction | default: 'ltr' %}
+
+<nav class="fixed top-0 left-0 right-0 bg-footer z-50 shadow-lg">
+  <div class="container-custom">
+    <div class="flex items-center justify-between h-16">
+      <a href="{{ nav.home.url }}" class="flex items-center text-white font-bold">
+        <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo" class="h-8 {% if direction == 'rtl' %}ml-3{% else %}mr-3{% endif %}">
+        <span class="hidden sm:inline">{{ t.site_name }}</span>
+      </a>
+      
+      <div class="hidden lg:flex items-center space-x-1 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
+        <a href="{{ nav.home.url }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
+          {{ nav.home.title }}
+        </a>
+        
+        <div class="relative group">
+          <button class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium flex items-center">
+            {{ nav.news.title }}
+            <i class="fa-solid fa-chevron-down text-xs ml-2"></i>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden">
+            {% for item in nav.news.submenu %}
+            <a href="{{ item.url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+              {{ item.title }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="relative group">
+          <button class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium flex items-center">
+            {{ nav.simulators.title }}
+            <i class="fa-solid fa-chevron-down text-xs ml-2"></i>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden">
+            <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-b">
+              {{ t.simulators.pension_title }}
+            </div>
+            {% for section in nav.simulators.submenu %}
+              {% if section.items %}
+                {% for item in section.items %}
+                <a href="{{ item.url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+                  {{ item.title }}
+                </a>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-t border-b">
+              {{ t.simulators.amo_title }}
+            </div>
+            <a href="{{ nav.simulators.submenu[1].items[0].url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+              {{ t.simulators.amo_cnss }}
+            </a>
+            <a href="{{ nav.simulators.submenu[1].items[1].url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+              {{ t.simulators.amo_cnops }}
+            </a>
+          </div>
+        </div>
+        
+        <a href="{{ nav.about.url }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
+          {{ nav.about.title }}
+        </a>
+        
+        <a href="{{ nav.contact.url }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
+          {{ nav.contact.title }}
+        </a>
+      </div>
+      
+      <div class="hidden lg:flex items-center space-x-4 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
+        <div class="flex items-center space-x-3 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
+            <i class="fa-brands fa-facebook text-lg"></i>
+          </a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
+            <i class="fa-brands fa-youtube text-lg"></i>
+          </a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+          </a>
+        </div>
+        
+        {% assign other_lang = 'fr' %}
+        {% if lang == 'fr' %}
+          {% assign other_lang = 'ar' %}
+        {% endif %}
+        {% assign other_page = page.url | replace_first: '/' | replace_first: lang, other_lang %}
+        <a href="{{ other_page }}" class="px-3 py-1.5 border border-footer-border rounded-lg text-footer-text hover:bg-footer-border hover:text-white transition-colors font-tajawal">
+          {{ t.lang_switch }}
+        </a>
+      </div>
+      
+      <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 top-16 bg-white z-40 transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
+  <div class="p-4 space-y-2">
+    <a href="{{ nav.home.url }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
+      {{ nav.home.title }}
+    </a>
+    
+    <div class="mobile-dropdown">
+      <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium" onclick="toggleMobileDropdown(this)">
+        {{ nav.news.title }}
+        <i class="fa-solid fa-chevron-down text-sm transition-transform"></i>
+      </button>
+      <div class="hidden pl-4 space-y-1 mt-1">
+        {% for item in nav.news.submenu %}
+        <a href="{{ item.url }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+          {{ item.title }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="mobile-dropdown">
+      <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium" onclick="toggleMobileDropdown(this)">
+        {{ nav.simulators.title }}
+        <i class="fa-solid fa-chevron-down text-sm transition-transform"></i>
+      </button>
+      <div class="hidden pl-4 space-y-1 mt-1">
+        <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase">{{ t.simulators.pension_title }}</div>
+        <a href="/fr/simulateur-cnss.html" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">{{ t.simulators.cnss_pension }}</a>
+        <a href="/fr/simulateur-cmr.html" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">{{ t.simulators.cmr_pension }}</a>
+        <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-t mt-2 pt-2">{{ t.simulators.amo_title }}</div>
+        <a href="/fr/simulateur-amo-cnss.html" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">{{ t.simulators.amo_cnss }}</a>
+        <a href="/fr/simulateur-amo-cnops.html" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">{{ t.simulators.amo_cnops }}</a>
+      </div>
+    </div>
+    
+    <a href="{{ nav.about.url }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
+      {{ nav.about.title }}
+    </a>
+    
+    <a href="{{ nav.contact.url }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
+      {{ nav.contact.title }}
+    </a>
+    
+    <div class="border-t pt-4 mt-4 flex items-center justify-between px-4">
+      {% assign other_lang = 'fr' %}
+      {% if lang == 'fr' %}
+        {% assign other_lang = 'ar' %}
+      {% endif %}
+      <a href="#" class="px-4 py-2 border border-gray-200 rounded-lg text-gray-700 font-tajawal font-medium">
+        {{ t.lang_switch }}
+      </a>
+      <div class="flex items-center space-x-4">
+        <a href="#" class="text-gray-500"><i class="fa-brands fa-facebook text-lg"></i></a>
+        <a href="#" class="text-gray-500"><i class="fa-brands fa-youtube text-lg"></i></a>
+        <a href="#" class="text-gray-500"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

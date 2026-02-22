@@ -1,0 +1,93 @@
+{% assign lang = page.lang | default: 'fr' %}
+{% assign nav = site.data.navigation[lang] %}
+{% assign t = site.data.translations[lang] %}
+{% assign direction = page.direction | default: 'ltr' %}
+
+<footer class="bg-footer text-footer-text mt-16">
+  <div class="container-custom py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center text-white font-bold mb-4">
+          <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo" class="h-8 {% if direction == 'rtl' %}ml-3{% else %}mr-3{% endif %}">
+          <span>{{ t.site_name }}</span>
+        </div>
+        <p class="text-sm leading-relaxed">
+          {{ t.footer.about_text }}
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-white font-bold mb-4">{{ t.footer.quick_links }}</h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="{{ nav.simulators.submenu[0].items[0].url }}" class="hover:text-white transition-colors">
+              {{ t.simulators.cnss_pension }}
+            </a>
+          </li>
+          <li>
+            <a href="{{ nav.simulators.submenu[0].items[1].url }}" class="hover:text-white transition-colors">
+              {{ t.simulators.cmr_pension }}
+            </a>
+          </li>
+          <li>
+            <a href="/fr/simulateur-amo-cnss.html" class="hover:text-white transition-colors">
+              {{ t.simulators.amo_cnss }}
+            </a>
+          </li>
+          <li>
+            <a href="/fr/simulateur-amo-cnops.html" class="hover:text-white transition-colors">
+              {{ t.simulators.amo_cnops }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-white font-bold mb-4">{{ t.footer.legal }}</h4>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="/{{ lang }}/conditions.html" class="hover:text-white transition-colors">
+              {{ t.footer.terms }}
+            </a>
+          </li>
+          <li>
+            <a href="/{{ lang }}/politique-confidentialite.html" class="hover:text-white transition-colors">
+              {{ t.footer.privacy }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-white font-bold mb-4">{{ t.footer.about }}</h4>
+        <div class="flex space-x-4 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
+            <i class="fa-brands fa-facebook text-xl"></i>
+          </a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
+            <i class="fa-brands fa-youtube text-xl"></i>
+          </a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-footer-border mt-8 pt-8 text-center text-sm">
+      {{ t.footer.copyright }}
+    </div>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-4 hidden z-50">
+  <div class="container-custom flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-gray-600 text-center sm:text-left">
+      {{ t.cookie_banner }}
+      <a href="/{{ lang }}/politique-confidentialite.html" class="text-cnss hover:underline">{{ t.cookie_policy }}</a>.
+    </p>
+    <button onclick="acceptCookies()" class="btn btn-primary whitespace-nowrap">
+      {{ t.cookie_accept }}
+    </button>
+  </div>
+</div>

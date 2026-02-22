@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<section class="hero-section">
+  <div class="container-custom">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ page.hero_title }}</h1>
+    <p class="text-lg opacity-90 max-w-2xl mx-auto">{{ page.hero_description }}</p>
+  </div>
+</section>
+
+<main class="container-custom py-12">
+  <div class="card p-6 md:p-10 max-w-3xl mx-auto">
+    {{ content }}
+  </div>
+  
+  {% if page.show_cta %}
+  <div class="mt-8 p-6 bg-gray-50 rounded-xl text-center">
+    <p class="font-bold text-gray-800 mb-2">{{ page.cta_title }}</p>
+    <a href="{{ page.cta_link }}" class="text-cnss hover:underline">{{ page.cta_text }} &rarr;</a>
+  </div>
+  {% endif %}
+</main>
+
+<div class="container-custom pb-8">
+  <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm text-center">
+    <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+    <strong>{{ site.data.translations[page.lang].warning_label }}:</strong> 
+    {{ page.warning_text | default: site.data.translations[page.lang].default_warning }}
+    <br>{{ site.data.translations[page.lang].official_source }}: 
+    <a href="{{ page.official_link }}" class="underline" target="_blank">{{ page.official_link }}</a>
+  </div>
+</div>

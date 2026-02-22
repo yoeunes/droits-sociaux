@@ -1,0 +1,119 @@
+fr:
+  site_name: "Simulateurs Sociaux"
+  tagline: "Maîtrisez vos droits sociaux au Maroc"
+  lang_switch: "العربية"
+  
+  hero:
+    title: "Simulateurs Sociaux Maroc : Maîtrisez vos droits"
+    description: "Bienvenue sur la première plateforme indépendante dédiée à la simplification de la protection sociale. Accédez à des simulateurs précis pour estimer vos pensions de retraite (CNSS, CMR) et vos remboursements AMO (CNSS, CNOPS)."
+  
+  simulators:
+    title: "Nos Simulateurs"
+    pension_title: "Simulateurs de Pension"
+    amo_title: "Simulateurs de Remboursement AMO"
+    cnss_pension: "Pension CNSS"
+    cnss_pension_desc: "Secteur privé. Basé sur les jours de cotisation."
+    cmr_pension: "Pension CMR"
+    cmr_pension_desc: "Secteur public (Fonctionnaires)."
+    amo_cnss: "Remboursement AMO (CNSS)"
+    amo_cnss_desc: "Estimez le remboursement dossier maladie (Privé)."
+    amo_cnops: "Remboursement AMO (CNOPS)"
+    amo_cnops_desc: "Estimez le remboursement dossier maladie (Public)."
+    access_btn: "Accéder au simulateur"
+  
+  news:
+    title: "À la une"
+    cnss_1320_title: "Pension CNSS 1320j"
+    cnss_1320_desc: "Nouvelle réforme officielle."
+    fusion_title: "Fusion CNOPS / CNSS"
+    fusion_desc: "Transition vers l'AMO unique."
+    cmr_contrat_title: "Contrat CMR"
+    cmr_contrat_desc: "Performance et durabilité."
+  
+  how_it_works:
+    title: "Comment ça marche ?"
+    subtitle: "Obtenez votre estimation en 3 étapes simples et rapides."
+    step1_title: "Remplissez"
+    step1_desc: "Entrez vos informations (âge, salaire, années de service) dans notre formulaire sécurisé."
+    step2_title: "Calculez"
+    step2_desc: "Notre algorithme analyse vos données selon les dernières règles CNSS/CMR en vigueur."
+    step3_title: "Téléchargez"
+    step3_desc: "Obtenez instantanément votre résultat détaillé et téléchargez-le en PDF gratuitement."
+  
+  footer:
+    about: "À propos"
+    about_text: "Plateforme indépendante d'information sur la protection sociale au Maroc. Notre mission est de simplifier l'accès aux droits sociaux."
+    quick_links: "Liens rapides"
+    legal: "Légal"
+    privacy: "Politique de confidentialité"
+    terms: "Conditions d'utilisation"
+    copyright: "© 2025 Simulateurs Sociaux Maroc. Plateforme indépendante."
+  
+  warning_label: "Avertissement"
+  default_warning: "Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel."
+  official_source: "Source officielle"
+  back_to_home: "Retour à l'accueil"
+  
+  cookie_banner: "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre"
+  cookie_accept: "J'accepte"
+  cookie_policy: "politique de confidentialité"
+
+ar:
+  site_name: "محاكاة اجتماعية"
+  tagline: "أتقن حقوقك الاجتماعية في المغرب"
+  lang_switch: "Français"
+  
+  hero:
+    title: "محاكاة اجتماعية المغرب: أتقن حقوقك"
+    description: "مرحباً بكم في المنصة المستقلة الأولى المخصصة لتبسيط الحماية الاجتماعية. الوصول إلى محاكيات دقيقة لتقدير معاشات التقاعد (CNSS, CMR) وتعويضات AMO (CNSS, CNOPS)."
+  
+  simulators:
+    title: "محاكياتنا"
+    pension_title: "محاكيات المعاش"
+    amo_title: "محاكيات تعويض AMO"
+    cnss_pension: "معاش CNSS"
+    cnss_pension_desc: "القطاع الخاص. مبني على أيام المساهمة."
+    cmr_pension: "معاش CMR"
+    cmr_pension_desc: "القطاع العام (الموظفون)."
+    amo_cnss: "تعويض AMO (CNSS)"
+    amo_cnss_desc: "قدر تعويض ملف المرض (الخاص)."
+    amo_cnops: "تعويض AMO (CNOPS)"
+    amo_cnops_desc: "قدر تعويض ملف المرض (العام)."
+    access_btn: "الوصول إلى المحاكاة"
+  
+  news:
+    title: "على الصفحة الرئيسية"
+    cnss_1320_title: "معاش CNSS 1320 يوم"
+    cnss_1320_desc: "إصلاح رسمي جديد."
+    fusion_title: "دمج CNOPS / CNSS"
+    fusion_desc: "الانتقال إلى AMO موحدة."
+    cmr_contrat_title: "عقد CMR"
+    cmr_contrat_desc: "الأداء والاستدامة."
+  
+  how_it_works:
+    title: "كيف يعمل ؟"
+    subtitle: "احصل على تقديرك في 3 خطوات بسيطة وسريعة."
+    step1_title: "املأ"
+    step1_desc: "أدخل معلوماتك (العمر، الراتب، سنوات الخدمة) في نموذجنا الآمن."
+    step2_title: "احسب"
+    step2_desc: "يحلل خوارزميتنا بياناتك وفق أحدث قواعد CNSS/CMR السارية."
+    step3_title: "حمّل"
+    step3_desc: "احصل على نتيجتك المفصلة فوراً وحمّلها بصيغة PDF مجاناً."
+  
+  footer:
+    about: "عنا"
+    about_text: "منصة مستقلة للمعلومات حول الحماية الاجتماعية في المغرب. مهمتنا هي تبسيط الوصول إلى الحقوق الاجتماعية."
+    quick_links: "روابط سريعة"
+    legal: "قانوني"
+    privacy: "سياسة الخصوصية"
+    terms: "شروط الاستخدام"
+    copyright: "© 2025 محاكاة اجتماعية المغرب. منصة مستقلة."
+  
+  warning_label: "تحذير"
+  default_warning: "هذه النتيجة تقديرية. لا تحل محل الحساب الرسمي."
+  official_source: "المصدر الرسمي"
+  back_to_home: "العودة إلى الرئيسية"
+  
+  cookie_banner: "نستخدم ملفات تعريف الارتباط لتحسين تجربتك. بالاستمرار، أنت تقبل"
+  cookie_accept: "موافق"
+  cookie_policy: "سياسة الخصوصية"

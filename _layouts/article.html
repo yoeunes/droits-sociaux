@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<article>
+  <header class="hero-section">
+    <div class="container-custom">
+      <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ page.title }}</h1>
+      {% if page.excerpt %}
+      <p class="text-lg opacity-90 max-w-2xl mx-auto">{{ page.excerpt }}</p>
+      {% endif %}
+    </div>
+  </header>
+  
+  <main class="container-custom py-12">
+    <div class="card p-6 md:p-10 max-w-3xl mx-auto prose prose-lg">
+      {{ content }}
+    </div>
+    
+    <div class="mt-8 text-center">
+      <a href="{{ '/fr/home.html' | relative_url }}" class="btn btn-outline">
+        <i class="fa-solid fa-arrow-left mr-2"></i>
+        {{ site.data.translations[page.lang].back_to_home }}
+      </a>
+    </div>
+  </main>
+</article>

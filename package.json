@@ -1,0 +1,16 @@
+{
+  "name": "droits-sociaux",
+  "version": "1.0.0",
+  "description": "Simulateurs Sociaux Maroc - CNSS, CMR, CNOPS",
+  "scripts": {
+    "css:build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
+    "css:watch": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "jekyll:serve": "bundle exec jekyll serve --livereload",
+    "jekyll:build": "bundle exec jekyll build",
+    "dev": "npm run css:watch & npm run jekyll:serve",
+    "build": "npm run css:build && npm run jekyll:build"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
