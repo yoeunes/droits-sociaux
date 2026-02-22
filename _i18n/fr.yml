@@ -34,6 +34,13 @@ common:
   download_pdf: "Télécharger (PDF)"
   share: "Partager"
   access_simulator: "Accéder au simulateur"
+  reading_time: "3 min de lecture"
+  table_of_contents: "Table des matières"
+  need_help: "Besoin d'aide ?"
+  help_description: "Notre équipe est là pour répondre à vos questions."
+  contact_us: "Nous contacter"
+  try_simulator: "Testez notre simulateur"
+  simulator_description: "Obtenez une estimation personnalisée en quelques secondes."
 
 # Cookie
 cookie:

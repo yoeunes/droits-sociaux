@@ -34,6 +34,13 @@ common:
   download_pdf: "تحميل (PDF)"
   share: "مشاركة"
   access_simulator: "الوصول إلى المحاكاة"
+  reading_time: "3 دقائق للقراءة"
+  table_of_contents: "فهرس المحتويات"
+  need_help: "تحتاج مساعدة ؟"
+  help_description: "فريقنا هنا للإجابة على أسئلتك."
+  contact_us: "تواصل معنا"
+  try_simulator: "جرب محاكاتنا"
+  simulator_description: "احصل على تقدير مخصص في ثوانٍ."
 
 # Cookie
 cookie:

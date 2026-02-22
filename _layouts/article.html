@@ -11,6 +11,12 @@ layout: default
   {% else %}{% assign org_colors = 'cnss' %}
 {% endcase %}
 
+{% capture article_title %}{% t {{ page.title }} %}{% endcapture %}
+{% assign article_title = article_title | strip %}
+{% if article_title == "" or article_title == page.title %}
+  {% assign article_title = page.title %}
+{% endif %}
+
 <article class="article-page">
   <header class="article-hero relative overflow-hidden bg-gradient-to-br from-{{ org_colors }} via-{{ org_colors }} to-{{ org_colors }}-dark text-white">
     <div class="absolute inset-0 opacity-10">
@@ -27,7 +33,7 @@ layout: default
         {% endif %}
         
         <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
-          {{ page.title }}
+          {{ article_title }}
         </h1>
         
         {% if page.excerpt %}
@@ -98,6 +104,7 @@ layout: default
             </div>
 
             {% if page.cta_link %}
+            {% capture cta_text %}{% t {{ page.cta_text_key }} %}{% endcapture %}
             <div class="mt-12 pt-8 border-t border-gray-100">
               <div class="bg-gradient-to-r from-{{ org_colors }}-light to-{{ org_colors }}-light/50 rounded-2xl p-8 text-center">
                 <div class="inline-flex items-center justify-center w-16 h-16 bg-{{ org_colors }}/10 rounded-full mb-4">
@@ -107,9 +114,9 @@ layout: default
                 <p class="text-gray-600 mb-6">{% t common.simulator_description %}</p>
                 <a href="{% tl {{ page.cta_link }} %}" class="inline-flex items-center px-8 py-4 bg-{{ org_colors }} text-white font-semibold rounded-xl hover:bg-{{ org_colors }}-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
                   {% if direction == 'rtl' %}
-                  {{ page.cta_text }} <i class="fa-solid fa-arrow-left mr-3"></i>
+                  {{ cta_text }} <i class="fa-solid fa-arrow-left mr-3"></i>
                   {% else %}
-                  <i class="fa-solid fa-arrow-right mr-3"></i> {{ page.cta_text }}
+                  <i class="fa-solid fa-arrow-right mr-3"></i> {{ cta_text }}
                   {% endif %}
                 </a>
               </div>

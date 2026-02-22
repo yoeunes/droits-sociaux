@@ -10,6 +10,13 @@ module.exports = {
     "./assets/js/**/*.js",
     "!./node_modules/**"
   ],
+  safelist: [
+    { pattern: /^(bg|text|border|from|via|to)-(cnss|cmr|cnops)(-light|-dark)?$/ },
+    'border-l-4',
+    'hover:bg-cnss-dark',
+    'hover:bg-cmr-dark',
+    'hover:bg-cnops-dark',
+  ],
   theme: {
     extend: {
       colors: {
