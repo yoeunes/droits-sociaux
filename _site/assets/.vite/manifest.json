@@ -1,0 +1,12 @@
+{
+  "src/js/main.js": {
+    "file": "main-BDrn0fxx.js",
+    "name": "main",
+    "src": "src/js/main.js",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "style-FFYmSWpZ.css",
+    "src": "style.css"
+  }
+}

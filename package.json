@@ -13,7 +13,7 @@
   "scripts": {
     "setup": "bundle install && npm install",
     "dev": "concurrently \"npm run vite:dev\" \"npm run jekyll:serve\"",
-    "build": "npm run jekyll:clean && npm run jekyll:build && npm run vite:build",
+    "build": "npm run vite:build && npm run jekyll:clean && npm run jekyll:build && npm run vite:build",
     "vite:dev": "vite build --watch --mode development",
     "vite:build": "vite build --mode production",
     "jekyll:serve": "bundle exec jekyll serve --livereload --open-url",
