@@ -17,25 +17,6 @@ cta_text_key: simulators.cmr.cta_text
   <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="Logo CMR" class="h-16 mx-auto mb-4">
 </div>
 
-<div id="terms-modal" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-  <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-xl border-t-4 border-cmr">
-    <div class="text-cmr mb-4">
-      <i class="fa-solid fa-shield-halved text-4xl"></i>
-    </div>
-    <h3 class="text-xl font-bold text-cmr mb-2">{% t simulators.terms_title %}</h3>
-    <p class="text-gray-600 mb-6">{% t simulators.terms_text %}</p>
-    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg mb-6 cursor-pointer" onclick="document.getElementById('accept-check').click()">
-      <input type="checkbox" id="accept-check" class="w-5 h-5 text-cmr rounded" onclick="event.stopPropagation(); toggleAccept()">
-      <label for="accept-check" class="text-sm text-gray-700">
-        {% t simulators.terms_accept %} <a href="{% tl conditions %}" target="_blank" class="text-cmr underline">{% t simulators.terms_link %}</a>.
-      </label>
-    </div>
-    <button id="btn-accept" class="btn btn-secondary w-full" onclick="acceptTerms()" disabled>
-      {% t simulators.terms_btn %}
-    </button>
-  </div>
-</div>
-
 <form id="cmr-form" class="space-y-6">
   <div>
     <label for="years-before" class="form-label">{% t simulators.cmr.years_before %} :</label>
@@ -65,25 +46,6 @@ cta_text_key: simulators.cmr.cta_text
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-const STORAGE_KEY = 'cmr_terms_accepted';
-
-function toggleAccept() {
-  document.getElementById('btn-accept').disabled = !document.getElementById('accept-check').checked;
-}
-
-function acceptTerms() {
-  localStorage.setItem(STORAGE_KEY, 'true');
-  const modal = document.getElementById('terms-modal');
-  modal.style.opacity = '0';
-  setTimeout(() => modal.style.display = 'none', 300);
-}
-
-function checkTermsAccepted() {
-  if (localStorage.getItem(STORAGE_KEY) === 'true') {
-    document.getElementById('terms-modal').style.display = 'none';
-  }
-}
-
 function calculate() {
   const yearsBefore = parseInt(document.getElementById('years-before').value) || 0;
   const yearsAfter = parseInt(document.getElementById('years-after').value) || 0;
@@ -130,6 +92,6 @@ function calculate() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  checkTermsAccepted();
+  calculate();
 });
 </script>
