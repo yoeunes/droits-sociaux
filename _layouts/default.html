@@ -31,7 +31,7 @@
   {% else %}
   <link rel="alternate" hreflang="fr" href="{{ page.url | replace: '/ar/', '/fr/' | absolute_url }}">
   {% endif %}
-  <link rel="alternate" hreflang="x-default" href="{{ '/fr/home.html' | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ '/fr/' | append: site.data.navigation.home | absolute_url }}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ '/assets/img/logo.png' | relative_url }}">

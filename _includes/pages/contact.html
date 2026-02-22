@@ -1,0 +1,45 @@
+{% assign t = site.data.i18n[page.lang] %}
+
+<section class="hero-section">
+  <div class="container-custom">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ t.contact.hero_title }}</h1>
+    <p class="text-lg opacity-90 max-w-2xl mx-auto">{{ t.contact.hero_description }}</p>
+  </div>
+</section>
+
+<main class="container-custom py-12">
+  <div class="bg-white rounded-2xl shadow-sm border p-8 md:p-12 max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">{{ t.contact.help_title }}</h2>
+    <p class="text-gray-500 max-w-xl mx-auto mb-10">{{ t.contact.help_subtitle }}</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      {% for method in t.contact.methods %}
+      <div class="bg-gray-50 rounded-xl p-6 text-center">
+        <div class="text-4xl text-cnss mb-4" {% if method.icon_color %}style="color: {{ method.icon_color }}"{% endif %}>
+          <i class="{% if method.icon contains 'fa-brands' %}{{ method.icon }}{% else %}fa-solid {{ method.icon }}{% endif %}"></i>
+        </div>
+        <h3 class="font-bold text-gray-800 mb-2">{{ method.title }}</h3>
+        <p class="text-sm text-gray-500 mb-4">{{ method.desc }}</p>
+        <a href="{{ method.btn_link }}" {% if method.btn_link contains 'wa.me' %}target="_blank"{% endif %} class="btn btn-primary w-full {% if method.btn_class %}{{ method.btn_class }}{% endif %}">
+          {{ method.btn_text }}
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="border-t pt-8">
+      <h3 class="font-bold text-gray-800 mb-6">{{ t.contact.social_title }}</h3>
+      <div class="flex items-center justify-center space-x-6 {% if page.direction == 'rtl' %}space-x-reverse{% endif %}">
+        <a href="#" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <i class="fa-brands fa-facebook-f"></i> Facebook
+        </a>
+        <a href="#" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="#" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+          <i class="fa-brands fa-youtube"></i> YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

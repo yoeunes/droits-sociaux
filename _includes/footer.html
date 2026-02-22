@@ -1,7 +1,8 @@
 {% assign lang = page.lang | default: 'fr' %}
-{% assign nav = site.data.navigation[lang] %}
-{% assign t = site.data.translations[lang] %}
+{% assign t = site.data.i18n[lang] %}
+{% assign nav = site.data.navigation %}
 {% assign direction = page.direction | default: 'ltr' %}
+{% capture base_url %}/{{ lang }}/{% endcapture %}
 
 <footer class="bg-footer text-footer-text mt-16">
   <div class="container-custom py-12">
@@ -15,49 +16,45 @@
           {{ t.footer.about_text }}
         </p>
       </div>
-      
+
       <div>
         <h4 class="text-white font-bold mb-4">{{ t.footer.quick_links }}</h4>
         <ul class="space-y-2 text-sm">
+          {% for item in nav.simulators.pension %}
+          {% assign pension_key = 'pension_' | append: item.id %}
           <li>
-            <a href="{{ nav.simulators.submenu[0].items[0].url }}" class="hover:text-white transition-colors">
-              {{ t.simulators.cnss_pension }}
+            <a href="{{ base_url }}{{ item.page }}" class="hover:text-white transition-colors">
+              {{ t.nav[pension_key] }}
             </a>
           </li>
+          {% endfor %}
+          {% for item in nav.simulators.amo %}
+          {% assign amo_key = 'amo_' | append: item.id %}
           <li>
-            <a href="{{ nav.simulators.submenu[0].items[1].url }}" class="hover:text-white transition-colors">
-              {{ t.simulators.cmr_pension }}
+            <a href="{{ base_url }}{{ item.page }}" class="hover:text-white transition-colors">
+              {{ t.nav[amo_key] }}
             </a>
           </li>
-          <li>
-            <a href="/fr/simulateur-amo-cnss.html" class="hover:text-white transition-colors">
-              {{ t.simulators.amo_cnss }}
-            </a>
-          </li>
-          <li>
-            <a href="/fr/simulateur-amo-cnops.html" class="hover:text-white transition-colors">
-              {{ t.simulators.amo_cnops }}
-            </a>
-          </li>
+          {% endfor %}
         </ul>
       </div>
-      
+
       <div>
         <h4 class="text-white font-bold mb-4">{{ t.footer.legal }}</h4>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href="/{{ lang }}/conditions.html" class="hover:text-white transition-colors">
+            <a href="{{ base_url }}{{ nav.conditions }}" class="hover:text-white transition-colors">
               {{ t.footer.terms }}
             </a>
           </li>
           <li>
-            <a href="/{{ lang }}/politique-confidentialite.html" class="hover:text-white transition-colors">
+            <a href="{{ base_url }}{{ nav.privacy }}" class="hover:text-white transition-colors">
               {{ t.footer.privacy }}
             </a>
           </li>
         </ul>
       </div>
-      
+
       <div>
         <h4 class="text-white font-bold mb-4">{{ t.footer.about }}</h4>
         <div class="flex space-x-4 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
@@ -73,7 +70,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="border-t border-footer-border mt-8 pt-8 text-center text-sm">
       {{ t.footer.copyright }}
     </div>
@@ -83,11 +80,11 @@
 <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-4 hidden z-50">
   <div class="container-custom flex flex-col sm:flex-row items-center justify-between gap-4">
     <p class="text-sm text-gray-600 text-center sm:text-left">
-      {{ t.cookie_banner }}
-      <a href="/{{ lang }}/politique-confidentialite.html" class="text-cnss hover:underline">{{ t.cookie_policy }}</a>.
+      {{ t.cookie.banner }}
+      <a href="{{ base_url }}{{ nav.privacy }}" class="text-cnss hover:underline">{{ t.cookie.policy }}</a>.
     </p>
     <button onclick="acceptCookies()" class="btn btn-primary whitespace-nowrap">
-      {{ t.cookie_accept }}
+      {{ t.cookie.accept }}
     </button>
   </div>
 </div>

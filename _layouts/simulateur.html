@@ -2,6 +2,10 @@
 layout: default
 ---
 
+{% assign t = site.data.i18n[page.lang] %}
+{% assign nav = site.data.navigation %}
+{% capture base_url %}/{{ page.lang }}/{% endcapture %}
+
 <section class="hero-section">
   <div class="container-custom">
     <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ page.hero_title }}</h1>
@@ -13,21 +17,21 @@ layout: default
   <div class="card p-6 md:p-10 max-w-3xl mx-auto">
     {{ content }}
   </div>
-  
+
   {% if page.show_cta %}
   <div class="mt-8 p-6 bg-gray-50 rounded-xl text-center">
     <p class="font-bold text-gray-800 mb-2">{{ page.cta_title }}</p>
-    <a href="{{ page.cta_link }}" class="text-cnss hover:underline">{{ page.cta_text }} &rarr;</a>
+    <a href="{{ base_url }}{{ page.cta_link }}" class="text-cnss hover:underline">{{ page.cta_text }} &rarr;</a>
   </div>
   {% endif %}
 </main>
 
 <div class="container-custom pb-8">
   <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm text-center">
-    <i class="fa-solid fa-triangle-exclamation mr-2"></i>
-    <strong>{{ site.data.translations[page.lang].warning_label }}:</strong> 
-    {{ page.warning_text | default: site.data.translations[page.lang].default_warning }}
-    <br>{{ site.data.translations[page.lang].official_source }}: 
+    <i class="fa-solid fa-triangle-exclamation {% if page.direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
+    <strong>{{ t.common.warning_label }}:</strong>
+    {{ page.warning_text | default: t.common.default_warning }}
+    <br>{{ t.common.official_source }}:
     <a href="{{ page.official_link }}" class="underline" target="_blank">{{ page.official_link }}</a>
   </div>
 </div>

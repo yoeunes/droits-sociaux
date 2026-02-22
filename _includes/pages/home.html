@@ -1,0 +1,77 @@
+{% assign t = site.data.i18n[page.lang] %}
+{% assign nav = site.data.navigation %}
+{% capture base_url %}/{{ page.lang }}/{% endcapture %}
+
+<section class="hero-section">
+  <div class="container-custom">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ t.home.hero_title }}</h1>
+    <p class="text-lg opacity-90 max-w-3xl mx-auto">{{ t.home.hero_description }}</p>
+  </div>
+</section>
+
+<main class="container-custom py-12">
+  <section class="mb-12">
+    <h2 class="section-title">{{ t.home.news_title }}</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      {% for item in t.home.news_items %}
+      <a href="{{ base_url }}{{ item.link }}" class="news-card border-l-4 border-{{ item.color }}">
+        <div class="flex-shrink-0 w-16 h-16 bg-{{ item.color }}-light rounded-lg flex items-center justify-center">
+          <img src="{{ '/assets/img/' | append: item.logo | relative_url }}" alt="{{ item.color | upcase }}" class="w-10 h-10 object-contain">
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800">{{ item.title }}</h3>
+          <p class="text-sm text-gray-500">{{ item.desc }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="section-title">{{ t.home.how_it_works.title }}</h2>
+    <p class="text-center text-gray-500 mb-8">{{ t.home.how_it_works.subtitle }}</p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {% for step in t.home.how_it_works.steps %}
+      <div class="text-center">
+        <div class="relative inline-flex items-center justify-center w-16 h-16 bg-cnss text-white rounded-full text-2xl font-bold mb-4">
+          {{ forloop.index }}
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-cnss text-3xl mb-4">
+            <i class="fa-solid {{ step.icon }}"></i>
+          </div>
+          <h3 class="font-bold text-gray-800 mb-2">{{ step.title }}</h3>
+          <p class="text-sm text-gray-500">{{ step.desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="bg-white p-8 md:p-12 rounded-2xl shadow-sm">
+    <h2 class="section-title">{{ t.home.simulators.pension_title }}</h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      {% for sim in t.home.simulators.items %}
+      <a href="{{ base_url }}{{ sim.link }}" class="simulator-card">
+        <img src="{{ '/assets/img/' | append: sim.logo | relative_url }}" alt="{{ sim.title }}" class="h-16 mx-auto mb-4">
+        <h3 class="font-bold text-xl text-gray-800 mb-2">{{ sim.title }}</h3>
+        <p class="text-gray-500 flex-grow mb-4">{{ sim.desc }}</p>
+        <span class="btn {{ sim.btn_class }} w-full">{{ t.common.access_simulator }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <h2 class="section-title mt-12 pt-8 border-t">{{ t.home.simulators.amo_title }}</h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      {% for sim in t.home.simulators.amo_items %}
+      <a href="{{ base_url }}{{ sim.link }}" class="simulator-card">
+        <img src="{{ '/assets/img/' | append: sim.logo | relative_url }}" alt="{{ sim.title }}" class="h-16 mx-auto mb-4">
+        <h3 class="font-bold text-xl text-gray-800 mb-2">{{ sim.title }}</h3>
+        <p class="text-gray-500 flex-grow mb-4">{{ sim.desc }}</p>
+        <span class="btn {{ sim.btn_class }} w-full">{{ t.common.access_simulator }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+</main>

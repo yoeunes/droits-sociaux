@@ -2,7 +2,9 @@
 layout: default
 ---
 
-{% assign t = site.data.translations[page.lang] %}
+{% assign t = site.data.i18n[page.lang] %}
+{% assign nav = site.data.navigation %}
+{% capture base_url %}/{{ page.lang }}/{% endcapture %}
 
 <article>
   <header class="hero-section">
@@ -46,11 +48,11 @@ layout: default
 
       {% if page.cta_link %}
       <div class="text-center mt-10 pt-8 border-t">
-        <a href="{{ page.cta_link }}" class="inline-flex items-center px-6 py-3 bg-cnss text-white font-semibold rounded-lg hover:bg-cnss-dark transition-all">
+        <a href="{{ base_url }}{{ page.cta_link }}" class="inline-flex items-center px-6 py-3 bg-cnss text-white font-semibold rounded-lg hover:bg-cnss-dark transition-all">
           {% if page.direction == 'rtl' %}
-          {{ page.cta_text | default: 'الدخول إلى المحاكي' }} <i class="fa-solid fa-arrow-left mr-2"></i>
+          {{ page.cta_text | default: t.common.access_simulator }} <i class="fa-solid fa-arrow-left mr-2"></i>
           {% else %}
-          <i class="fa-solid fa-arrow-right ml-2"></i> {{ page.cta_text | default: 'Acceder au simulateur' }}
+          <i class="fa-solid fa-arrow-right ml-2"></i> {{ page.cta_text | default: t.common.access_simulator }}
           {% endif %}
         </a>
       </div>
@@ -58,17 +60,14 @@ layout: default
     </div>
 
     <div class="mt-8 text-center">
-      {% if page.lang == 'ar' %}
-      <a href="/ar/home.html" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+      <a href="{{ base_url }}{{ nav.home }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        {% if page.direction == 'rtl' %}
         <i class="fa-solid fa-arrow-right ml-2"></i>
-        العودة للرئيسية
-      </a>
-      {% else %}
-      <a href="/fr/home.html" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        {% else %}
         <i class="fa-solid fa-arrow-left mr-2"></i>
-        Retour a l'accueil
+        {% endif %}
+        {{ t.common.back_to_home }}
       </a>
-      {% endif %}
     </div>
   </main>
 </article>

@@ -1,0 +1,32 @@
+{% assign t = site.data.i18n[page.lang] %}
+
+<section class="hero-section">
+  <div class="container-custom">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ t.about.hero_title }}</h1>
+    <p class="text-lg opacity-90 max-w-2xl mx-auto">{{ t.about.hero_description }}</p>
+  </div>
+</section>
+
+<main class="container-custom py-12">
+  <div class="bg-white rounded-2xl shadow-sm border p-8 md:p-12 max-w-4xl mx-auto">
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-cnss mb-6">{{ t.about.mission_title }}</h2>
+      <p class="text-gray-600 leading-relaxed whitespace-pre-line">{{ t.about.mission_text }}</p>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-cnss mb-6">{{ t.about.values_title }}</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {% for value in t.about.values %}
+        <div class="bg-gray-50 rounded-xl p-6 text-center">
+          <div class="text-4xl text-cnss mb-4">
+            <i class="fa-solid {{ value.icon }}"></i>
+          </div>
+          <h3 class="font-bold text-gray-800 mb-2">{{ value.title }}</h3>
+          <p class="text-sm text-gray-500">{{ value.desc }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</main>

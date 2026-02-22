@@ -1,36 +1,33 @@
 {% assign lang = page.lang | default: 'fr' %}
-{% assign nav = site.data.navigation[lang] %}
-{% assign t = site.data.translations[lang] %}
+{% assign t = site.data.i18n[lang] %}
+{% assign nav = site.data.navigation %}
 {% assign direction = page.direction | default: 'ltr' %}
-{% assign other_lang = 'ar' %}
-{% if lang == 'ar' %}
-  {% assign other_lang = 'fr' %}
-{% endif %}
-{% assign other_page = page.url | replace: '/' | append: '' %}
-{% capture lang_switch_url %}/{{ other_lang }}/{{ page.url | split: '/' | last }}{% endcapture %}
+{% capture lang_switch_url %}/{{ t.other_lang }}/{{ page.url | split: '/' | last }}{% endcapture %}
+{% capture base_url %}/{{ lang }}/{% endcapture %}
 
 <nav class="fixed top-0 left-0 right-0 bg-footer z-50 shadow-lg">
   <div class="container-custom">
     <div class="flex items-center justify-between h-16">
-      <a href="{{ nav.home.url }}" class="flex items-center text-white font-bold">
+      <a href="{{ base_url }}{{ nav.home }}" class="flex items-center text-white font-bold">
         <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo" class="h-8 {% if direction == 'rtl' %}ml-3{% else %}mr-3{% endif %}">
         <span class="hidden sm:inline">{{ t.site_name }}</span>
       </a>
 
       <div class="hidden lg:flex items-center space-x-1 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
-        <a href="{{ nav.home.url }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
-          {{ nav.home.title }}
+        <a href="{{ base_url }}{{ nav.home }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
+          {{ t.nav.home }}
         </a>
 
         <div class="relative group">
           <button class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium flex items-center">
-            {{ nav.news.title }}
+            {{ t.nav.news }}
             <i class="fa-solid fa-chevron-down text-xs {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
           </button>
           <div class="absolute top-full {% if direction == 'rtl' %}right-0{% else %}left-0{% endif %} mt-1 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden">
-            {% for item in nav.news.submenu %}
-            <a href="{{ item.url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
-              {{ item.title }}
+            {% for item in nav.news %}
+            {% assign news_key = 'news_' | append: item.id %}
+            <a href="{{ base_url }}{{ item.page }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+              {{ t.nav[news_key] }}
             </a>
             {% endfor %}
           </div>
@@ -38,35 +35,37 @@
 
         <div class="relative group">
           <button class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium flex items-center">
-            {{ nav.simulators.title }}
+            {{ t.nav.simulators }}
             <i class="fa-solid fa-chevron-down text-xs {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
           </button>
           <div class="absolute top-full {% if direction == 'rtl' %}right-0{% else %}left-0{% endif %} mt-1 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden">
             <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-b">
-              {{ t.simulators.pension_title }}
+              {{ t.nav.pension_section }}
             </div>
-            {% for item in nav.simulators.submenu[0].items %}
-            <a href="{{ item.url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
-              {{ item.title }}
+            {% for item in nav.simulators.pension %}
+            {% assign pension_key = 'pension_' | append: item.id %}
+            <a href="{{ base_url }}{{ item.page }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+              {{ t.nav[pension_key] }}
             </a>
             {% endfor %}
             <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-t border-b">
-              {{ t.simulators.amo_title }}
+              {{ t.nav.amo_section }}
             </div>
-            {% for item in nav.simulators.submenu[1].items %}
-            <a href="{{ item.url }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
-              {{ item.title }}
+            {% for item in nav.simulators.amo %}
+            {% assign amo_key = 'amo_' | append: item.id %}
+            <a href="{{ base_url }}{{ item.page }}" class="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-cnss font-medium">
+              {{ t.nav[amo_key] }}
             </a>
             {% endfor %}
           </div>
         </div>
 
-        <a href="{{ nav.about.url }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
-          {{ nav.about.title }}
+        <a href="{{ base_url }}{{ nav.about }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
+          {{ t.nav.about }}
         </a>
 
-        <a href="{{ nav.contact.url }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
-          {{ nav.contact.title }}
+        <a href="{{ base_url }}{{ nav.contact }}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
+          {{ t.nav.contact }}
         </a>
       </div>
 
@@ -97,19 +96,20 @@
 
 <div id="mobile-menu" class="fixed inset-0 top-16 bg-white z-40 transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
   <div class="p-4 space-y-2">
-    <a href="{{ nav.home.url }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
-      {{ nav.home.title }}
+    <a href="{{ base_url }}{{ nav.home }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
+      {{ t.nav.home }}
     </a>
 
     <div class="mobile-dropdown">
       <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium" onclick="toggleMobileDropdown(this)">
-        {{ nav.news.title }}
+        {{ t.nav.news }}
         <i class="fa-solid fa-chevron-down text-sm transition-transform"></i>
       </button>
       <div class="hidden {% if direction == 'rtl' %}pr-4{% else %}pl-4{% endif %} space-y-1 mt-1">
-        {% for item in nav.news.submenu %}
-        <a href="{{ item.url }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
-          {{ item.title }}
+        {% for item in nav.news %}
+        {% assign news_key = 'news_' | append: item.id %}
+        <a href="{{ base_url }}{{ item.page }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+          {{ t.nav[news_key] }}
         </a>
         {% endfor %}
       </div>
@@ -117,27 +117,33 @@
 
     <div class="mobile-dropdown">
       <button class="w-full flex items-center justify-between px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium" onclick="toggleMobileDropdown(this)">
-        {{ nav.simulators.title }}
+        {{ t.nav.simulators }}
         <i class="fa-solid fa-chevron-down text-sm transition-transform"></i>
       </button>
       <div class="hidden {% if direction == 'rtl' %}pr-4{% else %}pl-4{% endif %} space-y-1 mt-1">
-        <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase">{{ t.simulators.pension_title }}</div>
-        {% for item in nav.simulators.submenu[0].items %}
-        <a href="{{ item.url }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">{{ item.title }}</a>
+        <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase">{{ t.nav.pension_section }}</div>
+        {% for item in nav.simulators.pension %}
+        {% assign pension_key = 'pension_' | append: item.id %}
+        <a href="{{ base_url }}{{ item.page }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+          {{ t.nav[pension_key] }}
+        </a>
         {% endfor %}
-        <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-t mt-2 pt-2">{{ t.simulators.amo_title }}</div>
-        {% for item in nav.simulators.submenu[1].items %}
-        <a href="{{ item.url }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">{{ item.title }}</a>
+        <div class="px-4 py-2 text-xs text-gray-400 font-bold uppercase border-t mt-2 pt-2">{{ t.nav.amo_section }}</div>
+        {% for item in nav.simulators.amo %}
+        {% assign amo_key = 'amo_' | append: item.id %}
+        <a href="{{ base_url }}{{ item.page }}" class="block px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-50">
+          {{ t.nav[amo_key] }}
+        </a>
         {% endfor %}
       </div>
     </div>
 
-    <a href="{{ nav.about.url }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
-      {{ nav.about.title }}
+    <a href="{{ base_url }}{{ nav.about }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
+      {{ t.nav.about }}
     </a>
 
-    <a href="{{ nav.contact.url }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
-      {{ nav.contact.title }}
+    <a href="{{ base_url }}{{ nav.contact }}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">
+      {{ t.nav.contact }}
     </a>
 
     <div class="border-t pt-4 mt-4 flex items-center justify-between px-4">
