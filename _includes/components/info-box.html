@@ -1,26 +1,75 @@
 {%- comment -%}
-  Info Box Component
+  Info Box Component - Medical Professional Style
   Usage: {% include components/info-box.html type="cnss" icon="fa-circle-info" title="Title" content="Content" %}
-  Types: cnss, cmr, cnops, warning, success
+  Types: cnss, cmr, cnops, warning, success, info
 {%- endcomment -%}
 
 {% assign box_type = include.type | default: 'cnss' %}
 {% assign box_icon = include.icon | default: 'fa-circle-info' %}
 
-<div class="my-8 not-prose">
-  <div class="info-box bg-gradient-to-r from-{{ box_type }}-light via-{{ box_type }}-muted to-white border-{{ box_type }}">
-    <!-- Decorative element -->
-    <div class="absolute top-0 {% if site.lang == 'ar' %}left-0{% else %}right-0{% endif %} w-24 h-24 bg-{{ box_type }}/5 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+{% case box_type %}
+  {% when 'warning' %}
+    {% assign bg_class = 'bg-amber-50' %}
+    {% assign border_class = 'border-amber-500' %}
+    {% assign icon_bg = 'bg-amber-100' %}
+    {% assign icon_color = 'text-amber-600' %}
+    {% assign title_color = 'text-amber-800' %}
+  {% when 'success' %}
+    {% assign bg_class = 'bg-emerald-50' %}
+    {% assign border_class = 'border-emerald-500' %}
+    {% assign icon_bg = 'bg-emerald-100' %}
+    {% assign icon_color = 'text-emerald-600' %}
+    {% assign title_color = 'text-emerald-800' %}
+  {% when 'info' %}
+    {% assign bg_class = 'bg-sky-50' %}
+    {% assign border_class = 'border-sky-500' %}
+    {% assign icon_bg = 'bg-sky-100' %}
+    {% assign icon_color = 'text-sky-600' %}
+    {% assign title_color = 'text-sky-800' %}
+  {% when 'cnss' %}
+    {% assign bg_class = 'bg-gradient-to-br from-cnss-light to-white' %}
+    {% assign border_class = 'border-cnss' %}
+    {% assign icon_bg = 'bg-cnss/10' %}
+    {% assign icon_color = 'text-cnss' %}
+    {% assign title_color = 'text-cnss-dark' %}
+  {% when 'cmr' %}
+    {% assign bg_class = 'bg-gradient-to-br from-cmr-light to-white' %}
+    {% assign border_class = 'border-cmr' %}
+    {% assign icon_bg = 'bg-cmr/10' %}
+    {% assign icon_color = 'text-cmr' %}
+    {% assign title_color = 'text-cmr-dark' %}
+  {% when 'cnops' %}
+    {% assign bg_class = 'bg-gradient-to-br from-cnops-light to-white' %}
+    {% assign border_class = 'border-cnops' %}
+    {% assign icon_bg = 'bg-cnops/10' %}
+    {% assign icon_color = 'text-cnops' %}
+    {% assign title_color = 'text-cnops-dark' %}
+  {% else %}
+    {% assign bg_class = 'bg-gradient-to-br from-primary/5 to-white' %}
+    {% assign border_class = 'border-primary' %}
+    {% assign icon_bg = 'bg-primary/10' %}
+    {% assign icon_color = 'text-primary' %}
+    {% assign title_color = 'text-primary' %}
+{% endcase %}
 
-    <div class="info-box-content relative">
-      <div class="flex items-start gap-4">
-        <div class="info-box-icon bg-{{ box_type }}/10">
-          <i class="fa-solid {{ box_icon }} text-xl text-{{ box_type }}"></i>
+<div class="my-8">
+  <div class="relative overflow-hidden rounded-2xl {{ bg_class }} border-l-4 {{ border_class }} shadow-soft">
+    <!-- Subtle decorative circle -->
+    <div class="absolute -top-8 {% if site.lang == 'ar' %}-left-8{% else %}-right-8{% endif %} w-32 h-32 bg-current opacity-[0.03] rounded-full"></div>
+
+    <div class="relative p-6 md:p-8">
+      <div class="flex items-start gap-5">
+        <!-- Icon -->
+        <div class="flex-shrink-0 w-12 h-12 {{ icon_bg }} rounded-xl flex items-center justify-center shadow-sm">
+          <i class="fa-solid {{ box_icon }} text-xl {{ icon_color }}"></i>
         </div>
 
+        <!-- Content -->
         <div class="flex-1 min-w-0">
-          <h4 class="text-lg font-bold text-{{ box_type }} mb-2">{{ include.title }}</h4>
-          <div class="text-content-muted leading-relaxed">
+          {% if include.title %}
+          <h4 class="text-lg font-bold {{ title_color }} mb-2">{{ include.title }}</h4>
+          {% endif %}
+          <div class="text-content-muted leading-relaxed prose-sm">
             {{ include.content | markdownify }}
           </div>
         </div>

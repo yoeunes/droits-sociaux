@@ -357,26 +357,7 @@
 }
 
 @layer components {
-  /* Article/Prose styling */
-  .article-content .prose {
-    @apply max-w-none;
-  }
-
-  .article-content .prose h2 {
-    scroll-margin-top: 100px;
-  }
-
-  .toc-nav a {
-    @apply block py-2 text-sm text-content-subtle hover:text-primary
-           transition-colors duration-200 border-l-2 border-transparent
-           hover:border-primary pl-4 -ml-px;
-  }
-
-  .toc-nav a.active {
-    @apply text-primary font-medium border-primary;
-  }
-
-  /* Article hero */
+  /* Article header */
   .article-header {
     @apply mb-10 pb-8 border-b border-surface-border;
   }
@@ -394,11 +375,395 @@
     @apply text-lg md:text-xl text-content-muted mt-4 leading-relaxed;
   }
 
-  /* Back to top link styling */
+  /* Table of Contents */
+  .toc-nav a {
+    @apply block py-2 text-sm text-content-subtle hover:text-primary
+           transition-colors duration-200 border-l-2 border-transparent
+           hover:border-primary pl-4 -ml-px;
+  }
+
+  .toc-nav a.active {
+    @apply text-primary font-medium border-primary;
+  }
+
+  /* Back link */
   .back-link {
     @apply inline-flex items-center gap-2 text-content-muted
            hover:text-primary transition-colors duration-200;
   }
+}
+
+/* ==============================================
+   ARTICLE PROSE STYLING - Medical Professional
+   ============================================== */
+
+/* Base article container */
+.article-prose {
+  @apply text-base leading-relaxed;
+  color: #4b5563;
+}
+
+/* Paragraphs */
+.article-prose p {
+  @apply mb-6 leading-[1.8];
+}
+
+.article-prose > p:first-child {
+  @apply text-lg text-content leading-[1.75];
+}
+
+/* Headings */
+.article-prose h2 {
+  @apply text-2xl font-bold text-content mt-12 mb-6 pb-4
+         border-b-2 border-surface-border relative;
+  scroll-margin-top: 100px;
+}
+
+.article-prose h2::before {
+  content: '';
+  @apply absolute bottom-[-2px] left-0 w-16 h-0.5 bg-primary;
+}
+
+.article-prose h3 {
+  @apply text-xl font-bold text-content mt-10 mb-4 flex items-center gap-3;
+  scroll-margin-top: 100px;
+}
+
+.article-prose h3::before {
+  content: '';
+  @apply w-1 h-6 bg-primary rounded-full flex-shrink-0;
+}
+
+.article-prose h4 {
+  @apply text-lg font-semibold text-content mt-8 mb-3;
+}
+
+/* Links */
+.article-prose a {
+  @apply text-primary font-medium relative inline-block;
+  text-decoration: none;
+}
+
+.article-prose a::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary/30
+         transition-all duration-200;
+}
+
+.article-prose a:hover::after {
+  @apply bg-primary h-0.5;
+}
+
+/* Strong/Bold */
+.article-prose strong {
+  @apply font-semibold text-content;
+}
+
+/* Lists */
+.article-prose ul {
+  @apply my-6 space-y-3 pl-0;
+  list-style: none;
+}
+
+.article-prose ul li {
+  @apply relative pl-7 text-content-muted leading-relaxed;
+}
+
+.article-prose ul li::before {
+  content: '';
+  @apply absolute left-0 top-[0.65rem] w-2 h-2 bg-primary/20 rounded-full
+         border-2 border-primary;
+}
+
+.article-prose ol {
+  @apply my-6 space-y-3 pl-0;
+  list-style: none;
+  counter-reset: list-counter;
+}
+
+.article-prose ol li {
+  @apply relative pl-10 text-content-muted leading-relaxed;
+  counter-increment: list-counter;
+}
+
+.article-prose ol li::before {
+  content: counter(list-counter);
+  @apply absolute left-0 top-0 w-7 h-7 bg-primary/10 text-primary
+         rounded-lg flex items-center justify-center text-sm font-bold;
+}
+
+/* Tables - Medical data style */
+.article-prose table {
+  @apply w-full my-8 text-sm;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.article-prose table thead {
+  background: linear-gradient(135deg, #f0f7fc 0%, #e8f4fc 100%);
+}
+
+.article-prose table th {
+  @apply px-5 py-4 text-left font-semibold text-content text-sm
+         border-b-2 border-primary/20;
+}
+
+.article-prose table th:first-child {
+  @apply rounded-tl-xl;
+}
+
+.article-prose table th:last-child {
+  @apply rounded-tr-xl;
+}
+
+.article-prose table td {
+  @apply px-5 py-4 text-content-muted border-b border-surface-border/50;
+}
+
+.article-prose table tbody tr {
+  @apply transition-colors duration-150;
+}
+
+.article-prose table tbody tr:hover {
+  @apply bg-surface-muted/50;
+}
+
+.article-prose table tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+.article-prose table tbody tr:last-child td:first-child {
+  @apply rounded-bl-xl;
+}
+
+.article-prose table tbody tr:last-child td:last-child {
+  @apply rounded-br-xl;
+}
+
+/* Wrap table in a styled container */
+.article-prose .table-wrapper {
+  @apply my-8 bg-white rounded-2xl shadow-soft border border-surface-border/50 overflow-hidden;
+}
+
+/* Blockquotes - Professional callout style */
+.article-prose blockquote {
+  @apply my-8 p-6 bg-gradient-to-r from-primary/5 to-transparent
+         border-l-4 border-primary rounded-r-xl relative;
+  font-style: normal;
+}
+
+.article-prose blockquote::before {
+  content: '"';
+  @apply absolute -top-2 left-4 text-6xl text-primary/10 font-serif leading-none;
+}
+
+.article-prose blockquote p {
+  @apply mb-0 text-content relative z-10;
+}
+
+/* Code */
+.article-prose code {
+  @apply text-primary bg-primary/5 px-2 py-1 rounded-md text-sm font-normal;
+}
+
+.article-prose pre {
+  @apply my-6 p-5 bg-slate-900 text-slate-100 rounded-xl overflow-x-auto;
+}
+
+.article-prose pre code {
+  @apply bg-transparent text-inherit p-0;
+}
+
+/* Horizontal rule */
+.article-prose hr {
+  @apply my-12 border-0 h-px bg-gradient-to-r from-transparent via-surface-border to-transparent;
+}
+
+/* Images */
+.article-prose img {
+  @apply my-8 rounded-xl shadow-soft;
+}
+
+.article-prose figure {
+  @apply my-8;
+}
+
+.article-prose figcaption {
+  @apply mt-3 text-center text-sm text-content-subtle italic;
+}
+
+/* Info box in articles */
+.article-prose .info-box,
+.article-prose .callout {
+  @apply my-8 p-6 rounded-2xl border-l-4 relative overflow-hidden;
+}
+
+.article-prose .info-box.info,
+.article-prose .callout-info {
+  @apply bg-gradient-to-r from-primary/5 to-transparent border-primary;
+}
+
+.article-prose .info-box.warning,
+.article-prose .callout-warning {
+  @apply bg-gradient-to-r from-amber-50 to-transparent border-amber-500;
+}
+
+.article-prose .info-box.success,
+.article-prose .callout-success {
+  @apply bg-gradient-to-r from-emerald-50 to-transparent border-emerald-500;
+}
+
+/* RTL Support */
+html[dir="rtl"] .article-prose {
+  @apply text-right;
+}
+
+html[dir="rtl"] .article-prose h2::before {
+  @apply left-auto right-0;
+}
+
+html[dir="rtl"] .article-prose h3::before {
+  @apply order-1;
+}
+
+html[dir="rtl"] .article-prose ul li,
+html[dir="rtl"] .article-prose ol li {
+  @apply pl-0 pr-7;
+}
+
+html[dir="rtl"] .article-prose ul li::before {
+  @apply left-auto right-0;
+}
+
+html[dir="rtl"] .article-prose ol li {
+  @apply pr-10;
+}
+
+html[dir="rtl"] .article-prose ol li::before {
+  @apply left-auto right-0;
+}
+
+html[dir="rtl"] .article-prose blockquote {
+  @apply border-l-0 border-r-4 rounded-r-none rounded-l-xl;
+}
+
+html[dir="rtl"] .article-prose blockquote::before {
+  @apply left-auto right-4;
+}
+
+/* Organization color variants */
+.article-prose.prose-cnss h2::before,
+.article-prose.prose-cnss h3::before,
+.article-prose.prose-cnss ul li::before {
+  @apply bg-cnss;
+}
+
+.article-prose.prose-cnss ol li::before {
+  @apply bg-cnss/10 text-cnss;
+}
+
+.article-prose.prose-cnss a {
+  @apply text-cnss;
+}
+
+.article-prose.prose-cnss a::after {
+  @apply bg-cnss/30;
+}
+
+.article-prose.prose-cnss a:hover::after {
+  @apply bg-cnss;
+}
+
+.article-prose.prose-cnss blockquote {
+  @apply from-cnss/5 border-cnss;
+}
+
+.article-prose.prose-cnss code {
+  @apply text-cnss bg-cnss/5;
+}
+
+.article-prose.prose-cnss table thead {
+  background: linear-gradient(135deg, #f0f7fc 0%, #e8f4fc 100%);
+}
+
+.article-prose.prose-cnss table th {
+  @apply border-cnss/20;
+}
+
+.article-prose.prose-cmr h2::before,
+.article-prose.prose-cmr h3::before,
+.article-prose.prose-cmr ul li::before {
+  @apply bg-cmr;
+}
+
+.article-prose.prose-cmr ol li::before {
+  @apply bg-cmr/10 text-cmr;
+}
+
+.article-prose.prose-cmr a {
+  @apply text-cmr;
+}
+
+.article-prose.prose-cmr a::after {
+  @apply bg-cmr/30;
+}
+
+.article-prose.prose-cmr a:hover::after {
+  @apply bg-cmr;
+}
+
+.article-prose.prose-cmr blockquote {
+  @apply from-cmr/5 border-cmr;
+}
+
+.article-prose.prose-cmr code {
+  @apply text-cmr bg-cmr/5;
+}
+
+.article-prose.prose-cmr table thead {
+  background: linear-gradient(135deg, #f0f9f9 0%, #e5f5f5 100%);
+}
+
+.article-prose.prose-cmr table th {
+  @apply border-cmr/20;
+}
+
+.article-prose.prose-cnops h2::before,
+.article-prose.prose-cnops h3::before,
+.article-prose.prose-cnops ul li::before {
+  @apply bg-cnops;
+}
+
+.article-prose.prose-cnops ol li::before {
+  @apply bg-cnops/10 text-cnops;
+}
+
+.article-prose.prose-cnops a {
+  @apply text-cnops;
+}
+
+.article-prose.prose-cnops a::after {
+  @apply bg-cnops/30;
+}
+
+.article-prose.prose-cnops a:hover::after {
+  @apply bg-cnops;
+}
+
+.article-prose.prose-cnops blockquote {
+  @apply from-cnops/5 border-cnops;
+}
+
+.article-prose.prose-cnops code {
+  @apply text-cnops bg-cnops/5;
+}
+
+.article-prose.prose-cnops table thead {
+  background: linear-gradient(135deg, #f0f7f4 0%, #e5f3ed 100%);
+}
+
+.article-prose.prose-cnops table th {
+  @apply border-cnops/20;
 }
 
 @layer utilities {
