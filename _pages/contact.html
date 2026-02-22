@@ -8,19 +8,23 @@ permalink: /contact/
 
 <!-- Hero Section -->
 <section class="hero hero-gradient relative overflow-hidden">
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute inset-0 pattern-dots text-white"></div>
-  </div>
-  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15"></div>
 
-  <div class="container-custom hero-content py-12 md:py-16">
+  <!-- Decorative elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-10 {% if direction == 'rtl' %}left-10{% else %}right-10{% endif %} w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 {% if direction == 'rtl' %}right-10{% else %}left-10{% endif %} w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="container-custom relative z-10 py-12 md:py-16 text-center">
     <div class="max-w-2xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-white text-sm mb-6 border border-white/20">
         <i class="fa-solid fa-headset"></i>
         {% t contact.badge %}
       </div>
-      <h1 class="hero-title text-balance">{% t contact.hero_title %}</h1>
-      <p class="hero-description">{% t contact.hero_description %}</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">{% t contact.hero_title %}</h1>
+      <p class="text-lg leading-relaxed" style="color: rgba(255,255,255,0.95);">{% t contact.hero_description %}</p>
     </div>
   </div>
 

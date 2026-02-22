@@ -8,20 +8,24 @@ permalink: /
 
 <!-- Hero Section -->
 <section class="hero hero-gradient relative overflow-hidden">
-  <!-- Subtle pattern overlay -->
-  <div class="absolute inset-0 opacity-10">
-    <div class="absolute inset-0 pattern-dots text-white"></div>
+  <!-- Gradient overlay for depth -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
+
+  <!-- Decorative geometric shapes -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-10 {% if direction == 'rtl' %}left-10{% else %}right-10{% endif %} w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 {% if direction == 'rtl' %}right-20{% else %}left-20{% endif %} w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
   </div>
 
-  <!-- Decorative shapes -->
-  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-96 h-96 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-  <div class="absolute bottom-0 {% if direction == 'rtl' %}right-0{% else %}left-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+  <!-- Subtle pattern -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
 
-  <div class="container-custom hero-content">
+  <div class="container-custom hero-content relative z-10">
     <div class="max-w-3xl mx-auto">
       <!-- Trust badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-8">
-        <i class="fa-solid fa-shield-halved text-safe"></i>
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-white text-sm mb-8 border border-white/20">
+        <i class="fa-solid fa-shield-halved text-emerald-300"></i>
         {% t home.hero_badge %}
       </div>
 
@@ -29,14 +33,32 @@ permalink: /
       <p class="hero-description mb-10">{% t home.hero_description %}</p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="{% tl simulateurs/cnss %}" class="btn btn-white gap-2 text-base px-8 py-4 w-full sm:w-auto">
+        <a href="{% tl simulateurs/cnss %}" class="btn bg-white text-primary shadow-lg hover:shadow-xl hover:bg-gray-50 gap-2 text-base px-8 py-4 w-full sm:w-auto font-bold">
           <i class="fa-solid fa-calculator"></i>
           {% t common.access_simulator %}
         </a>
-        <a href="{% tl about %}" class="btn bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 gap-2 text-base px-8 py-4 w-full sm:w-auto">
+        <a href="{% tl about %}" class="btn bg-white/15 backdrop-blur-sm text-white border border-white/30 hover:bg-white/25 hover:border-white/40 gap-2 text-base px-8 py-4 w-full sm:w-auto">
           {% t nav.about %}
           <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %}"></i>
         </a>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-white/80 text-sm">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-lock text-emerald-300"></i>
+          {% t home.trust.security_title %}
+        </span>
+        <span class="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></span>
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-300"></i>
+          {% t home.trust.instant_title %}
+        </span>
+        <span class="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></span>
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-gift text-sky-300"></i>
+          {% t home.trust.free_title %}
+        </span>
       </div>
     </div>
   </div>

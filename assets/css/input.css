@@ -128,7 +128,19 @@
   }
 
   .hero-gradient {
-    @apply bg-gradient-to-br from-primary via-primary to-secondary;
+    background: linear-gradient(135deg, #1e5f8a 0%, #164a6c 50%, #2d7d7d 100%);
+  }
+
+  .hero-cnss {
+    background: linear-gradient(135deg, #1e5f8a 0%, #164a6c 60%, #0f3d5c 100%);
+  }
+
+  .hero-cmr {
+    background: linear-gradient(135deg, #2d7d7d 0%, #1f5c5c 60%, #164a4a 100%);
+  }
+
+  .hero-cnops {
+    background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 60%, #143328 100%);
   }
 
   .hero-content {
@@ -138,10 +150,12 @@
   .hero-title {
     @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white
            mb-6 leading-tight tracking-tight;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
 
   .hero-description {
-    @apply text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed;
+    @apply text-lg md:text-xl max-w-2xl mx-auto leading-relaxed;
+    color: rgba(255, 255, 255, 0.95);
   }
 
   /* Navigation */
