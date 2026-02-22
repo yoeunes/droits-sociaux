@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign t = site.data.translations[page.lang] %}
+
 <article>
   <header class="hero-section">
     <div class="container-custom">
@@ -9,19 +11,64 @@ layout: default
       {% if page.excerpt %}
       <p class="text-lg opacity-90 max-w-2xl mx-auto">{{ page.excerpt }}</p>
       {% endif %}
+      {% if page.date_published %}
+      <p class="text-sm opacity-75 mt-4">{{ page.date_published }}</p>
+      {% endif %}
     </div>
   </header>
-  
+
   <main class="container-custom py-12">
-    <div class="card p-6 md:p-10 max-w-3xl mx-auto prose prose-lg">
-      {{ content }}
+    <div class="bg-white rounded-2xl shadow-sm border p-6 md:p-10 max-w-3xl mx-auto">
+      {% if page.image %}
+      <div class="mb-8">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="w-full max-w-md mx-auto rounded-xl shadow-lg">
+      </div>
+      {% endif %}
+
+      {% if page.logo %}
+      <div class="text-center mb-6">
+        <img src="{{ page.logo | relative_url }}" alt="Logo" class="h-16 mx-auto">
+      </div>
+      {% endif %}
+
+      <div class="prose prose-lg max-w-none
+        prose-headings:text-gray-800 prose-headings:font-bold
+        prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:text-cnss
+        prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-gray-700
+        prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
+        prose-a:text-cnss prose-a:underline hover:prose-a:text-cnss-dark
+        prose-ul:my-4 prose-ul:space-y-2
+        prose-li:text-gray-600
+        prose-strong:text-gray-800
+        {% if page.direction == 'rtl' %}text-right{% endif %}">
+        {{ content }}
+      </div>
+
+      {% if page.cta_link %}
+      <div class="text-center mt-10 pt-8 border-t">
+        <a href="{{ page.cta_link }}" class="inline-flex items-center px-6 py-3 bg-cnss text-white font-semibold rounded-lg hover:bg-cnss-dark transition-all">
+          {% if page.direction == 'rtl' %}
+          {{ page.cta_text | default: 'الدخول إلى المحاكي' }} <i class="fa-solid fa-arrow-left mr-2"></i>
+          {% else %}
+          <i class="fa-solid fa-arrow-right ml-2"></i> {{ page.cta_text | default: 'Acceder au simulateur' }}
+          {% endif %}
+        </a>
+      </div>
+      {% endif %}
     </div>
-    
+
     <div class="mt-8 text-center">
-      <a href="{{ '/fr/home.html' | relative_url }}" class="btn btn-outline">
-        <i class="fa-solid fa-arrow-left mr-2"></i>
-        {{ site.data.translations[page.lang].back_to_home }}
+      {% if page.lang == 'ar' %}
+      <a href="/ar/home.html" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        <i class="fa-solid fa-arrow-right ml-2"></i>
+        العودة للرئيسية
       </a>
+      {% else %}
+      <a href="/fr/home.html" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        <i class="fa-solid fa-arrow-left mr-2"></i>
+        Retour a l'accueil
+      </a>
+      {% endif %}
     </div>
   </main>
 </article>
