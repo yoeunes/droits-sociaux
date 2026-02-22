@@ -4,6 +4,7 @@
   "description": "Simulateurs Sociaux Maroc - CNSS, CMR, CNOPS - Plateforme independante de simulation des droits sociaux",
   "author": "Simulateurs Sociaux Maroc",
   "license": "MIT",
+  "type": "module",
   "homepage": "https://github.com/your-username/droits-sociaux#readme",
   "repository": {
     "type": "git",
@@ -11,20 +12,25 @@
   },
   "scripts": {
     "setup": "bundle install && npm install",
-    "css:build": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
-    "css:watch": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "dev": "concurrently \"npm run vite:dev\" \"npm run jekyll:serve\"",
+    "build": "npm run jekyll:clean && npm run vite:build && npm run jekyll:build",
+    "vite:dev": "vite build --watch --mode development",
+    "vite:build": "vite build --mode production",
     "jekyll:serve": "bundle exec jekyll serve --livereload --open-url",
     "jekyll:build": "JEKYLL_ENV=production bundle exec jekyll build",
     "jekyll:clean": "bundle exec jekyll clean",
-    "dev": "npm run css:build && npm run css:watch & npm run jekyll:serve",
-    "build": "npm run jekyll:clean && npm run css:build && npm run jekyll:build",
     "start": "npm run build && npx serve _site -p 4000",
-    "clean": "rm -rf _site .jekyll-cache node_modules/.cache",
-    "deploy": "npm run build && echo 'Site built successfully! Push to GitHub to deploy to GitHub Pages.'",
-    "lint:css": "npx tailwindcss -i ./assets/css/input.css -o /dev/null --minify 2>&1 | head -20"
+    "clean": "rm -rf _site .jekyll-cache node_modules/.cache _data/assets.json",
+    "deploy": "npm run build && echo 'Site built successfully!'",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "autoprefixer": "^10.4.18",
+    "concurrently": "^8.2.2",
+    "cssnano": "^6.1.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.6"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -39,9 +45,5 @@
     "retraite",
     "social-security",
     "simulator"
-  ],
-  "dependencies": {
-    "baseline-browser-mapping": "^2.10.0",
-    "caniuse-lite": "^1.0.30001770"
-  }
+  ]
 }

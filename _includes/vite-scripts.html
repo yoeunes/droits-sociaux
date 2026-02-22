@@ -1,0 +1,18 @@
+{% comment %}
+  Vite Scripts Include
+  Outputs JavaScript with correct hashed URLs in production
+{% endcomment %}
+
+{% if jekyll.environment == 'production' or site.use_vite_manifest %}
+  {% assign assets = site.data.assets %}
+
+  {% if assets and assets['main.js'] %}
+    <script src="{{ assets['main.js'] }}" defer></script>
+  {% else %}
+    <script src="/assets/main.js" defer></script>
+  {% endif %}
+{% else %}
+  {% unless site.vite_dev_server %}
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  {% endunless %}
+{% endif %}
