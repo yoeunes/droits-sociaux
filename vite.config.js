@@ -2,6 +2,8 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import fs from 'fs';
 
+const __dirname = import.meta.dirname;
+
 // Plugin to generate Jekyll-compatible manifest
 function jekyllManifest() {
   return {
@@ -10,14 +12,20 @@ function jekyllManifest() {
       const manifest = {};
 
       for (const [fileName, chunk] of Object.entries(bundle)) {
+        // Skip the vite manifest file
+        if (fileName.includes('.vite/')) continue;
+
         if (chunk.type === 'asset' || chunk.type === 'chunk') {
-          // Extract original name from hashed filename
-          const match = fileName.match(/^(.+?)(?:-[a-zA-Z0-9]+)?(\.[^.]+)$/);
+          // Extract just the base filename without hash
+          // e.g., "main-BDrn0fxx.js" -> "main.js"
+          // e.g., "style-DfRxM0lx.css" -> "style.css"
+          const match = fileName.match(/^(.+?)-[a-zA-Z0-9]+(\.[^.]+)$/);
           if (match) {
-            const baseName = match[1].replace('assets/', '');
-            const ext = match[2];
-            const key = `${baseName}${ext}`;
-            manifest[key] = `/${fileName}`;
+            const key = `${match[1]}${match[2]}`;
+            manifest[key] = `/assets/${fileName}`;
+          } else {
+            // No hash in filename (dev mode)
+            manifest[fileName] = `/assets/${fileName}`;
           }
         }
       }
@@ -32,16 +40,18 @@ function jekyllManifest() {
         fs.mkdirSync(dataDir, { recursive: true });
       }
       fs.writeFileSync(resolve(dataDir, 'assets.json'), JSON.stringify(manifest, null, 2));
+
+      console.log('Jekyll manifest generated:', manifest);
     }
   };
 }
 
 export default defineConfig(({ command, mode }) => {
-  const isDev = command === 'serve';
+  const isDev = command === 'serve' || mode === 'development';
 
   return {
     // Base URL for assets
-    base: '/',
+    base: '/assets/',
 
     // Build configuration
     build: {
@@ -51,13 +61,13 @@ export default defineConfig(({ command, mode }) => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'src/js/main.js'),
-          styles: resolve(__dirname, 'src/css/main.css'),
         },
         output: {
           entryFileNames: isDev ? '[name].js' : '[name]-[hash].js',
           chunkFileNames: isDev ? '[name].js' : '[name]-[hash].js',
           assetFileNames: (assetInfo) => {
-            const ext = assetInfo.name.split('.').pop();
+            const name = assetInfo.name || '';
+            const ext = name.split('.').pop();
             if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp/i.test(ext)) {
               return isDev ? 'img/[name][extname]' : 'img/[name]-[hash][extname]';
             }
@@ -72,19 +82,12 @@ export default defineConfig(({ command, mode }) => {
       minify: mode === 'production' ? 'esbuild' : false,
       // Source maps for development
       sourcemap: isDev,
-      // CSS code splitting
+      // CSS code splitting - keep CSS in single file
       cssCodeSplit: false,
     },
 
     // CSS configuration
     css: {
-      postcss: {
-        plugins: [
-          require('tailwindcss'),
-          require('autoprefixer'),
-          ...(mode === 'production' ? [require('cssnano')({ preset: 'default' })] : []),
-        ],
-      },
       devSourcemap: true,
     },
 
@@ -103,10 +106,6 @@ export default defineConfig(({ command, mode }) => {
       watch: {
         usePolling: false,
         interval: 100,
-      },
-      // Proxy Jekyll server
-      proxy: {
-        // Proxy all non-asset requests to Jekyll
       },
     },
 

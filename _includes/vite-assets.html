@@ -7,23 +7,13 @@
   {% comment %} Production: Use hashed assets from manifest {% endcomment %}
   {% assign assets = site.data.assets %}
 
-  {% if assets %}
-    {% comment %} CSS - extracted from main.js {% endcomment %}
-    {% if assets['main.css'] %}
-      <link rel="stylesheet" href="{{ assets['main.css'] }}">
-    {% elsif assets['styles.css'] %}
-      <link rel="stylesheet" href="{{ assets['styles.css'] }}">
-    {% endif %}
+  {% if assets and assets['style.css'] %}
+    <link rel="stylesheet" href="{{ assets['style.css'] }}">
   {% else %}
     {% comment %} Fallback if manifest not found {% endcomment %}
-    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/style.css">
   {% endif %}
 {% else %}
-  {% comment %} Development: Use Vite dev server or direct files {% endcomment %}
-  {% if site.vite_dev_server %}
-    <script type="module" src="http://localhost:3000/@vite/client"></script>
-    <script type="module" src="http://localhost:3000/src/js/main.js"></script>
-  {% else %}
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  {% endif %}
+  {% comment %} Development: Use non-hashed assets {% endcomment %}
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 {% endif %}

@@ -12,7 +12,5 @@
     <script src="/assets/main.js" defer></script>
   {% endif %}
 {% else %}
-  {% unless site.vite_dev_server %}
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-  {% endunless %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 {% endif %}

@@ -8,7 +8,9 @@ module.exports = {
     "./fr/**/*.html",
     "./ar/**/*.html",
     "./assets/js/**/*.js",
-    "!./node_modules/**"
+    "./src/js/**/*.js",
+    "!./node_modules/**",
+    "!./_site/**"
   ],
   safelist: [
     { pattern: /^(bg|text|border|from|via|to|ring)-(cnss|cmr|cnops)(-light|-dark|-muted)?$/ },
