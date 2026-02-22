@@ -5,35 +5,48 @@ namespace: actualites-cnss
 permalink: /actualites-cnss/
 ---
 
-<section class="hero-section">
+<section class="bg-gradient-to-br from-cnss to-cnss-dark text-white py-16 md:py-20">
   <div class="container-custom">
-    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{% t actualites.cnss.hero_title %}</h1>
-    <p class="text-lg opacity-90 max-w-2xl mx-auto">{% t actualites.cnss.hero_description %}</p>
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-6">
+        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-12 object-contain">
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{% t actualites.cnss.hero_title %}</h1>
+      <p class="text-lg md:text-xl opacity-90">{% t actualites.cnss.hero_description %}</p>
+    </div>
   </div>
 </section>
 
-<main class="container-custom py-12">
+<section class="container-custom py-16">
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <a href="{% tl articles/cnss-pension-1320 %}" class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-lg transition-shadow group">
-      <div class="aspect-video bg-cnss-light flex items-center justify-center">
-        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 opacity-75 group-hover:opacity-100 transition-opacity">
+    <a href="{% tl articles/cnss-pension-1320 %}" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
+      <div class="aspect-video bg-gradient-to-br from-cnss-light to-cnss/10 flex items-center justify-center">
+        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all">
       </div>
       <div class="p-6">
-        <h3 class="font-bold text-lg text-gray-800 mb-2">{% t articles.cnss_pension_1320.title %}</h3>
-        <p class="text-gray-500 text-sm mb-3">{% t articles.cnss_pension_1320.excerpt %}</p>
-        <span class="text-cnss text-sm font-medium">{% t common.read_more %} &rarr;</span>
+        <span class="text-xs font-semibold text-cnss bg-cnss-light px-2 py-1 rounded-full">Reforme</span>
+        <h3 class="font-bold text-lg text-gray-800 mt-3 mb-2 group-hover:text-cnss transition-colors">{% t articles.cnss_pension_1320.title %}</h3>
+        <p class="text-gray-500 text-sm mb-4">{% t articles.cnss_pension_1320.excerpt %}</p>
+        <span class="inline-flex items-center text-cnss font-semibold text-sm">
+          {% t common.read_more %}
+          <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+        </span>
       </div>
     </a>
 
-    <a href="{% tl articles/methode-calcul-cnss %}" class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-lg transition-shadow group">
-      <div class="aspect-video bg-cnss-light flex items-center justify-center">
-        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 opacity-75 group-hover:opacity-100 transition-opacity">
+    <a href="{% tl articles/methode-calcul-cnss %}" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
+      <div class="aspect-video bg-gradient-to-br from-cnss-light to-cnss/10 flex items-center justify-center">
+        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all">
       </div>
       <div class="p-6">
-        <h3 class="font-bold text-lg text-gray-800 mb-2">{% t articles.methode_calcul_cnss.title %}</h3>
-        <p class="text-gray-500 text-sm mb-3">{% t articles.methode_calcul_cnss.excerpt %}</p>
-        <span class="text-cnss text-sm font-medium">{% t common.read_more %} &rarr;</span>
+        <span class="text-xs font-semibold text-cnss bg-cnss-light px-2 py-1 rounded-full">Guide</span>
+        <h3 class="font-bold text-lg text-gray-800 mt-3 mb-2 group-hover:text-cnss transition-colors">{% t articles.methode_calcul_cnss.title %}</h3>
+        <p class="text-gray-500 text-sm mb-4">{% t articles.methode_calcul_cnss.excerpt %}</p>
+        <span class="inline-flex items-center text-cnss font-semibold text-sm">
+          {% t common.read_more %}
+          <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+        </span>
       </div>
     </a>
   </div>
-</main>
+</section>

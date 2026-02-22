@@ -2,33 +2,62 @@
 layout: default
 ---
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
+{% assign org = page.namespace | split: '/' | first %}
+{% case org %}
+  {% when 'simulateurs' %}{% assign org_colors = 'cnss' %}
+  {% when 'cnss' %}{% assign org_colors = 'cnss' %}
+  {% when 'cmr' %}{% assign org_colors = 'cmr' %}
+  {% when 'cnops' %}{% assign org_colors = 'cnops' %}
+  {% else %}{% assign org_colors = 'cnss' %}
+{% endcase %}
 
-<section class="hero-section">
+{% capture hero_title %}{% t {{ page.hero_title_key }} %}{% endcapture %}
+{% assign hero_title = hero_title | strip %}
+
+<section class="bg-gradient-to-br from-{{ org_colors }} via-{{ org_colors }} to-{% if org_colors == 'cnss' %}cmr{% else %}{{ org_colors }}-dark{% endif %} text-white py-16 md:py-20">
   <div class="container-custom">
-    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{% t {{ page.hero_title_key }} %}</h1>
-    <p class="text-lg opacity-90 max-w-2xl mx-auto">{% t {{ page.hero_description_key }} %}</p>
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{{ hero_title }}</h1>
+      <p class="text-lg md:text-xl opacity-90">{% t {{ page.hero_description_key }} %}</p>
+    </div>
   </div>
 </section>
 
-<main class="container-custom py-12">
-  <div class="card p-6 md:p-10 max-w-3xl mx-auto">
-    {{ content }}
-  </div>
+<section class="container-custom py-16">
+  <div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100">
+      {{ content }}
+    </div>
 
-  {% if page.cta_link %}
-  <div class="mt-8 p-6 bg-gray-50 rounded-xl text-center max-w-3xl mx-auto">
-    <p class="font-bold text-gray-800 mb-2">{% t {{ page.cta_title_key }} %}</p>
-    <a href="{% tl {{ page.cta_link }} %}" class="text-cnss hover:underline">{% t {{ page.cta_text_key }} %} &rarr;</a>
+    {% if page.cta_link %}
+    <div class="mt-8 bg-gray-50 rounded-2xl p-6 border border-gray-100">
+      <div class="flex items-center gap-4">
+        <div class="flex-shrink-0 w-12 h-12 bg-{{ org_colors }}-light rounded-xl flex items-center justify-center">
+          <i class="fa-solid fa-book-open text-{{ org_colors }}"></i>
+        </div>
+        <div class="flex-1">
+          <p class="font-bold text-gray-800 mb-1">{% t {{ page.cta_title_key }} %}</p>
+          <a href="{% tl {{ page.cta_link }} %}" class="inline-flex items-center text-{{ org_colors }} hover:underline font-medium">
+            {% t {{ page.cta_text_key }} %}
+            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   </div>
-  {% endif %}
-</main>
+</section>
 
-<div class="container-custom pb-8">
-  <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm text-center max-w-3xl mx-auto">
-    <i class="fa-solid fa-triangle-exclamation {% if direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
-    <strong>{% t common.warning_label %}:</strong>
-    {% t {{ page.warning_text_key }} %}
-    <br>{% t common.official_source %}:
-    <a href="{{ page.official_link }}" class="underline" target="_blank">{{ page.official_link }}</a>
+<div class="container-custom pb-16">
+  <div class="max-w-2xl mx-auto p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 text-sm">
+    <div class="flex items-start gap-3">
+      <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
+      <div>
+        <strong>{% t common.warning_label %}:</strong>
+        {% t {{ page.warning_text_key }} %}
+        <br>{% t common.official_source %}:
+        <a href="{{ page.official_link }}" class="underline hover:no-underline" target="_blank">{{ page.official_link }}</a>
+      </div>
+    </div>
   </div>
 </div>
