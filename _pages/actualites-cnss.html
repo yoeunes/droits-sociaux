@@ -7,21 +7,25 @@ permalink: /actualites-cnss/
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
 <!-- Hero Section -->
-<section class="hero relative overflow-hidden bg-gradient-to-br from-cnss via-cnss to-cnss-dark">
-  <div class="absolute inset-0 opacity-5">
-    <div class="absolute inset-0 pattern-dots text-white"></div>
+<section class="hero hero-cnss relative overflow-hidden">
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15"></div>
+
+  <!-- Decorative elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-10 {% if direction == 'rtl' %}left-10{% else %}right-10{% endif %} w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 {% if direction == 'rtl' %}right-10{% else %}left-10{% endif %} w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
   </div>
-  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
 
   <div class="container-custom relative z-10 py-12 md:py-16">
     <div class="max-w-2xl mx-auto text-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/15 backdrop-blur-sm rounded-2xl mb-6">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/15 backdrop-blur-sm rounded-2xl mb-6 border border-white/20">
         <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-12 object-contain">
       </div>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
         {% t actualites.cnss.hero_title %}
       </h1>
-      <p class="text-lg text-white/85 leading-relaxed">{% t actualites.cnss.hero_description %}</p>
+      <p class="text-lg leading-relaxed" style="color: rgba(255,255,255,0.95);">{% t actualites.cnss.hero_description %}</p>
     </div>
   </div>
 
