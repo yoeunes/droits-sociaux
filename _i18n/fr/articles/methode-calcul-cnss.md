@@ -10,11 +10,11 @@ Si vous avez entre 1320 et 3239 jours, vous avez droit à une pension forfaitair
 
 | Jours de cotisation | Pension mensuelle |
 |---------------------|-------------------|
-| 1320 à 1704 jours   | 600 MAD |
-| 1705 à 2088 jours   | 700 MAD |
-| 2089 à 2472 jours   | 800 MAD |
-| 2473 à 2856 jours   | 900 MAD |
-| 2857 à 3239 jours   | 1000 MAD |
+| 1320 à 1704 jours   | 600 MAD           |
+| 1705 à 2088 jours   | 700 MAD           |
+| 2089 à 2472 jours   | 800 MAD           |
+| 2473 à 2856 jours   | 900 MAD           |
+| 2857 à 3239 jours   | 1000 MAD          |
 
 ## 3. Le calcul de la pension standard (3240 jours et plus)
 

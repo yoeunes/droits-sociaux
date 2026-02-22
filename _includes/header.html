@@ -4,19 +4,16 @@
 <nav class="fixed top-0 left-0 right-0 bg-footer z-50 shadow-lg">
   <div class="container-custom">
     <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
       <a href="{% tl home %}" class="flex items-center text-white font-bold">
         <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo" class="h-8 {% if direction == 'rtl' %}ml-3{% else %}mr-3{% endif %}">
         <span class="hidden sm:inline">{% t site_name %}</span>
       </a>
 
-      <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-1 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
         <a href="{% tl home %}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">
           {% t nav.home %}
         </a>
 
-        <!-- News Dropdown -->
         <div class="relative group">
           <button class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium flex items-center">
             {% t nav.news %}
@@ -29,7 +26,6 @@
           </div>
         </div>
 
-        <!-- Simulators Dropdown -->
         <div class="relative group">
           <button class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium flex items-center">
             {% t nav.simulators %}
@@ -49,7 +45,6 @@
         <a href="{% tl contact %}" class="px-4 py-2 text-footer-text hover:text-white transition-colors font-medium">{% t nav.contact %}</a>
       </div>
 
-      <!-- Social & Language Switch -->
       <div class="hidden lg:flex items-center space-x-4 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
         <div class="flex items-center space-x-3 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
           <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
@@ -62,7 +57,6 @@
         </a>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
         <i class="fa-solid fa-bars text-xl"></i>
       </button>
@@ -70,7 +64,6 @@
   </div>
 </nav>
 
-<!-- Mobile Menu -->
 <div id="mobile-menu" class="fixed inset-0 top-16 bg-white z-40 transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
   <div class="p-4 space-y-2">
     <a href="{% tl home %}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">{% t nav.home %}</a>

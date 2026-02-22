@@ -17,11 +17,11 @@ Pour les assurés ayant entre 1.320 et 3.239 jours, la pension est fixée de man
 
 | Jours de cotisation | Pension mensuelle |
 |---------------------|-------------------|
-| 1.320 à 1.704 jours | 600 DH |
-| 1.705 à 2.088 jours | 700 DH |
-| 2.089 à 2.472 jours | 800 DH |
-| 2.473 à 2.856 jours | 900 DH |
-| 2.857 à 3.239 jours | 1.000 DH |
+| 1.320 à 1.704 jours | 600 DH            |
+| 1.705 à 2.088 jours | 700 DH            |
+| 2.089 à 2.472 jours | 800 DH            |
+| 2.473 à 2.856 jours | 900 DH            |
+| 2.857 à 3.239 jours | 1.000 DH          |
 
 ## Comment vérifier votre situation ?
 

@@ -60,13 +60,13 @@ Le site sera disponible sur `http://localhost:4000`
 
 ## Commandes
 
-| Commande | Description |
-|----------|-------------|
-| `npm run css:build` | Compile Tailwind une fois |
-| `npm run css:watch` | Watch et recompile Tailwind |
-| `npm run jekyll:serve` | Lance Jekyll |
-| `npm run dev` | Mode développement complet |
-| `npm run build` | Build production |
+| Commande               | Description                 |
+|------------------------|-----------------------------|
+| `npm run css:build`    | Compile Tailwind une fois   |
+| `npm run css:watch`    | Watch et recompile Tailwind |
+| `npm run jekyll:serve` | Lance Jekyll                |
+| `npm run dev`          | Mode développement complet  |
+| `npm run build`        | Build production            |
 
 ## Déploiement GitHub Pages
 
