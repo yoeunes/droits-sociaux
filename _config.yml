@@ -1,12 +1,28 @@
 title: Simulateurs Sociaux Maroc
-description: Plateforme indépendante de simulation des droits sociaux - CNSS, CMR, CNOPS
-author: Simulateurs Sociaux
+description: Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.
+author: Simulateurs Sociaux Maroc
 lang: fr
 languages: ["fr", "ar"]
 default_lang: fr
 
-url: "" # Remplacer par l'URL du site en production
+url: "" # Remplacer par l'URL du site en production (ex: https://votresite.com)
 baseurl: ""
+
+# SEO
+logo: /assets/img/logo.png
+social:
+  name: Simulateurs Sociaux Maroc
+  links:
+    - https://facebook.com/simulateurssociaux
+    - https://wa.me/212600000000
+
+twitter:
+  card: summary_large_image
+
+# Open Graph defaults
+defaults_og:
+  type: website
+  image: /assets/img/logo.png
 
 # Build settings
 markdown: kramdown

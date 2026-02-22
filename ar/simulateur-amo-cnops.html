@@ -1,0 +1,78 @@
+---
+layout: simulateur
+lang: ar
+direction: rtl
+title: "محاكي تعويض AMO CNOPS - المغرب"
+hero_title: "محاكي تعويض AMO (CNOPS)"
+hero_description: "تقدير تعويض مصاريفك الطبية (القطاع العام)."
+warning_text: "هذا المحاكي قيد التطوير. النتائج غير متوفرة حاليا."
+official_link: "https://www.cnops.org.ma"
+show_cta: false
+---
+
+<div class="text-center mb-8">
+  <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="Logo CNOPS" class="h-16 mx-auto mb-4">
+</div>
+
+<div id="terms-modal" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-xl border-t-4 border-cnops">
+    <div class="text-cnops mb-4">
+      <i class="fa-solid fa-shield-halved text-4xl"></i>
+    </div>
+    <h3 class="text-xl font-bold text-cnops mb-2">شروط الاستخدام</h3>
+    <p class="text-gray-600 mb-6">
+      هذه المنصة <strong>مستقلة</strong> ولا تمثل CNOPS.
+      النتائج تقديرية فقط.
+    </p>
+    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg mb-6 cursor-pointer" onclick="document.getElementById('accept-check').click()">
+      <input type="checkbox" id="accept-check" class="w-5 h-5 text-cnops rounded" onclick="event.stopPropagation(); toggleAccept()">
+      <label for="accept-check" class="text-sm text-gray-700">
+        قرأت وأوافق على <a href="/ar/conditions.html" target="_blank" class="text-cnops underline">شروط الاستخدام</a>.
+      </label>
+    </div>
+    <button id="btn-accept" class="w-full px-6 py-3 bg-cnops text-white font-semibold rounded-lg hover:bg-cnops-dark transition-all disabled:bg-gray-300 disabled:cursor-not-allowed" onclick="acceptTerms()" disabled>
+      الدخول إلى المحاكي
+    </button>
+  </div>
+</div>
+
+<div id="construction-content" class="hidden text-center py-12">
+  <div class="text-amber-500 text-6xl mb-6">
+    <i class="fa-solid fa-person-digging"></i>
+  </div>
+  <h2 class="text-2xl font-bold text-gray-800 mb-4">المحاكي قيد التطوير</h2>
+  <p class="text-gray-600 max-w-md mx-auto mb-8">
+    نعمل حاليا على هذه الأداة لتقديم أدق الحسابات الممكنة.
+    عد قريبا!
+  </p>
+  <a href="/ar/home.html" class="inline-flex items-center px-6 py-3 bg-cnops text-white font-semibold rounded-lg hover:bg-cnops-dark transition-all">
+    <i class="fa-solid fa-home ml-2"></i> العودة للرئيسية
+  </a>
+</div>
+
+<script>
+const STORAGE_KEY = 'amo_cnops_terms_accepted';
+
+function toggleAccept() {
+  document.getElementById('btn-accept').disabled = !document.getElementById('accept-check').checked;
+}
+
+function acceptTerms() {
+  localStorage.setItem(STORAGE_KEY, 'true');
+  const modal = document.getElementById('terms-modal');
+  modal.style.opacity = '0';
+  setTimeout(() => {
+    modal.style.display = 'none';
+    document.getElementById('construction-content').classList.remove('hidden');
+  }, 300);
+}
+
+function checkTermsAccepted() {
+  if (localStorage.getItem(STORAGE_KEY) === 'true') {
+    document.getElementById('terms-modal').style.display = 'none';
+    document.getElementById('construction-content').classList.remove('hidden');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', checkTermsAccepted);
+</script>
