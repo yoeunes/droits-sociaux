@@ -46,46 +46,71 @@ layout: default
 <!-- Simulator Content -->
 <section class="bg-surface-muted py-8 md:py-12">
   <div class="container-custom">
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-xl mx-auto">
       <!-- Main Calculator Card -->
-      <div class="card shadow-medium p-6 md:p-10">
-        {{ content }}
+      <div class="card shadow-elevated p-8 md:p-10 relative overflow-hidden">
+        <!-- Subtle decorative element -->
+        <div class="absolute -top-20 {% if direction == 'rtl' %}-left-20{% else %}-right-20{% endif %} w-40 h-40 bg-{{ org_colors }}/5 rounded-full blur-2xl"></div>
+
+        <div class="relative">
+          {{ content }}
+        </div>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-content-subtle">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-lock text-emerald-500"></i>
+          {% t common.secure_calculation %}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-bolt text-amber-500"></i>
+          {% t common.instant_result %}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-eye-slash text-primary"></i>
+          {% t common.no_data_stored %}
+        </span>
       </div>
 
       <!-- Article Link -->
       {% if page.cta_link %}
-      <div class="mt-6 card p-5 bg-gradient-to-r from-{{ org_colors }}-light to-white border-l-4 border-{{ org_colors }}">
-        <div class="flex items-center gap-4">
-          <div class="flex-shrink-0 w-12 h-12 bg-{{ org_colors }}/10 rounded-xl flex items-center justify-center">
-            <i class="fa-solid fa-book-open text-xl text-{{ org_colors }}"></i>
+      <div class="mt-8">
+        <a href="{% tl {{ page.cta_link }} %}" class="block card card-hover p-5 bg-gradient-to-{% if direction == 'rtl' %}l{% else %}r{% endif %} from-{{ org_colors }}-light via-{{ org_colors }}-muted/50 to-white">
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-{{ org_colors }}/10 rounded-xl flex items-center justify-center">
+              <i class="fa-solid fa-book-open text-xl text-{{ org_colors }}"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="font-bold text-content text-sm mb-0.5">{% t {{ page.cta_title_key }} %}</p>
+              <span class="inline-flex items-center text-{{ org_colors }} font-medium text-sm">
+                {% t {{ page.cta_text_key }} %}
+                <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} text-xs"></i>
+              </span>
+            </div>
           </div>
-          <div class="flex-1 min-w-0">
-            <p class="font-bold text-content text-sm mb-0.5">{% t {{ page.cta_title_key }} %}</p>
-            <a href="{% tl {{ page.cta_link }} %}" class="inline-flex items-center text-{{ org_colors }} hover:underline font-medium text-sm">
-              {% t {{ page.cta_text_key }} %}
-              <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} text-xs"></i>
-            </a>
-          </div>
-        </div>
+        </a>
       </div>
       {% endif %}
 
       <!-- Warning Box -->
-      <div class="mt-6 alert-warning">
-        <div class="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
-          <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
-        </div>
-        <div class="flex-1 min-w-0">
-          <p class="text-sm leading-relaxed">
-            <strong class="font-semibold">{% t common.warning_label %}:</strong>
-            {% t {{ page.warning_text_key }} %}
-          </p>
-          <p class="text-sm mt-2">
-            {% t common.official_source %}:
-            <a href="{{ page.official_link }}" class="underline hover:no-underline font-medium" target="_blank" rel="noopener">
-              {{ page.official_link }}
-            </a>
-          </p>
+      <div class="mt-6 p-5 bg-amber-50/80 border border-amber-200/50 rounded-2xl">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-amber-800 leading-relaxed">
+              <strong class="font-semibold">{% t common.warning_label %}:</strong>
+              {% t {{ page.warning_text_key }} %}
+            </p>
+            <p class="text-sm text-amber-700 mt-2">
+              {% t common.official_source %}:
+              <a href="{{ page.official_link }}" class="underline hover:no-underline font-medium" target="_blank" rel="noopener">
+                {{ page.official_link }}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
 

@@ -80,25 +80,248 @@
     @apply card ring-1 ring-primary/10 shadow-medium;
   }
 
-  /* Form elements - Clean, accessible */
-  .form-input {
-    @apply w-full px-4 py-3.5 bg-white border border-surface-border rounded-xl
-           text-content placeholder:text-content-subtle
-           focus:ring-2 focus:ring-primary/20 focus:border-primary
-           outline-none transition-all duration-200
-           shadow-inner-soft;
-  }
+  /* ==========================================
+     FORM ELEMENTS - Medical Professional Style
+     ========================================== */
 
-  .form-label {
-    @apply block mb-2 font-medium text-content text-sm;
-  }
-
-  .form-helper {
-    @apply mt-1.5 text-xs text-content-subtle;
-  }
-
+  /* Form Group Container */
   .form-group {
-    @apply space-y-1.5;
+    @apply relative;
+  }
+
+  /* Form Labels */
+  .form-label {
+    @apply flex items-center gap-2 mb-3 font-semibold text-content text-sm;
+  }
+
+  .form-label i {
+    @apply text-base;
+  }
+
+  /* Base Input Styling */
+  .form-input {
+    @apply w-full px-5 py-4 bg-white border-2 border-surface-border rounded-2xl
+           text-content text-base placeholder:text-content-subtle/60
+           outline-none transition-all duration-200;
+  }
+
+  .form-input:hover {
+    @apply border-surface-border/80 bg-surface-muted/30;
+  }
+
+  .form-input:focus {
+    @apply border-primary bg-white shadow-lg shadow-primary/5;
+  }
+
+  /* Number Input with Spinners Hidden */
+  .form-input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  .form-input[type="number"]::-webkit-outer-spin-button,
+  .form-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Date Input Styling */
+  .form-input[type="date"] {
+    @apply cursor-pointer;
+  }
+
+  .form-input[type="date"]::-webkit-calendar-picker-indicator {
+    @apply cursor-pointer opacity-60 hover:opacity-100 transition-opacity;
+    filter: invert(0.4);
+  }
+
+  /* Select Styling */
+  select.form-input {
+    @apply cursor-pointer appearance-none bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-size: 1.25rem;
+    padding-right: 3rem;
+  }
+
+  html[dir="rtl"] select.form-input {
+    background-position: left 1rem center;
+    padding-right: 1.25rem;
+    padding-left: 3rem;
+  }
+
+  /* Form Helper Text */
+  .form-helper {
+    @apply flex items-center gap-1.5 mt-2 text-xs text-content-subtle;
+  }
+
+  .form-helper i {
+    @apply text-[10px];
+  }
+
+  /* Form Input with Icon (wrapper) */
+  .input-with-icon {
+    @apply relative;
+  }
+
+  .input-with-icon .form-input {
+    @apply pl-12;
+  }
+
+  html[dir="rtl"] .input-with-icon .form-input {
+    @apply pl-5 pr-12;
+  }
+
+  .input-with-icon .input-icon {
+    @apply absolute left-4 top-1/2 -translate-y-1/2 text-content-subtle pointer-events-none;
+  }
+
+  html[dir="rtl"] .input-with-icon .input-icon {
+    @apply left-auto right-4;
+  }
+
+  /* Form Input with Suffix (like currency) */
+  .input-with-suffix {
+    @apply relative;
+  }
+
+  .input-with-suffix .form-input {
+    @apply pr-16;
+  }
+
+  html[dir="rtl"] .input-with-suffix .form-input {
+    @apply pr-5 pl-16;
+  }
+
+  .input-with-suffix .input-suffix {
+    @apply absolute right-4 top-1/2 -translate-y-1/2 text-content-subtle font-medium text-sm
+           bg-surface-muted px-2 py-1 rounded-lg;
+  }
+
+  html[dir="rtl"] .input-with-suffix .input-suffix {
+    @apply right-auto left-4;
+  }
+
+  /* Organization-specific Input Focus Colors */
+  .form-input-cnss:focus {
+    @apply border-cnss shadow-cnss/10;
+  }
+
+  .form-input-cmr:focus {
+    @apply border-cmr shadow-cmr/10;
+  }
+
+  .form-input-cnops:focus {
+    @apply border-cnops shadow-cnops/10;
+  }
+
+  /* Simulator Form Wrapper */
+  .simulator-form {
+    @apply space-y-6;
+  }
+
+  .simulator-form .form-group {
+    @apply p-5 bg-surface-muted/50 rounded-2xl border border-surface-border/30
+           transition-all duration-200;
+  }
+
+  .simulator-form .form-group:hover {
+    @apply bg-surface-muted/80 border-surface-border/50;
+  }
+
+  .simulator-form .form-group:focus-within {
+    @apply bg-white border-primary/30 shadow-lg shadow-primary/5;
+  }
+
+  /* Simulator Results */
+  .simulator-results {
+    @apply mt-8 animate-fade-in;
+  }
+
+  .result-grid {
+    @apply grid gap-4 mb-6;
+  }
+
+  .result-card {
+    @apply rounded-2xl p-6 text-center transition-all duration-200;
+  }
+
+  .result-card-primary {
+    @apply result-card text-white shadow-medium relative overflow-hidden;
+  }
+
+  .result-card-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/10 to-transparent;
+  }
+
+  .result-card-secondary {
+    @apply result-card bg-white border-2 border-surface-border shadow-soft;
+  }
+
+  .result-card-secondary:hover {
+    @apply border-primary/20 shadow-medium;
+  }
+
+  .result-icon {
+    @apply text-3xl mb-3 opacity-80;
+  }
+
+  .result-label {
+    @apply block text-sm opacity-90 mb-1;
+  }
+
+  .result-value {
+    @apply text-2xl font-bold;
+  }
+
+  /* Result Actions */
+  .result-actions {
+    @apply flex flex-col sm:flex-row gap-3;
+  }
+
+  .result-actions .btn {
+    @apply flex-1 justify-center;
+  }
+
+  /* Not Eligible State */
+  .result-not-eligible {
+    @apply p-8 bg-gradient-to-br from-red-50 to-red-100/50 border-2 border-red-200
+           text-red-700 rounded-2xl text-center;
+  }
+
+  .result-not-eligible i {
+    @apply text-4xl mb-3 text-red-400;
+  }
+
+  .result-not-eligible p {
+    @apply font-semibold text-lg;
+  }
+
+  /* Eligible State */
+  .result-eligible {
+    @apply p-8 bg-gradient-to-br from-emerald-50 to-emerald-100/50 border-2 border-emerald-200
+           text-emerald-700 rounded-2xl text-center;
+  }
+
+  .result-eligible i {
+    @apply text-4xl mb-3 text-emerald-500;
+  }
+
+  /* Simulator Header */
+  .simulator-header {
+    @apply text-center mb-8 pb-6 border-b border-surface-border/50;
+  }
+
+  .simulator-logo {
+    @apply inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-4 shadow-soft;
+  }
+
+  .simulator-logo img {
+    @apply h-12 object-contain;
+  }
+
+  .simulator-subtitle {
+    @apply text-content-muted text-sm;
   }
 
   /* Section layouts */

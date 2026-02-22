@@ -10,19 +10,46 @@ official_link: "https://www.macnss.ma"
 ---
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
-<div class="text-center mb-8">
-  <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="Logo CNSS" class="h-16 mx-auto mb-4">
+<!-- Simulator Header -->
+<div class="simulator-header">
+  <div class="simulator-logo bg-cnss-light">
+    <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="Logo CNSS">
+  </div>
+  <p class="simulator-subtitle">{% t simulators.amo_cnss.subtitle %}</p>
 </div>
 
-<form id="amo-form" class="space-y-6">
-  <div>
-    <label for="amount" class="form-label">{% t simulators.amo_cnss.amount %} :</label>
-    <input type="number" id="amount" class="form-input" placeholder="1500" oninput="calculate()">
+<!-- Simulator Form -->
+<form id="amo-form" class="simulator-form">
+  <!-- Medical Amount -->
+  <div class="form-group">
+    <label for="amount" class="form-label">
+      <i class="fa-solid fa-receipt text-cnss"></i>
+      {% t simulators.amo_cnss.amount %}
+    </label>
+    <div class="input-with-suffix">
+      <input
+        type="number"
+        id="amount"
+        class="form-input form-input-cnss"
+        placeholder="{% t simulators.amo_cnss.amount_placeholder %}"
+        min="0"
+        oninput="calculate()"
+      >
+      <span class="input-suffix">MAD</span>
+    </div>
+    <p class="form-helper">
+      <i class="fa-solid fa-circle-info"></i>
+      {% t simulators.amo_cnss.amount_helper %}
+    </p>
   </div>
 
-  <div>
-    <label for="care-type" class="form-label">{% t simulators.amo_cnss.care_type %} :</label>
-    <select id="care-type" class="form-input" onchange="calculate()">
+  <!-- Care Type -->
+  <div class="form-group">
+    <label for="care-type" class="form-label">
+      <i class="fa-solid fa-stethoscope text-cnss"></i>
+      {% t simulators.amo_cnss.care_type %}
+    </label>
+    <select id="care-type" class="form-input form-input-cnss" onchange="calculate()">
       <option value="70">{% t simulators.amo_cnss.normal %}</option>
       <option value="90">{% t simulators.amo_cnss.chronic %}</option>
       <option value="90">{% t simulators.amo_cnss.hospital %}</option>
@@ -30,9 +57,18 @@ official_link: "https://www.macnss.ma"
   </div>
 </form>
 
-<div id="result" class="mt-8 hidden"></div>
+<!-- Results Container -->
+<div id="result" class="simulator-results hidden"></div>
 
 <script>
+const LABELS = {
+  reimbursement: "{% t simulators.amo_cnss.reimbursement %}",
+  remaining: "{% t simulators.amo_cnss.remaining %}",
+  rate: "{% t simulators.amo_cnss.rate %}",
+  totalAmount: "{% t simulators.amo_cnss.total_amount %}",
+  share: "{% t common.share %}"
+};
+
 function calculate() {
   const amount = parseFloat(document.getElementById('amount').value) || 0;
   const rate = parseInt(document.getElementById('care-type').value);
@@ -47,17 +83,43 @@ function calculate() {
   const remaining = amount - reimbursement;
 
   resultDiv.innerHTML = `
-    <div class="grid grid-cols-2 gap-4">
-      <div class="bg-cnss text-white p-6 rounded-xl text-center">
-        <i class="fa-solid fa-hand-holding-medical text-2xl mb-2"></i>
-        <span class="block text-sm opacity-90">{% t simulators.amo_cnss.reimbursement %}</span>
-        <strong class="text-2xl bg-white text-cnss px-4 py-1 rounded-full mt-2 inline-block">${reimbursement.toFixed(2)} MAD</strong>
+    <div class="result-grid grid-cols-1 sm:grid-cols-2">
+      <!-- Main Result - Reimbursement -->
+      <div class="result-card-primary bg-cnss">
+        <div class="relative">
+          <i class="fa-solid fa-hand-holding-medical result-icon"></i>
+          <span class="result-label">${LABELS.reimbursement}</span>
+          <strong class="result-value">${reimbursement.toFixed(2)} <span class="text-lg">MAD</span></strong>
+        </div>
       </div>
-      <div class="bg-white border p-6 rounded-xl text-center">
-        <i class="fa-solid fa-wallet text-2xl text-cnss mb-2"></i>
-        <span class="block text-sm text-gray-500">{% t simulators.amo_cnss.remaining %}</span>
-        <strong class="text-xl text-cnss">${remaining.toFixed(2)} MAD</strong>
+
+      <!-- Remaining -->
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-wallet text-2xl text-cnss mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.remaining}</span>
+        <strong class="text-xl font-bold text-cnss">${remaining.toFixed(2)} MAD</strong>
       </div>
+
+      <!-- Rate Applied -->
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-percent text-2xl text-cnss mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.rate}</span>
+        <strong class="text-xl font-bold text-cnss">${rate}%</strong>
+      </div>
+
+      <!-- Total Amount -->
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-receipt text-2xl text-cnss mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.totalAmount}</span>
+        <strong class="text-xl font-bold text-cnss">${amount.toFixed(2)} MAD</strong>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener" class="btn bg-emerald-600 hover:bg-emerald-700 text-white gap-2 w-full justify-center">
+        <i class="fa-brands fa-whatsapp"></i>
+        ${LABELS.share}
+      </a>
     </div>
   `;
   resultDiv.classList.remove('hidden');

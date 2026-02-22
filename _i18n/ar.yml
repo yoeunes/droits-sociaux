@@ -58,6 +58,12 @@ common:
   reform: "إصلاح"
   guide: "دليل"
   program: "برنامج"
+  days: "يوم"
+  years: "سنة"
+  per_month: "شهرياً"
+  secure_calculation: "حساب آمن"
+  instant_result: "نتيجة فورية"
+  no_data_stored: "لا يتم تخزين البيانات"
 
 # Cookie
 cookie:

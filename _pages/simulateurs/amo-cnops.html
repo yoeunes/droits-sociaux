@@ -10,19 +10,46 @@ official_link: "https://www.cnops.org.ma"
 ---
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
-<div class="text-center mb-8">
-  <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="Logo CNOPS" class="h-16 mx-auto mb-4">
+<!-- Simulator Header -->
+<div class="simulator-header">
+  <div class="simulator-logo bg-cnops-light">
+    <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="Logo CNOPS">
+  </div>
+  <p class="simulator-subtitle">{% t simulators.amo_cnops.subtitle %}</p>
 </div>
 
-<form id="amo-form" class="space-y-6">
-  <div>
-    <label for="amount" class="form-label">{% t simulators.amo_cnops.amount %} :</label>
-    <input type="number" id="amount" class="form-input" placeholder="1500" oninput="calculate()">
+<!-- Simulator Form -->
+<form id="amo-form" class="simulator-form">
+  <!-- Medical Amount -->
+  <div class="form-group">
+    <label for="amount" class="form-label">
+      <i class="fa-solid fa-receipt text-cnops"></i>
+      {% t simulators.amo_cnops.amount %}
+    </label>
+    <div class="input-with-suffix">
+      <input
+        type="number"
+        id="amount"
+        class="form-input form-input-cnops"
+        placeholder="{% t simulators.amo_cnops.amount_placeholder %}"
+        min="0"
+        oninput="calculate()"
+      >
+      <span class="input-suffix">MAD</span>
+    </div>
+    <p class="form-helper">
+      <i class="fa-solid fa-circle-info"></i>
+      {% t simulators.amo_cnops.amount_helper %}
+    </p>
   </div>
 
-  <div>
-    <label for="care-type" class="form-label">{% t simulators.amo_cnops.care_type %} :</label>
-    <select id="care-type" class="form-input" onchange="calculate()">
+  <!-- Care Type -->
+  <div class="form-group">
+    <label for="care-type" class="form-label">
+      <i class="fa-solid fa-stethoscope text-cnops"></i>
+      {% t simulators.amo_cnops.care_type %}
+    </label>
+    <select id="care-type" class="form-input form-input-cnops" onchange="calculate()">
       <option value="80">{% t simulators.amo_cnops.normal %}</option>
       <option value="90">{% t simulators.amo_cnops.chronic %}</option>
       <option value="90">{% t simulators.amo_cnops.hospital %}</option>
@@ -30,9 +57,18 @@ official_link: "https://www.cnops.org.ma"
   </div>
 </form>
 
-<div id="result" class="mt-8 hidden"></div>
+<!-- Results Container -->
+<div id="result" class="simulator-results hidden"></div>
 
 <script>
+const LABELS = {
+  reimbursement: "{% t simulators.amo_cnops.reimbursement %}",
+  remaining: "{% t simulators.amo_cnops.remaining %}",
+  rate: "{% t simulators.amo_cnops.rate %}",
+  totalAmount: "{% t simulators.amo_cnops.total_amount %}",
+  share: "{% t common.share %}"
+};
+
 function calculate() {
   const amount = parseFloat(document.getElementById('amount').value) || 0;
   const rate = parseInt(document.getElementById('care-type').value);
@@ -47,17 +83,43 @@ function calculate() {
   const remaining = amount - reimbursement;
 
   resultDiv.innerHTML = `
-    <div class="grid grid-cols-2 gap-4">
-      <div class="bg-cnops text-white p-6 rounded-xl text-center">
-        <i class="fa-solid fa-hand-holding-medical text-2xl mb-2"></i>
-        <span class="block text-sm opacity-90">{% t simulators.amo_cnops.reimbursement %}</span>
-        <strong class="text-2xl bg-white text-cnops px-4 py-1 rounded-full mt-2 inline-block">${reimbursement.toFixed(2)} MAD</strong>
+    <div class="result-grid grid-cols-1 sm:grid-cols-2">
+      <!-- Main Result - Reimbursement -->
+      <div class="result-card-primary bg-cnops">
+        <div class="relative">
+          <i class="fa-solid fa-hand-holding-medical result-icon"></i>
+          <span class="result-label">${LABELS.reimbursement}</span>
+          <strong class="result-value">${reimbursement.toFixed(2)} <span class="text-lg">MAD</span></strong>
+        </div>
       </div>
-      <div class="bg-white border p-6 rounded-xl text-center">
-        <i class="fa-solid fa-wallet text-2xl text-cnops mb-2"></i>
-        <span class="block text-sm text-gray-500">{% t simulators.amo_cnops.remaining %}</span>
-        <strong class="text-xl text-cnops">${remaining.toFixed(2)} MAD</strong>
+
+      <!-- Remaining -->
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-wallet text-2xl text-cnops mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.remaining}</span>
+        <strong class="text-xl font-bold text-cnops">${remaining.toFixed(2)} MAD</strong>
       </div>
+
+      <!-- Rate Applied -->
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-percent text-2xl text-cnops mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.rate}</span>
+        <strong class="text-xl font-bold text-cnops">${rate}%</strong>
+      </div>
+
+      <!-- Total Amount -->
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-receipt text-2xl text-cnops mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.totalAmount}</span>
+        <strong class="text-xl font-bold text-cnops">${amount.toFixed(2)} MAD</strong>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}" target="_blank" rel="noopener" class="btn bg-emerald-600 hover:bg-emerald-700 text-white gap-2 w-full justify-center">
+        <i class="fa-brands fa-whatsapp"></i>
+        ${LABELS.share}
+      </a>
     </div>
   `;
   resultDiv.classList.remove('hidden');
