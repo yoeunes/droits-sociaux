@@ -91,13 +91,15 @@ exclude:
   - node_modules/
   - package.json
   - package-lock.json
-  - tailwind.config.js
-  - postcss.config.js
+  - tailwind.config.cjs
+  - postcss.config.cjs
+  - vite.config.js
   - Gemfile
   - Gemfile.lock
   - README.md
   - .gitignore
   - assets/css/input.css
+  - src/
   - vendor/
   - .bundle/
 

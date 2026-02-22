@@ -22,6 +22,7 @@ function jekyllManifest() {
           const match = fileName.match(/^(.+?)-[a-zA-Z0-9]+(\.[^.]+)$/);
           if (match) {
             const key = `${match[1]}${match[2]}`;
+            // Use relative path - Jekyll will prepend baseurl via site.baseurl
             manifest[key] = `/assets/${fileName}`;
           } else {
             // No hash in filename (dev mode)
@@ -49,14 +50,17 @@ function jekyllManifest() {
 export default defineConfig(({ command, mode }) => {
   const isDev = command === 'serve' || mode === 'development';
 
+  // For GitHub Pages deployment with baseurl
+  const baseUrl = process.env.VITE_BASE_URL || '/droits-sociaux';
+
   return {
-    // Base URL for assets
-    base: '/assets/',
+    // Base URL for assets - includes GitHub Pages baseurl
+    base: `${baseUrl}/assets/`,
 
     // Build configuration
     build: {
       outDir: '_site/assets',
-      emptyOutDir: true,
+      emptyOutDir: false,  // Don't clean - preserve Jekyll's copied assets (images, etc.)
       manifest: true,
       rollupOptions: {
         input: {
