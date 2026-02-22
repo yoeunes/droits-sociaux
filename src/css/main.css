@@ -1,16 +1,120 @@
 /* =============================================================================
    MAIN CSS ENTRY POINT
-   Compiled with Vite + Tailwind CSS + PostCSS
+   Compiled with Vite + Tailwind CSS v4 + PostCSS
    ============================================================================= */
 
-/* Google Fonts - must be first */
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
 
-/* Tailwind Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* Source files for content detection */
+@source "../../**/*.html";
+@source "../../_includes/**/*.html";
+@source "../../_layouts/**/*.html";
+@source "../../src/js/**/*.js";
+
+/* =============================================================================
+   THEME CONFIGURATION - Tailwind CSS v4
+   ============================================================================= */
+
+@theme {
+  /* Organization colors */
+  --color-cnss: #1e5f8a;
+  --color-cnss-light: #f0f7fc;
+  --color-cnss-muted: #e8f4fc;
+  --color-cnss-dark: #164a6c;
+
+  --color-cmr: #2d7d7d;
+  --color-cmr-light: #f0f9f9;
+  --color-cmr-muted: #e5f5f5;
+  --color-cmr-dark: #1f5c5c;
+
+  --color-cnops: #2d6a4f;
+  --color-cnops-light: #f0f7f4;
+  --color-cnops-muted: #e5f3ed;
+  --color-cnops-dark: #1b4332;
+
+  /* Medical/Trust colors */
+  --color-medical: #1e5f8a;
+  --color-medical-light: #f8fafc;
+  --color-medical-dark: #0f3d5c;
+
+  --color-trust: #0d9488;
+  --color-trust-light: #f0fdfa;
+  --color-trust-dark: #0f766e;
+
+  --color-safe: #059669;
+  --color-safe-light: #ecfdf5;
+  --color-safe-dark: #047857;
+
+  /* UI colors */
+  --color-primary: #1e5f8a;
+  --color-secondary: #2d7d7d;
+  --color-accent: #0d9488;
+
+  /* Surface colors */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-surface-subtle: #f1f5f9;
+  --color-surface-border: #e2e8f0;
+
+  /* Text colors */
+  --color-content: #1e293b;
+  --color-content-muted: #475569;
+  --color-content-subtle: #64748b;
+  --color-content-inverse: #ffffff;
+
+  /* Footer colors */
+  --color-footer: #0f172a;
+  --color-footer-surface: #1e293b;
+  --color-footer-text: #94a3b8;
+  --color-footer-border: #334155;
+
+  /* Font families */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-tajawal: 'Tajawal', system-ui, sans-serif;
+
+  /* Custom shadows */
+  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 4px 16px -4px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 8px 24px -4px rgba(0, 0, 0, 0.1), 0 16px 40px -8px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-inner-soft: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+
+  /* Border radius */
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
+  /* Custom spacing */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.4s ease-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-pulse-soft: pulseSoft 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
 
 /* =============================================================================
    BASE STYLES
@@ -88,11 +192,14 @@
   }
 
   .card-interactive {
-    @apply card card-hover cursor-pointer;
+    @apply bg-white rounded-2xl shadow-card border border-surface-border/50
+           overflow-hidden transition-all duration-300 ease-out cursor-pointer
+           hover:shadow-card-hover hover:-translate-y-0.5 hover:border-surface-border;
   }
 
   .card-featured {
-    @apply card ring-1 ring-primary/10 shadow-medium;
+    @apply bg-white rounded-2xl shadow-medium border border-surface-border/50
+           overflow-hidden transition-all duration-300 ease-out ring-1 ring-primary/10;
   }
 
   /* ==========================================
@@ -261,7 +368,8 @@
   }
 
   .result-card-primary {
-    @apply result-card text-white shadow-medium relative overflow-hidden;
+    @apply rounded-2xl p-6 text-center transition-all duration-200
+           text-white shadow-medium relative overflow-hidden;
   }
 
   .result-card-primary::before {
@@ -270,7 +378,8 @@
   }
 
   .result-card-secondary {
-    @apply result-card bg-white border-2 border-surface-border shadow-soft;
+    @apply rounded-2xl p-6 text-center transition-all duration-200
+           bg-white border-2 border-surface-border shadow-soft;
   }
 
   .result-card-secondary:hover {
@@ -421,20 +530,25 @@
   }
 
   .trust-badge-primary {
-    @apply trust-badge bg-primary/10 text-primary;
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full
+           text-xs font-semibold tracking-wide bg-primary/10 text-primary;
   }
 
   .trust-badge-success {
-    @apply trust-badge bg-safe/10 text-safe;
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full
+           text-xs font-semibold tracking-wide bg-safe/10 text-safe;
   }
 
   .trust-badge-info {
-    @apply trust-badge bg-trust/10 text-trust;
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full
+           text-xs font-semibold tracking-wide bg-trust/10 text-trust;
   }
 
   /* Feature cards */
   .feature-card {
-    @apply card card-hover p-8 text-center;
+    @apply bg-white rounded-2xl shadow-card border border-surface-border/50
+           overflow-hidden transition-all duration-300 ease-out p-8 text-center
+           hover:shadow-card-hover hover:-translate-y-0.5 hover:border-surface-border;
   }
 
   .feature-icon {
@@ -452,7 +566,9 @@
 
   /* News/Article cards */
   .news-card {
-    @apply card card-hover overflow-hidden;
+    @apply bg-white rounded-2xl shadow-card border border-surface-border/50
+           transition-all duration-300 ease-out overflow-hidden
+           hover:shadow-card-hover hover:-translate-y-0.5 hover:border-surface-border;
   }
 
   .news-card-image {
@@ -479,7 +595,9 @@
 
   /* Simulator cards */
   .simulator-card {
-    @apply card card-hover p-8;
+    @apply bg-white rounded-2xl shadow-card border border-surface-border/50
+           overflow-hidden transition-all duration-300 ease-out p-8
+           hover:shadow-card-hover hover:-translate-y-0.5 hover:border-surface-border;
   }
 
   .simulator-card-icon {
@@ -506,15 +624,18 @@
   }
 
   .alert-warning {
-    @apply alert bg-amber-50 border-amber-200 text-amber-800;
+    @apply p-5 rounded-2xl border flex items-start gap-4
+           bg-amber-50 border-amber-200 text-amber-800;
   }
 
   .alert-info {
-    @apply alert bg-primary/5 border-primary/20 text-primary;
+    @apply p-5 rounded-2xl border flex items-start gap-4
+           bg-primary/5 border-primary/20 text-primary;
   }
 
   .alert-success {
-    @apply alert bg-safe-light border-safe/20 text-safe-dark;
+    @apply p-5 rounded-2xl border flex items-start gap-4
+           bg-safe-light border-safe/20 text-safe-dark;
   }
 
   /* Share buttons */

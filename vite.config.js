@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import fs from 'fs';
+import tailwindcss from '@tailwindcss/vite';
 
 const __dirname = import.meta.dirname;
 
@@ -16,18 +17,16 @@ function jekyllManifest() {
         if (fileName.includes('.vite/')) continue;
 
         if (chunk.type === 'asset' || chunk.type === 'chunk') {
-          // Extract just the base filename without hash
+          // Extract just the base filename without any hash segments
           // e.g., "main-BDrn0fxx.js" -> "main.js"
-          // e.g., "style-DfRxM0lx.css" -> "style.css"
-          const match = fileName.match(/^(.+?)-[a-zA-Z0-9]+(\.[^.]+)$/);
-          if (match) {
-            const key = `${match[1]}${match[2]}`;
-            // Use relative path - Jekyll will prepend baseurl via site.baseurl
-            manifest[key] = `/assets/${fileName}`;
-          } else {
-            // No hash in filename (dev mode)
-            manifest[fileName] = `/assets/${fileName}`;
-          }
+          // e.g., "style-FbC-GQJs.css" -> "style.css"
+          // Handle multiple hash segments by matching up to the first hyphen-hash pattern
+          const ext = fileName.match(/\.[^.]+$/)?.[0] || '';
+          const nameWithoutExt = fileName.replace(ext, '');
+          // Remove all hash-like segments (hyphen followed by alphanumeric)
+          const baseName = nameWithoutExt.replace(/-[a-zA-Z0-9]+/g, '');
+          const key = `${baseName}${ext}`;
+          manifest[key] = `/assets/${fileName}`;
         }
       }
 
@@ -130,6 +129,7 @@ export default defineConfig(({ command, mode }) => {
 
     // Plugins
     plugins: [
+      tailwindcss(),
       jekyllManifest(),
     ],
 
