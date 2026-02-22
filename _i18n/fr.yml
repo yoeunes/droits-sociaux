@@ -1,0 +1,252 @@
+# =============================================================================
+# FRENCH TRANSLATIONS
+# =============================================================================
+
+# Global
+site_name: "Simulateurs Sociaux"
+tagline: "Maîtrisez vos droits sociaux au Maroc"
+lang_switch: "العربية"
+
+# Navigation
+nav:
+  home: "Accueil"
+  news: "Actualités"
+  news_cnss: "Actualités CNSS"
+  news_cmr: "Actualités CMR"
+  news_cnops: "Actualités CNOPS"
+  simulators: "Simulateurs"
+  pension_section: "Pension & Retraite"
+  amo_section: "Maladie (AMO)"
+  pension_cnss: "Pension CNSS"
+  pension_cmr: "Pension CMR"
+  amo_cnss: "AMO CNSS"
+  amo_cnops: "AMO CNOPS"
+  about: "Qui sommes-nous ?"
+  contact: "Contact"
+
+# Common
+common:
+  warning_label: "Avertissement"
+  default_warning: "Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel."
+  official_source: "Source officielle"
+  back_to_home: "Retour à l'accueil"
+  read_more: "Lire plus"
+  download_pdf: "Télécharger (PDF)"
+  share: "Partager"
+  access_simulator: "Accéder au simulateur"
+
+# Cookie
+cookie:
+  banner: "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre"
+  accept: "J'accepte"
+  policy: "politique de confidentialité"
+
+# Footer
+footer:
+  about: "À propos"
+  about_text: "Plateforme indépendante d'information sur la protection sociale au Maroc. Notre mission est de simplifier l'accès aux droits sociaux."
+  quick_links: "Liens rapides"
+  legal: "Légal"
+  privacy: "Politique de confidentialité"
+  terms: "Conditions d'utilisation"
+  copyright: "© 2025 Simulateurs Sociaux Maroc. Plateforme indépendante."
+
+# =============================================================================
+# HOME PAGE
+# =============================================================================
+home:
+  meta_title: "Simulateurs Sociaux Maroc - Accueil"
+  hero_title: "Simulateurs Sociaux Maroc : Maîtrisez vos droits"
+  hero_description: "Bienvenue sur la première plateforme indépendante dédiée à la simplification de la protection sociale. Accédez à des simulateurs précis pour estimer vos pensions de retraite (CNSS, CMR) et vos remboursements AMO (CNSS, CNOPS)."
+
+  news_title: "À la une"
+  news_cnss_title: "Pension CNSS 1320j"
+  news_cnss_desc: "Nouvelle réforme officielle."
+  news_fusion_title: "Fusion CNOPS / CNSS"
+  news_fusion_desc: "Transition vers l'AMO unique."
+  news_cmr_title: "Contrat CMR"
+  news_cmr_desc: "Performance et durabilité."
+
+  how_it_works:
+    title: "Comment ça marche ?"
+    subtitle: "Obtenez votre estimation en 3 étapes simples et rapides."
+    step1_title: "Remplissez"
+    step1_desc: "Entrez vos informations (âge, salaire, années de service) dans notre formulaire sécurisé."
+    step2_title: "Calculez"
+    step2_desc: "Notre algorithme analyse vos données selon les dernières règles CNSS/CMR en vigueur."
+    step3_title: "Téléchargez"
+    step3_desc: "Obtenez instantanément votre résultat détaillé et téléchargez-le en PDF gratuitement."
+
+  simulators:
+    pension_title: "Simulateurs de Pension"
+    amo_title: "Simulateurs de Remboursement AMO"
+    cnss_title: "Pension CNSS"
+    cnss_desc: "Secteur privé. Basé sur les jours de cotisation."
+    cmr_title: "Pension CMR"
+    cmr_desc: "Secteur public (Fonctionnaires)."
+    amo_cnss_title: "Remboursement AMO CNSS"
+    amo_cnss_desc: "Estimez le remboursement dossier maladie (Privé)."
+    amo_cnops_title: "Remboursement AMO CNOPS"
+    amo_cnops_desc: "Estimez le remboursement dossier maladie (Public)."
+
+# =============================================================================
+# CONTACT PAGE
+# =============================================================================
+contact:
+  meta_title: "Contact - Simulateurs Sociaux"
+  hero_title: "Contactez-nous"
+  hero_description: "Une question, un bug à signaler ou une suggestion ? Nous sommes à votre écoute."
+  help_title: "Comment pouvons-nous vous aider ?"
+  help_subtitle: "Notre équipe s'efforce de répondre dans les plus brefs délais."
+  email_title: "Par Email"
+  email_desc: "Pour toute question générale ou signalement de bug."
+  email_btn: "Envoyer un email"
+  whatsapp_title: "WhatsApp"
+  whatsapp_desc: "Discutez directement avec nous pour une réponse rapide."
+  whatsapp_btn: "Ouvrir WhatsApp"
+  suggestion_title: "Suggestion"
+  suggestion_desc: "Vous avez une idée pour améliorer le site ?"
+  suggestion_btn: "Proposer une idée"
+  social_title: "Retrouvez-nous sur les réseaux sociaux"
+
+# =============================================================================
+# ABOUT PAGE
+# =============================================================================
+about:
+  meta_title: "Qui sommes-nous ? - Simulateurs Sociaux"
+  hero_title: "Qui sommes-nous ?"
+  hero_description: "Découvrez la mission et l'équipe derrière Simulateurs Sociaux Maroc."
+  mission_title: "Notre Mission"
+  mission_text: "Simulateurs Sociaux Maroc est une plateforme indépendante créée pour aider les citoyens marocains à mieux comprendre et estimer leurs droits sociaux. Nous simplifions l'accès à l'information sur les systèmes de protection sociale (CNSS, CMR, CNOPS)."
+  values_title: "Nos Valeurs"
+  value1_title: "Indépendance"
+  value1_desc: "Nous ne représentons aucun organisme officiel."
+  value2_title: "Accessibilité"
+  value2_desc: "Des outils gratuits et simples pour tous."
+  value3_title: "Confidentialité"
+  value3_desc: "Vos données restent sur votre appareil."
+
+# =============================================================================
+# LEGAL PAGES
+# =============================================================================
+conditions:
+  meta_title: "Conditions d'utilisation - Simulateurs Sociaux"
+  hero_title: "Conditions d'utilisation"
+  hero_description: "Veuillez lire attentivement ces conditions avant d'utiliser nos services."
+
+privacy:
+  meta_title: "Politique de confidentialité - Simulateurs Sociaux"
+  hero_title: "Politique de confidentialité"
+  hero_description: "Comment nous protégeons vos données personnelles."
+
+# =============================================================================
+# NEWS PAGES
+# =============================================================================
+actualites:
+  cnss:
+    meta_title: "Actualités CNSS - Simulateurs Sociaux"
+    hero_title: "Actualités CNSS"
+    hero_description: "Dernières nouvelles et réformes de la Caisse Nationale de Sécurité Sociale."
+  cmr:
+    meta_title: "Actualités CMR - Simulateurs Sociaux"
+    hero_title: "Actualités CMR"
+    hero_description: "Dernières nouvelles et réformes de la Caisse Marocaine des Retraites."
+  cnops:
+    meta_title: "Actualités CNOPS - Simulateurs Sociaux"
+    hero_title: "Actualités CNOPS"
+    hero_description: "Dernières nouvelles et réformes de la Caisse Nationale des Organismes de Prévoyance Sociale."
+
+# =============================================================================
+# SIMULATORS
+# =============================================================================
+simulators:
+  terms_title: "Conditions d'utilisation"
+  terms_text: "Cette plateforme est indépendante et ne représente pas l'organisme officiel. Les résultats sont fournis à titre indicatif."
+  terms_accept: "J'ai lu et j'accepte les"
+  terms_link: "conditions d'utilisation"
+  terms_btn: "Accéder au simulateur"
+
+  cnss:
+    meta_title: "Simulateur Pension CNSS - Maroc"
+    hero_title: "Simulateur Pension CNSS"
+    hero_description: "Estimez votre retraite du secteur privé selon les règles exactes."
+    warning: "Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel de la CNSS."
+    cta_title: "Comprendre le calcul CNSS ?"
+    cta_text: "Lire l'article sur la méthode de calcul"
+    birth_date: "Date de naissance"
+    days_declared: "Nombre de jours déclarés (Total)"
+    days_placeholder: "Ex: 2678"
+    salary: "Salaire mensuel moyen (Plafonné à 6000 DH)"
+    salary_placeholder: "Ex: 5994.71"
+    pension: "Pension brute"
+    rate: "Taux de pension"
+    salary_ref: "Salaire référence"
+    days: "Jours déclarés"
+    not_eligible: "Non éligible : Minimum 1320 jours requis."
+
+  cmr:
+    meta_title: "Simulateur Pension CMR - Maroc"
+    hero_title: "Simulateur Pension CMR"
+    hero_description: "Estimez votre retraite du secteur public selon le système mixte de 2016."
+    warning: "Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel de la CMR."
+    cta_title: "Comprendre le calcul CMR ?"
+    cta_text: "Lire l'article sur la méthode de calcul"
+    years_before: "Années avant 2017"
+    years_after: "Années après 2017"
+    salary: "Salaire de référence (moyenne 8 dernières années)"
+    retirement_type: "Type de retraite"
+    normal: "Normale (2% après 2017)"
+    early: "Anticipée (1.5% après 2017)"
+
+  amo_cnss:
+    meta_title: "Simulateur AMO CNSS - Maroc"
+    hero_title: "Simulateur Remboursement AMO CNSS"
+    hero_description: "Estimez votre remboursement maladie pour le secteur privé."
+    warning: "Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel de la CNSS."
+    amount: "Montant des frais médicaux"
+    care_type: "Type de soins"
+    normal: "Soins normaux (70%)"
+    chronic: "Maladie chronique (90%)"
+    hospital: "Hospitalisation (90%)"
+    reimbursement: "Remboursement estimé"
+    remaining: "Reste à charge"
+
+  amo_cnops:
+    meta_title: "Simulateur AMO CNOPS - Maroc"
+    hero_title: "Simulateur Remboursement AMO CNOPS"
+    hero_description: "Estimez votre remboursement maladie pour le secteur public."
+    warning: "Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel de la CNOPS."
+    amount: "Montant des frais médicaux"
+    care_type: "Type de soins"
+    normal: "Soins normaux (80%)"
+    chronic: "Maladie chronique (90%)"
+    hospital: "Hospitalisation (90%)"
+    reimbursement: "Remboursement estimé"
+    remaining: "Reste à charge"
+
+# =============================================================================
+# ARTICLES
+# =============================================================================
+articles:
+  cnss_pension_1320:
+    title: "Réforme Pension CNSS"
+    excerpt: "Tout comprendre sur l'abaissement du seuil à 1320 jours."
+    date: "Publié le 1er Mai 2025"
+
+  cnops_fusion:
+    title: "Fusion CNOPS / CNSS"
+    excerpt: "Vers une généralisation de la protection sociale et un guichet unique."
+    date: "Publié le 28 Juillet 2025"
+
+  cmr_contrat:
+    title: "Contrat-Programme CMR"
+    excerpt: "Nouvelle feuille de route 2025-2027 pour la performance et la durabilité."
+    date: "Publié le 15 Juillet 2025"
+
+  methode_calcul_cnss:
+    title: "Comprendre le calcul CNSS"
+    excerpt: "Détail des règles, conditions et formules pour estimer votre pension."
+
+  methode_calcul_cmr:
+    title: "Calcul Pension CMR"
+    excerpt: "Comprendre le système mixte et les règles de la réforme de 2017."

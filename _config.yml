@@ -1,15 +1,36 @@
+# =============================================================================
+# SITE CONFIGURATION
+# =============================================================================
 title: Simulateurs Sociaux Maroc
-description: Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.
+description: >-
+  Plateforme independante de simulation des droits sociaux au Maroc.
+  Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.
 author: Simulateurs Sociaux Maroc
-lang: fr
-languages: ["fr", "ar"]
-default_lang: fr
 
-url: "" # Remplacer par l'URL du site en production (ex: https://votresite.com)
+url: "" # Production URL (e.g., https://example.github.io)
 baseurl: ""
 
-# SEO
+# =============================================================================
+# MULTILINGUAL CONFIGURATION (jekyll-multiple-languages-plugin)
+# =============================================================================
+languages: ["fr", "ar"]
+default_lang: "fr"
+exclude_from_localizations: ["assets", "robots.txt", "sitemap.xml"]
+
+# Language-specific settings
+language_data:
+  fr:
+    name: "Français"
+    direction: "ltr"
+  ar:
+    name: "العربية"
+    direction: "rtl"
+
+# =============================================================================
+# SEO & SOCIAL
+# =============================================================================
 logo: /assets/img/logo.png
+
 social:
   name: Simulateurs Sociaux Maroc
   links:
@@ -19,44 +40,53 @@ social:
 twitter:
   card: summary_large_image
 
-# Open Graph defaults
-defaults_og:
-  type: website
-  image: /assets/img/logo.png
-
-# Build settings
+# =============================================================================
+# BUILD SETTINGS
+# =============================================================================
 markdown: kramdown
 highlighter: rouge
+permalink: pretty
 
-# Plugins (supportés par GitHub Pages)
+# Plugins
 plugins:
+  - jekyll-multiple-languages-plugin
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Collections
+# =============================================================================
+# COLLECTIONS
+# =============================================================================
 collections:
   articles:
     output: true
+    permalink: /:lang/articles/:slug/
 
-# Defaults
+# =============================================================================
+# DEFAULTS
+# =============================================================================
 defaults:
+  # Articles
   - scope:
       path: ""
       type: "articles"
     values:
       layout: "article"
-  - scope:
-      path: "fr"
-    values:
-      lang: "fr"
-      direction: "ltr"
-  - scope:
-      path: "ar"
-    values:
-      lang: "ar"
-      direction: "rtl"
 
-# Exclude du build
+  # All pages
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# =============================================================================
+# INCLUDE IN BUILD
+# =============================================================================
+include:
+  - _pages
+
+# =============================================================================
+# EXCLUDE FROM BUILD
+# =============================================================================
 exclude:
   - node_modules/
   - package.json
@@ -68,13 +98,12 @@ exclude:
   - README.md
   - .gitignore
   - assets/css/input.css
+  - vendor/
+  - .bundle/
 
-# Inclure ces fichiers
-
-# Sass configuration
+# =============================================================================
+# SASS
+# =============================================================================
 sass:
   sass_dir: _sass
   style: compressed
-
-# Permalinks
-permalink: none

@@ -1,0 +1,65 @@
+---
+layout: simulateur
+title: simulators.amo_cnops.meta_title
+namespace: simulateurs/amo-cnops
+permalink: /simulateurs/amo-cnops/
+hero_title_key: simulators.amo_cnops.hero_title
+hero_description_key: simulators.amo_cnops.hero_description
+warning_text_key: simulators.amo_cnops.warning
+official_link: "https://www.cnops.org.ma"
+---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
+
+<div class="text-center mb-8">
+  <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="Logo CNOPS" class="h-16 mx-auto mb-4">
+</div>
+
+<form id="amo-form" class="space-y-6">
+  <div>
+    <label for="amount" class="form-label">{% t simulators.amo_cnops.amount %} :</label>
+    <input type="number" id="amount" class="form-input" placeholder="1500" oninput="calculate()">
+  </div>
+
+  <div>
+    <label for="care-type" class="form-label">{% t simulators.amo_cnops.care_type %} :</label>
+    <select id="care-type" class="form-input" onchange="calculate()">
+      <option value="80">{% t simulators.amo_cnops.normal %}</option>
+      <option value="90">{% t simulators.amo_cnops.chronic %}</option>
+      <option value="90">{% t simulators.amo_cnops.hospital %}</option>
+    </select>
+  </div>
+</form>
+
+<div id="result" class="mt-8 hidden"></div>
+
+<script>
+function calculate() {
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const rate = parseInt(document.getElementById('care-type').value);
+  const resultDiv = document.getElementById('result');
+
+  if (amount <= 0) {
+    resultDiv.classList.add('hidden');
+    return;
+  }
+
+  const reimbursement = amount * (rate / 100);
+  const remaining = amount - reimbursement;
+
+  resultDiv.innerHTML = `
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-cnops text-white p-6 rounded-xl text-center">
+        <i class="fa-solid fa-hand-holding-medical text-2xl mb-2"></i>
+        <span class="block text-sm opacity-90">{% t simulators.amo_cnops.reimbursement %}</span>
+        <strong class="text-2xl bg-white text-cnops px-4 py-1 rounded-full mt-2 inline-block">${reimbursement.toFixed(2)} MAD</strong>
+      </div>
+      <div class="bg-white border p-6 rounded-xl text-center">
+        <i class="fa-solid fa-wallet text-2xl text-cnops mb-2"></i>
+        <span class="block text-sm text-gray-500">{% t simulators.amo_cnops.remaining %}</span>
+        <strong class="text-xl text-cnops">${remaining.toFixed(2)} MAD</strong>
+      </div>
+    </div>
+  `;
+  resultDiv.classList.remove('hidden');
+}
+</script>

@@ -1,0 +1,17 @@
+{%- comment -%}
+  Info Box Component
+  Usage: {% include components/info-box.html type="cnss" icon="fa-circle-info" title="Title" content="Content" %}
+  Types: cnss, cmr, cnops, warning
+{%- endcomment -%}
+
+{% assign box_type = include.type | default: 'cnss' %}
+
+<div class="bg-{{ box_type }}-light border border-{{ box_type }}/20 p-6 rounded-xl my-8">
+  <p class="text-{{ box_type }} font-semibold mb-2">
+    {% if include.icon %}<i class="fa-solid {{ include.icon }} {% if site.lang == 'ar' %}ml-2{% else %}mr-2{% endif %}"></i>{% endif %}
+    {{ include.title }}
+  </p>
+  <p class="text-gray-700">
+    {{ include.content | markdownify }}
+  </p>
+</div>

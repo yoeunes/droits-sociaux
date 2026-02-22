@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang }}" dir="{{ page.direction | default: 'ltr' }}">
+<html lang="{{ site.lang }}" dir="{% if site.lang == 'ar' %}rtl{% else %}ltr{% endif %}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,57 +8,56 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#005a9e">
 
-  <!-- Open Graph / Facebook -->
+  {% comment %}Translate title if it's a translation key{% endcomment %}
+  {% capture page_title %}{% t {{ page.title }} %}{% endcapture %}
+  {% assign page_title = page_title | strip %}
+  {% if page_title == "" or page_title == page.title %}
+    {% assign page_title = page.title | default: site.title %}
+  {% endif %}
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:title" content="{{ page_title }}">
   <meta property="og:description" content="{{ page.description | default: site.description }}">
   <meta property="og:image" content="{{ '/assets/img/logo.png' | absolute_url }}">
-  <meta property="og:locale" content="{{ page.lang | default: 'fr' }}_MA">
+  <meta property="og:locale" content="{{ site.lang }}_MA">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:title" content="{{ page_title }}">
   <meta name="twitter:description" content="{{ page.description | default: site.description }}">
 
-  <title>{{ page.title | default: site.title }}</title>
+  <title>{{ page_title }}</title>
 
-  <!-- Canonical URL -->
+  <!-- Canonical & Alternate Languages -->
   <link rel="canonical" href="{{ page.url | absolute_url }}">
-
-  <!-- Alternate language -->
-  {% if page.lang == 'fr' %}
-  <link rel="alternate" hreflang="ar" href="{{ page.url | replace: '/fr/', '/ar/' | absolute_url }}">
-  {% else %}
-  <link rel="alternate" hreflang="fr" href="{{ page.url | replace: '/ar/', '/fr/' | absolute_url }}">
+  {% for lang in site.languages %}
+  {% if lang != site.lang %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ site.baseurl }}/{{ lang }}{{ page.url | remove_first: '/' | remove_first: site.lang }}">
   {% endif %}
-  <link rel="alternate" hreflang="x-default" href="{{ '/fr/' | append: site.data.navigation.home | absolute_url }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.baseurl }}/{{ site.default_lang }}{{ page.url | remove_first: '/' | remove_first: site.lang }}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ '/assets/img/logo.png' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/assets/img/logo.png' | relative_url }}">
 
-  <!-- Preconnect for performance -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <!-- Stylesheets -->
+  <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  {% seo %}
 </head>
 <body class="pt-16">
   {% include header.html %}
-  
+
   {{ content }}
-  
+
   {% include footer.html %}
-  
+
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-  
-  {% if page.scripts %}
-    {{ page.scripts }}
-  {% endif %}
 </body>
 </html>

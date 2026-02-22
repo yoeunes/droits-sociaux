@@ -1,0 +1,135 @@
+---
+layout: simulateur
+title: simulators.cmr.meta_title
+namespace: simulateurs/cmr
+permalink: /simulateurs/cmr/
+hero_title_key: simulators.cmr.hero_title
+hero_description_key: simulators.cmr.hero_description
+warning_text_key: simulators.cmr.warning
+official_link: "https://www.cmr.gov.ma"
+cta_link: articles/methode-calcul-cmr
+cta_title_key: simulators.cmr.cta_title
+cta_text_key: simulators.cmr.cta_text
+---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
+
+<div class="text-center mb-8">
+  <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="Logo CMR" class="h-16 mx-auto mb-4">
+</div>
+
+<div id="terms-modal" class="fixed inset-0 bg-white/95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+  <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-xl border-t-4 border-cmr">
+    <div class="text-cmr mb-4">
+      <i class="fa-solid fa-shield-halved text-4xl"></i>
+    </div>
+    <h3 class="text-xl font-bold text-cmr mb-2">{% t simulators.terms_title %}</h3>
+    <p class="text-gray-600 mb-6">{% t simulators.terms_text %}</p>
+    <div class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg mb-6 cursor-pointer" onclick="document.getElementById('accept-check').click()">
+      <input type="checkbox" id="accept-check" class="w-5 h-5 text-cmr rounded" onclick="event.stopPropagation(); toggleAccept()">
+      <label for="accept-check" class="text-sm text-gray-700">
+        {% t simulators.terms_accept %} <a href="{% tl conditions %}" target="_blank" class="text-cmr underline">{% t simulators.terms_link %}</a>.
+      </label>
+    </div>
+    <button id="btn-accept" class="btn btn-secondary w-full" onclick="acceptTerms()" disabled>
+      {% t simulators.terms_btn %}
+    </button>
+  </div>
+</div>
+
+<form id="cmr-form" class="space-y-6">
+  <div>
+    <label for="years-before" class="form-label">{% t simulators.cmr.years_before %} :</label>
+    <input type="number" id="years-before" class="form-input" placeholder="15" value="0" min="0" oninput="calculate()">
+  </div>
+
+  <div>
+    <label for="years-after" class="form-label">{% t simulators.cmr.years_after %} :</label>
+    <input type="number" id="years-after" class="form-input" placeholder="8" value="0" min="0" oninput="calculate()">
+  </div>
+
+  <div>
+    <label for="salary" class="form-label">{% t simulators.cmr.salary %} :</label>
+    <input type="number" id="salary" class="form-input" placeholder="12000" oninput="calculate()">
+  </div>
+
+  <div>
+    <label for="retirement-type" class="form-label">{% t simulators.cmr.retirement_type %} :</label>
+    <select id="retirement-type" class="form-input" onchange="calculate()">
+      <option value="normal">{% t simulators.cmr.normal %}</option>
+      <option value="early">{% t simulators.cmr.early %}</option>
+    </select>
+  </div>
+</form>
+
+<div id="result" class="mt-8 hidden"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const STORAGE_KEY = 'cmr_terms_accepted';
+
+function toggleAccept() {
+  document.getElementById('btn-accept').disabled = !document.getElementById('accept-check').checked;
+}
+
+function acceptTerms() {
+  localStorage.setItem(STORAGE_KEY, 'true');
+  const modal = document.getElementById('terms-modal');
+  modal.style.opacity = '0';
+  setTimeout(() => modal.style.display = 'none', 300);
+}
+
+function checkTermsAccepted() {
+  if (localStorage.getItem(STORAGE_KEY) === 'true') {
+    document.getElementById('terms-modal').style.display = 'none';
+  }
+}
+
+function calculate() {
+  const yearsBefore = parseInt(document.getElementById('years-before').value) || 0;
+  const yearsAfter = parseInt(document.getElementById('years-after').value) || 0;
+  const salary = parseFloat(document.getElementById('salary').value) || 0;
+  const retirementType = document.getElementById('retirement-type').value;
+  const resultDiv = document.getElementById('result');
+
+  if (salary <= 0 || (yearsBefore + yearsAfter) <= 0) {
+    resultDiv.classList.add('hidden');
+    return;
+  }
+
+  const rateBefore = 2.5;
+  const rateAfter = retirementType === 'normal' ? 2 : 1.5;
+
+  const totalRate = Math.min((yearsBefore * rateBefore) + (yearsAfter * rateAfter), 100);
+  const pension = salary * (totalRate / 100);
+
+  resultDiv.innerHTML = `
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-cmr text-white p-6 rounded-xl text-center">
+        <i class="fa-solid fa-sack-dollar text-2xl mb-2"></i>
+        <span class="block text-sm opacity-90">Pension brute</span>
+        <strong class="text-2xl bg-white text-cmr px-4 py-1 rounded-full mt-2 inline-block">${pension.toFixed(2)} MAD</strong>
+      </div>
+      <div class="bg-white border p-6 rounded-xl text-center">
+        <i class="fa-solid fa-percent text-2xl text-cmr mb-2"></i>
+        <span class="block text-sm text-gray-500">Taux total</span>
+        <strong class="text-xl text-cmr">${totalRate.toFixed(2)}%</strong>
+      </div>
+      <div class="bg-white border p-6 rounded-xl text-center">
+        <i class="fa-solid fa-money-bill-wave text-2xl text-cmr mb-2"></i>
+        <span class="block text-sm text-gray-500">Salaire référence</span>
+        <strong class="text-xl text-cmr">${salary.toFixed(2)} MAD</strong>
+      </div>
+      <div class="bg-white border p-6 rounded-xl text-center">
+        <i class="fa-solid fa-calendar-days text-2xl text-cmr mb-2"></i>
+        <span class="block text-sm text-gray-500">Années de service</span>
+        <strong class="text-xl text-cmr">${yearsBefore + yearsAfter}</strong>
+      </div>
+    </div>
+  `;
+  resultDiv.classList.remove('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  checkTermsAccepted();
+});
+</script>

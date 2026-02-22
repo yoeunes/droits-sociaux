@@ -1,10 +1,7 @@
 ---
 layout: default
 ---
-
-{% assign t = site.data.i18n[page.lang] %}
-{% assign nav = site.data.navigation %}
-{% capture base_url %}/{{ page.lang }}/{% endcapture %}
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
 <article>
   <header class="hero-section">
@@ -42,17 +39,17 @@ layout: default
         prose-ul:my-4 prose-ul:space-y-2
         prose-li:text-gray-600
         prose-strong:text-gray-800
-        {% if page.direction == 'rtl' %}text-right{% endif %}">
+        {% if direction == 'rtl' %}text-right{% endif %}">
         {{ content }}
       </div>
 
       {% if page.cta_link %}
       <div class="text-center mt-10 pt-8 border-t">
-        <a href="{{ base_url }}{{ page.cta_link }}" class="inline-flex items-center px-6 py-3 bg-cnss text-white font-semibold rounded-lg hover:bg-cnss-dark transition-all">
-          {% if page.direction == 'rtl' %}
-          {{ page.cta_text | default: t.common.access_simulator }} <i class="fa-solid fa-arrow-left mr-2"></i>
+        <a href="{% tl {{ page.cta_link }} %}" class="inline-flex items-center px-6 py-3 bg-cnss text-white font-semibold rounded-lg hover:bg-cnss-dark transition-all">
+          {% if direction == 'rtl' %}
+          {{ page.cta_text }} <i class="fa-solid fa-arrow-left mr-2"></i>
           {% else %}
-          <i class="fa-solid fa-arrow-right ml-2"></i> {{ page.cta_text | default: t.common.access_simulator }}
+          <i class="fa-solid fa-arrow-right ml-2"></i> {{ page.cta_text }}
           {% endif %}
         </a>
       </div>
@@ -60,13 +57,13 @@ layout: default
     </div>
 
     <div class="mt-8 text-center">
-      <a href="{{ base_url }}{{ nav.home }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
-        {% if page.direction == 'rtl' %}
+      <a href="{% tl home %}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+        {% if direction == 'rtl' %}
         <i class="fa-solid fa-arrow-right ml-2"></i>
         {% else %}
         <i class="fa-solid fa-arrow-left mr-2"></i>
         {% endif %}
-        {{ t.common.back_to_home }}
+        {% t common.back_to_home %}
       </a>
     </div>
   </main>

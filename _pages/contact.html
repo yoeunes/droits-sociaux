@@ -1,0 +1,74 @@
+---
+layout: default
+title: contact.meta_title
+namespace: contact
+permalink: /contact/
+---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
+
+<section class="hero-section">
+  <div class="container-custom">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{% t contact.hero_title %}</h1>
+    <p class="text-lg opacity-90 max-w-2xl mx-auto">{% t contact.hero_description %}</p>
+  </div>
+</section>
+
+<main class="container-custom py-12">
+  <div class="bg-white rounded-2xl shadow-sm border p-8 md:p-12 max-w-4xl mx-auto text-center">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">{% t contact.help_title %}</h2>
+    <p class="text-gray-500 max-w-xl mx-auto mb-10">{% t contact.help_subtitle %}</p>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <!-- Email -->
+      <div class="bg-gray-50 rounded-xl p-6 text-center">
+        <div class="text-4xl text-cnss mb-4">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <h3 class="font-bold text-gray-800 mb-2">{% t contact.email_title %}</h3>
+        <p class="text-sm text-gray-500 mb-4">{% t contact.email_desc %}</p>
+        <a href="mailto:contact@simulateurs-sociaux.ma" class="btn btn-primary w-full">
+          {% t contact.email_btn %}
+        </a>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="bg-gray-50 rounded-xl p-6 text-center">
+        <div class="text-4xl mb-4" style="color: #25D366">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <h3 class="font-bold text-gray-800 mb-2">{% t contact.whatsapp_title %}</h3>
+        <p class="text-sm text-gray-500 mb-4">{% t contact.whatsapp_desc %}</p>
+        <a href="https://wa.me/212600000000" target="_blank" class="btn bg-green-500 hover:bg-green-600 text-white w-full">
+          {% t contact.whatsapp_btn %}
+        </a>
+      </div>
+
+      <!-- Suggestion -->
+      <div class="bg-gray-50 rounded-xl p-6 text-center">
+        <div class="text-4xl text-amber-500 mb-4">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <h3 class="font-bold text-gray-800 mb-2">{% t contact.suggestion_title %}</h3>
+        <p class="text-sm text-gray-500 mb-4">{% t contact.suggestion_desc %}</p>
+        <a href="mailto:contact@simulateurs-sociaux.ma?subject=Suggestion" class="btn bg-amber-500 hover:bg-amber-600 text-white w-full">
+          {% t contact.suggestion_btn %}
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t pt-8">
+      <h3 class="font-bold text-gray-800 mb-6">{% t contact.social_title %}</h3>
+      <div class="flex items-center justify-center space-x-6 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
+        <a href="#" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+          <i class="fa-brands fa-facebook-f"></i> Facebook
+        </a>
+        <a href="#" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:opacity-90 transition-opacity">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+        <a href="#" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+          <i class="fa-brands fa-youtube"></i> YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

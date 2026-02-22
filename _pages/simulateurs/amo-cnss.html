@@ -1,0 +1,65 @@
+---
+layout: simulateur
+title: simulators.amo_cnss.meta_title
+namespace: simulateurs/amo-cnss
+permalink: /simulateurs/amo-cnss/
+hero_title_key: simulators.amo_cnss.hero_title
+hero_description_key: simulators.amo_cnss.hero_description
+warning_text_key: simulators.amo_cnss.warning
+official_link: "https://www.macnss.ma"
+---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
+
+<div class="text-center mb-8">
+  <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="Logo CNSS" class="h-16 mx-auto mb-4">
+</div>
+
+<form id="amo-form" class="space-y-6">
+  <div>
+    <label for="amount" class="form-label">{% t simulators.amo_cnss.amount %} :</label>
+    <input type="number" id="amount" class="form-input" placeholder="1500" oninput="calculate()">
+  </div>
+
+  <div>
+    <label for="care-type" class="form-label">{% t simulators.amo_cnss.care_type %} :</label>
+    <select id="care-type" class="form-input" onchange="calculate()">
+      <option value="70">{% t simulators.amo_cnss.normal %}</option>
+      <option value="90">{% t simulators.amo_cnss.chronic %}</option>
+      <option value="90">{% t simulators.amo_cnss.hospital %}</option>
+    </select>
+  </div>
+</form>
+
+<div id="result" class="mt-8 hidden"></div>
+
+<script>
+function calculate() {
+  const amount = parseFloat(document.getElementById('amount').value) || 0;
+  const rate = parseInt(document.getElementById('care-type').value);
+  const resultDiv = document.getElementById('result');
+
+  if (amount <= 0) {
+    resultDiv.classList.add('hidden');
+    return;
+  }
+
+  const reimbursement = amount * (rate / 100);
+  const remaining = amount - reimbursement;
+
+  resultDiv.innerHTML = `
+    <div class="grid grid-cols-2 gap-4">
+      <div class="bg-cnss text-white p-6 rounded-xl text-center">
+        <i class="fa-solid fa-hand-holding-medical text-2xl mb-2"></i>
+        <span class="block text-sm opacity-90">{% t simulators.amo_cnss.reimbursement %}</span>
+        <strong class="text-2xl bg-white text-cnss px-4 py-1 rounded-full mt-2 inline-block">${reimbursement.toFixed(2)} MAD</strong>
+      </div>
+      <div class="bg-white border p-6 rounded-xl text-center">
+        <i class="fa-solid fa-wallet text-2xl text-cnss mb-2"></i>
+        <span class="block text-sm text-gray-500">{% t simulators.amo_cnss.remaining %}</span>
+        <strong class="text-xl text-cnss">${remaining.toFixed(2)} MAD</strong>
+      </div>
+    </div>
+  `;
+  resultDiv.classList.remove('hidden');
+}
+</script>

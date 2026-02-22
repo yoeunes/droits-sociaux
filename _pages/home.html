@@ -1,0 +1,124 @@
+---
+layout: default
+title: home.meta_title
+namespace: home
+permalink: /
+---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
+
+<section class="hero-section">
+  <div class="container-custom">
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{% t home.hero_title %}</h1>
+    <p class="text-lg opacity-90 max-w-3xl mx-auto">{% t home.hero_description %}</p>
+  </div>
+</section>
+
+<main class="container-custom py-12">
+  <!-- News Section -->
+  <section class="mb-12">
+    <h2 class="section-title">{% t home.news_title %}</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="{% tl articles/cnss-pension-1320 %}" class="news-card border-{% if direction == 'rtl' %}r{% else %}l{% endif %}-4 border-cnss">
+        <div class="flex-shrink-0 w-16 h-16 bg-cnss-light rounded-lg flex items-center justify-center">
+          <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="w-10 h-10 object-contain">
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800">{% t home.news_cnss_title %}</h3>
+          <p class="text-sm text-gray-500">{% t home.news_cnss_desc %}</p>
+        </div>
+      </a>
+
+      <a href="{% tl articles/cnops-fusion %}" class="news-card border-{% if direction == 'rtl' %}r{% else %}l{% endif %}-4 border-cnops">
+        <div class="flex-shrink-0 w-16 h-16 bg-cnops-light rounded-lg flex items-center justify-center">
+          <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="CNOPS" class="w-10 h-10 object-contain">
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800">{% t home.news_fusion_title %}</h3>
+          <p class="text-sm text-gray-500">{% t home.news_fusion_desc %}</p>
+        </div>
+      </a>
+
+      <a href="{% tl articles/cmr-contrat %}" class="news-card border-{% if direction == 'rtl' %}r{% else %}l{% endif %}-4 border-cmr">
+        <div class="flex-shrink-0 w-16 h-16 bg-cmr-light rounded-lg flex items-center justify-center">
+          <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="w-10 h-10 object-contain">
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-800">{% t home.news_cmr_title %}</h3>
+          <p class="text-sm text-gray-500">{% t home.news_cmr_desc %}</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="mb-12">
+    <h2 class="section-title">{% t home.how_it_works.title %}</h2>
+    <p class="text-center text-gray-500 mb-8">{% t home.how_it_works.subtitle %}</p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="relative inline-flex items-center justify-center w-16 h-16 bg-cnss text-white rounded-full text-2xl font-bold mb-4">1</div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-cnss text-3xl mb-4"><i class="fa-solid fa-pen-to-square"></i></div>
+          <h3 class="font-bold text-gray-800 mb-2">{% t home.how_it_works.step1_title %}</h3>
+          <p class="text-sm text-gray-500">{% t home.how_it_works.step1_desc %}</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="relative inline-flex items-center justify-center w-16 h-16 bg-cnss text-white rounded-full text-2xl font-bold mb-4">2</div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-cnss text-3xl mb-4"><i class="fa-solid fa-calculator"></i></div>
+          <h3 class="font-bold text-gray-800 mb-2">{% t home.how_it_works.step2_title %}</h3>
+          <p class="text-sm text-gray-500">{% t home.how_it_works.step2_desc %}</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="relative inline-flex items-center justify-center w-16 h-16 bg-cnss text-white rounded-full text-2xl font-bold mb-4">3</div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-cnss text-3xl mb-4"><i class="fa-solid fa-file-pdf"></i></div>
+          <h3 class="font-bold text-gray-800 mb-2">{% t home.how_it_works.step3_title %}</h3>
+          <p class="text-sm text-gray-500">{% t home.how_it_works.step3_desc %}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulators -->
+  <section class="bg-white p-8 md:p-12 rounded-2xl shadow-sm">
+    <h2 class="section-title">{% t home.simulators.pension_title %}</h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <a href="{% tl simulateurs/cnss %}" class="simulator-card">
+        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 mx-auto mb-4">
+        <h3 class="font-bold text-xl text-gray-800 mb-2">{% t home.simulators.cnss_title %}</h3>
+        <p class="text-gray-500 flex-grow mb-4">{% t home.simulators.cnss_desc %}</p>
+        <span class="btn btn-primary w-full">{% t common.access_simulator %}</span>
+      </a>
+
+      <a href="{% tl simulateurs/cmr %}" class="simulator-card">
+        <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 mx-auto mb-4">
+        <h3 class="font-bold text-xl text-gray-800 mb-2">{% t home.simulators.cmr_title %}</h3>
+        <p class="text-gray-500 flex-grow mb-4">{% t home.simulators.cmr_desc %}</p>
+        <span class="btn btn-secondary w-full">{% t common.access_simulator %}</span>
+      </a>
+    </div>
+
+    <h2 class="section-title mt-12 pt-8 border-t">{% t home.simulators.amo_title %}</h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <a href="{% tl simulateurs/amo-cnss %}" class="simulator-card">
+        <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="AMO CNSS" class="h-16 mx-auto mb-4">
+        <h3 class="font-bold text-xl text-gray-800 mb-2">{% t home.simulators.amo_cnss_title %}</h3>
+        <p class="text-gray-500 flex-grow mb-4">{% t home.simulators.amo_cnss_desc %}</p>
+        <span class="btn btn-primary w-full">{% t common.access_simulator %}</span>
+      </a>
+
+      <a href="{% tl simulateurs/amo-cnops %}" class="simulator-card">
+        <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="CNOPS" class="h-16 mx-auto mb-4">
+        <h3 class="font-bold text-xl text-gray-800 mb-2">{% t home.simulators.amo_cnops_title %}</h3>
+        <p class="text-gray-500 flex-grow mb-4">{% t home.simulators.amo_cnops_desc %}</p>
+        <span class="btn bg-cnops text-white hover:bg-cnops-dark w-full">{% t common.access_simulator %}</span>
+      </a>
+    </div>
+  </section>
+</main>

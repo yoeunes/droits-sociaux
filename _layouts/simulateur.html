@@ -1,15 +1,12 @@
 ---
 layout: default
 ---
-
-{% assign t = site.data.i18n[page.lang] %}
-{% assign nav = site.data.navigation %}
-{% capture base_url %}/{{ page.lang }}/{% endcapture %}
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
 <section class="hero-section">
   <div class="container-custom">
-    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{{ page.hero_title }}</h1>
-    <p class="text-lg opacity-90 max-w-2xl mx-auto">{{ page.hero_description }}</p>
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{% t {{ page.hero_title_key }} %}</h1>
+    <p class="text-lg opacity-90 max-w-2xl mx-auto">{% t {{ page.hero_description_key }} %}</p>
   </div>
 </section>
 
@@ -18,20 +15,20 @@ layout: default
     {{ content }}
   </div>
 
-  {% if page.show_cta %}
-  <div class="mt-8 p-6 bg-gray-50 rounded-xl text-center">
-    <p class="font-bold text-gray-800 mb-2">{{ page.cta_title }}</p>
-    <a href="{{ base_url }}{{ page.cta_link }}" class="text-cnss hover:underline">{{ page.cta_text }} &rarr;</a>
+  {% if page.cta_link %}
+  <div class="mt-8 p-6 bg-gray-50 rounded-xl text-center max-w-3xl mx-auto">
+    <p class="font-bold text-gray-800 mb-2">{% t {{ page.cta_title_key }} %}</p>
+    <a href="{% tl {{ page.cta_link }} %}" class="text-cnss hover:underline">{% t {{ page.cta_text_key }} %} &rarr;</a>
   </div>
   {% endif %}
 </main>
 
 <div class="container-custom pb-8">
-  <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm text-center">
-    <i class="fa-solid fa-triangle-exclamation {% if page.direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
-    <strong>{{ t.common.warning_label }}:</strong>
-    {{ page.warning_text | default: t.common.default_warning }}
-    <br>{{ t.common.official_source }}:
+  <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm text-center max-w-3xl mx-auto">
+    <i class="fa-solid fa-triangle-exclamation {% if direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
+    <strong>{% t common.warning_label %}:</strong>
+    {% t {{ page.warning_text_key }} %}
+    <br>{% t common.official_source %}:
     <a href="{{ page.official_link }}" class="underline" target="_blank">{{ page.official_link }}</a>
   </div>
 </div>

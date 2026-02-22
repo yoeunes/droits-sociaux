@@ -1,90 +1,61 @@
-{% assign lang = page.lang | default: 'fr' %}
-{% assign t = site.data.i18n[lang] %}
-{% assign nav = site.data.navigation %}
-{% assign direction = page.direction | default: 'ltr' %}
-{% capture base_url %}/{{ lang }}/{% endcapture %}
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
 <footer class="bg-footer text-footer-text mt-16">
   <div class="container-custom py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- About -->
       <div>
         <div class="flex items-center text-white font-bold mb-4">
           <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo" class="h-8 {% if direction == 'rtl' %}ml-3{% else %}mr-3{% endif %}">
-          <span>{{ t.site_name }}</span>
+          <span>{% t site_name %}</span>
         </div>
-        <p class="text-sm leading-relaxed">
-          {{ t.footer.about_text }}
-        </p>
+        <p class="text-sm leading-relaxed">{% t footer.about_text %}</p>
       </div>
 
+      <!-- Quick Links -->
       <div>
-        <h4 class="text-white font-bold mb-4">{{ t.footer.quick_links }}</h4>
+        <h4 class="text-white font-bold mb-4">{% t footer.quick_links %}</h4>
         <ul class="space-y-2 text-sm">
-          {% for item in nav.simulators.pension %}
-          {% assign pension_key = 'pension_' | append: item.id %}
-          <li>
-            <a href="{{ base_url }}{{ item.page }}" class="hover:text-white transition-colors">
-              {{ t.nav[pension_key] }}
-            </a>
-          </li>
-          {% endfor %}
-          {% for item in nav.simulators.amo %}
-          {% assign amo_key = 'amo_' | append: item.id %}
-          <li>
-            <a href="{{ base_url }}{{ item.page }}" class="hover:text-white transition-colors">
-              {{ t.nav[amo_key] }}
-            </a>
-          </li>
-          {% endfor %}
+          <li><a href="{% tl simulateurs/cnss %}" class="hover:text-white transition-colors">{% t nav.pension_cnss %}</a></li>
+          <li><a href="{% tl simulateurs/cmr %}" class="hover:text-white transition-colors">{% t nav.pension_cmr %}</a></li>
+          <li><a href="{% tl simulateurs/amo-cnss %}" class="hover:text-white transition-colors">{% t nav.amo_cnss %}</a></li>
+          <li><a href="{% tl simulateurs/amo-cnops %}" class="hover:text-white transition-colors">{% t nav.amo_cnops %}</a></li>
         </ul>
       </div>
 
+      <!-- Legal -->
       <div>
-        <h4 class="text-white font-bold mb-4">{{ t.footer.legal }}</h4>
+        <h4 class="text-white font-bold mb-4">{% t footer.legal %}</h4>
         <ul class="space-y-2 text-sm">
-          <li>
-            <a href="{{ base_url }}{{ nav.conditions }}" class="hover:text-white transition-colors">
-              {{ t.footer.terms }}
-            </a>
-          </li>
-          <li>
-            <a href="{{ base_url }}{{ nav.privacy }}" class="hover:text-white transition-colors">
-              {{ t.footer.privacy }}
-            </a>
-          </li>
+          <li><a href="{% tl conditions %}" class="hover:text-white transition-colors">{% t footer.terms %}</a></li>
+          <li><a href="{% tl privacy %}" class="hover:text-white transition-colors">{% t footer.privacy %}</a></li>
         </ul>
       </div>
 
+      <!-- Social -->
       <div>
-        <h4 class="text-white font-bold mb-4">{{ t.footer.about }}</h4>
+        <h4 class="text-white font-bold mb-4">{% t footer.about %}</h4>
         <div class="flex space-x-4 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
-          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
-            <i class="fa-brands fa-facebook text-xl"></i>
-          </a>
-          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
-            <i class="fa-brands fa-youtube text-xl"></i>
-          </a>
-          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors">
-            <i class="fa-brands fa-whatsapp text-xl"></i>
-          </a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
+          <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-xl"></i></a>
         </div>
       </div>
     </div>
 
     <div class="border-t border-footer-border mt-8 pt-8 text-center text-sm">
-      {{ t.footer.copyright }}
+      {% t footer.copyright %}
     </div>
   </div>
 </footer>
 
+<!-- Cookie Banner -->
 <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-4 hidden z-50">
   <div class="container-custom flex flex-col sm:flex-row items-center justify-between gap-4">
     <p class="text-sm text-gray-600 text-center sm:text-left">
-      {{ t.cookie.banner }}
-      <a href="{{ base_url }}{{ nav.privacy }}" class="text-cnss hover:underline">{{ t.cookie.policy }}</a>.
+      {% t cookie.banner %}
+      <a href="{% tl privacy %}" class="text-cnss hover:underline">{% t cookie.policy %}</a>.
     </p>
-    <button onclick="acceptCookies()" class="btn btn-primary whitespace-nowrap">
-      {{ t.cookie.accept }}
-    </button>
+    <button onclick="acceptCookies()" class="btn btn-primary whitespace-nowrap">{% t cookie.accept %}</button>
   </div>
 </div>
