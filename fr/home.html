@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateurs Sociaux - Accueil</title>
+    
+    <link rel="icon" type="image/png" href="../assets/img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <style>
+
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+        .news-card {
+            background: white; border-radius: 12px; display: flex; align-items: center; padding: 20px; gap: 20px;
+            border-left: 5px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s; text-decoration: none; color: #333;
+        }
+        .news-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .news-icon { flex-shrink: 0; width: 110px; height: 75px; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
+        .news-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .news-content h3 { font-size: 1.1rem; margin: 0 0 5px 0; font-weight: 700; }
+        .news-content p { font-size: 0.9rem; color: #666; margin: 0; }
+        .news-card.cnss { border-left-color: #005a9e; }
+        .news-card.cnops { border-left-color: #008080; }
+        .news-card.cmr { border-left-color: #008080; }
+
+        /* Bloc Simulateurs */
+        .simulators-block { background-color: #ffffff; padding: 50px; border-radius: 20px; margin: 60px 0; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); }
+        .section-title { text-align: center; font-size: 2rem; color: #333; margin-bottom: 40px; width: 100%; }
+        .simulator-card { transition: transform 0.3s; background: white; border-radius: 16px; }
+        .simulator-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); }
+
+        @media (max-width: 768px) {
+            .simulators-block { padding: 25px; margin-top: 30px; }
+            .hero-section { padding: 50px 20px; margin-bottom: 30px; }
+            .news-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="home">
+
+    <div id="header-placeholder"></div>
+
+    <div class="site-container" style="margin-bottom: 0; max-width: 100%; padding: 0;">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Simulateurs Sociaux Maroc : Maîtrisez vos droits</h1>
+                <p>Bienvenue sur la première plateforme indépendante dédiée à la simplification de la protection
+                    sociale. Accédez à des simulateurs précis pour estimer vos pensions de retraite (CNSS, CMR) et vos
+                    remboursements AMO (CNSS, CNOPS).</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="site-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <main class="main-content">
+            <div class="page-container">
+
+                <h2 class="section-title" style="margin-top: 0;">À la une</h2>
+                <div class="news-grid">
+                    <a href="/fr/articles/cnss-pension-1320.html" class="news-card cnss">
+                        <div class="news-icon"><img src="../assets/img/cnss-1320-fr.webp" alt="Pension CNSS"></div>
+                        <div class="news-content">
+                            <h3>Pension CNSS 1320j</h3>
+                            <p>Nouvelle réforme officielle.</p>
+                        </div>
+                    </a>
+                    <a href="/fr/articles/cnops-fusion-cnss.html" class="news-card cnops">
+                        <div class="news-icon"><img src="../assets/img/cnops-cnss.webp" alt="Fusion CNOPS"></div>
+                        <div class="news-content">
+                            <h3>Fusion CNOPS / CNSS</h3>
+                            <p>Transition vers l'AMO unique.</p>
+                        </div>
+                    </a>
+                    <a href="/fr/articles/cmr-contrat-programme.html" class="news-card cmr">
+                        <div class="news-icon"><img src="../assets/img/cmr-contrat-programme%202025-2027.jpg" alt="Contrat CMR"></div>
+                        <div class="news-content">
+                            <h3>Contrat CMR</h3>
+                            <p>Performance et durabilité.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="how-it-works-section">
+                    <h2 class="how-it-works-title">Comment ça marche ?</h2>
+                    <p class="how-it-works-subtitle">Obtenez votre estimation en 3 étapes simples et rapides.</p>
+                    
+                    <div class="steps-container">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-icon-wrapper">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </div>
+                            <h3>Remplissez</h3>
+                            <p>Entrez vos informations (âge, salaire, années de service) dans notre formulaire sécurisé.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-icon-wrapper">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <h3>Calculez</h3>
+                            <p>Notre algorithme analyse vos données selon les dernières règles CNSS/CMR en vigueur.</p>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-icon-wrapper">
+                                <i class="fa-solid fa-file-pdf"></i>
+                            </div>
+                            <h3>Téléchargez</h3>
+                            <p>Obtenez instantanément votre résultat détaillé et téléchargez-le en PDF gratuitement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="simulators-block">
+
+                    <h2 class="section-title" style="margin-top: 0;">Nos Simulateurs de Pension</h2>
+                    <div class="cards-container">
+                        <a href="/fr/simulateur_cnss.html" class="simulator-card">
+                            <div class="card-logo">
+                                <img src="../assets/img/CNSSlogo.png" alt="Logo CNSS">
+                            </div>
+                            <h2>Pension CNSS</h2>
+                            <p>Secteur privé. Basé sur les jours de cotisation.</p>
+                            <span class="card-button">Accéder au simulateur</span>
+                        </a>
+                        <a href="/fr/simulateur_cmr.html" class="simulator-card">
+                            <div class="card-logo">
+                                <img src="../assets/img/CMRlogo.png" alt="Logo CMR">
+                            </div>
+                            <h2>Pension CMR</h2>
+                            <p>Secteur public (Fonctionnaires).</p>
+                            <span class="card-button cmr">Accéder au simulateur</span>
+                        </a>
+                    </div>
+
+                    <h2 class="section-title" style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">Nos Simulateurs de Remboursement AMO</h2>
+                    <div class="cards-container">
+                        <a href="/fr/simulateur_amo_cnss.html" class="simulator-card">
+                            <div class="card-logo">
+                                <img src="../assets/img/CNSSlogo.png" alt="Logo AMO CNSS">
+                            </div>
+                            <h2>Remboursement AMO (CNSS)</h2>
+                            <p>Estimez le remboursement dossier maladie (Privé).</p>
+                            <span class="card-button">Accéder au simulateur</span>
+                        </a>
+                        <a href="/fr/simulateur_amo_cnops.html" class="simulator-card">
+                            <div class="card-logo">
+                                <img src="../assets/img/CNOPSlogo.png" alt="Logo CNOPS">
+                            </div>
+                            <h2>Remboursement AMO (CNOPS)</h2>
+                            <p>Estimez le remboursement dossier maladie (Public).</p>
+                            <span class="card-button cnops">Accéder au simulateur</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

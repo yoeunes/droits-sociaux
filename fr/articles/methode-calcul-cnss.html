@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méthode de Calcul Pension CNSS - Simulateurs Sociaux</title>
+    
+    <link rel="icon" type="image/png" href="../../assets/img/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="home">
+
+    <div id="header-placeholder"></div>
+
+    <div class="site-container" style="margin-bottom: 0;">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Comprendre le calcul CNSS</h1>
+                <p>Détail des règles, des conditions et des formules pour estimer votre pension.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="site-container">
+        <div class="article-box">
+             
+            <div class="article-img">
+                <img src="../../assets/img/cnss_logo.png" alt="Logo CNSS">
+            </div>
+
+            <div class="article-content">
+                
+                <p class="lead">Le calcul de la pension de vieillesse de la CNSS dépend principalement de deux facteurs : votre nombre de jours de cotisation et votre salaire moyen des 96 derniers mois (8 ans).</p>
+                
+                <h2>1. La condition d'éligibilité</h2>
+                <p>Pour ouvrir le droit à une pension, vous devez avoir cotisé au minimum <strong>1320 jours</strong> (selon la nouvelle réforme). Si vous avez moins, vous ne pouvez prétendre qu'au remboursement de vos cotisations salariales.</p>
+
+                <h2>2. Le calcul de la pension forfaitaire (1320 à 3239 jours)</h2>
+                <p>Si vous avez entre 1320 et 3239 jours, vous avez droit à une pension forfaitaire (fixe) qui augmente par paliers :</p>
+                <ul>
+                    <li><strong>1320 à 1704 jours :</strong> 600 MAD</li>
+                    <li><strong>1705 à 2088 jours :</strong> 700 MAD</li>
+                    <li><strong>2089 à 2472 jours :</strong> 800 MAD</li>
+                    <li><strong>2473 à 2856 jours :</strong> 900 MAD</li>
+                    <li><strong>2857 à 3239 jours :</strong> 1000 MAD</li>
+                </ul>
+
+                <h2>3. Le calcul de la pension standard (3240 jours et plus)</h2>
+                <p>Si vous avez 3240 jours ou plus, la formule est :</p>
+                
+                <div class="formula-box">
+                    Pension = (Salaire Moyen Plafonné x Taux)
+                </div>
+                
+                <h3>Le Salaire Moyen Plafonné</h3>
+                <p>C'est la moyenne de vos salaires mensuels déclarés durant les <strong>96 derniers mois</strong> avant votre retraite. Ce salaire est plafonné à <strong>6000 MAD</strong>. Si votre salaire moyen est de 8000 MAD, le calcul se fera sur 6000 MAD.</p>
+
+                <h3>Le Taux de pension</h3>
+                <p>Le taux de base est de <strong>50%</strong> pour 3240 jours. Ce taux augmente de <strong>1%</strong> pour chaque tranche de 216 jours de cotisation supplémentaire, sans jamais dépasser <strong>70%</strong>.</p>
+                
+                <div class="formula-box">
+                    Taux = 50% + (1% par 216 jours au-delà de 3240)
+                </div>
+                
+                <p>Enfin, le montant de la pension calculée ne peut jamais être inférieur au minimum de <strong>1000 MAD</strong>.</p>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="/fr/simulateur_cnss.html" class="card-button">&larr; Accéder au Simulateur CNSS</a>
+                </div>
+
+                <div class="source-box">
+                    <strong>Source officielle :</strong> Ces informations sont basées sur les textes réglementaires en vigueur (Dahir portant loi n° 1-72-184).<br>
+                    Pour plus de détails, veuillez consulter le site officiel : <a href="https://www.macnss.ma" target="_blank">www.macnss.ma</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer-placeholder"></div>
+    <script src="../../assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur Pension CNSS - Maroc</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* --- Styles Page --- */
+        #result { opacity: 1 !important; display: none; margin-top: 30px; }
+        .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .res-card { padding: 20px 10px; border-radius: 15px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .res-card i { font-size: 1.5rem; margin-bottom: 10px; }
+        .res-card span { font-size: 0.9rem; display: block; margin-bottom: 5px; font-weight: 500; }
+        .res-card strong { font-size: 1.1rem; font-weight: 700; }
+        .res-card.primary { background-color: #005a9e; color: white; }
+        .res-card.primary span { color: rgba(255,255,255,0.9); }
+        .res-card.primary strong { font-size: 1.4rem; background: white; color: #005a9e; padding: 5px 15px; border-radius: 20px; margin-top: 5px; }
+        .res-card.secondary { background-color: white; border: 1px solid #eef2f6; color: #333; }
+        .res-card.secondary i { color: #005a9e; }
+        .res-card.secondary strong { color: #005a9e; background: #e6f7ff; padding: 5px 15px; border-radius: 20px; font-size: 1rem; }
+        .result-note { margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #eee; border-radius: 10px; font-size: 0.9rem; color: #666; line-height: 1.5; }
+
+        .legal-warning-box { margin-top: 20px; padding: 15px; background-color: #fff8e1; border: 1px solid #ffeeba; border-radius: 8px; color: #856404; font-size: 0.85rem; line-height: 1.5; text-align: center; }
+        .legal-warning-box a { color: #856404; text-decoration: underline; font-weight: 600; }
+        
+        .simulator-box { position: relative; overflow: hidden; padding: 40px; }
+        .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+        .modal-box { background-color: #ffffff; width: 100%; max-width: 480px; padding: 40px 30px; border-radius: 16px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 1px solid #f0f0f0; border-top: 6px solid #005a9e; }
+        .modal-checkbox-container { margin-bottom: 30px; margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #eee; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-accept { background-color: #005a9e; color: white; border: none; padding: 16px 32px; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.3s ease; }
+        .btn-accept:hover { background-color: #004480; transform: translateY(-2px); }
+        .btn-accept:disabled { background-color: #e0e0e0; color: #a0a0a0; cursor: not-allowed; transform: none; }
+
+        .btn-pdf { background-color: #e74c3c; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-pdf:hover { background-color: #c0392b; }
+
+        /* --- STYLE DU REÇU PDF (Caché sur l'écran) --- */
+        #pdf-template {
+            position: fixed; top: -9999px; left: 0; width: 600px; /* Largeur A4 prop */
+            background: white; padding: 40px; border: 1px solid #eee;
+            font-family: 'Inter', sans-serif; text-align: left; /* LTR */
+        }
+        .pdf-header { background: #005a9e; color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0; margin-bottom: 20px; }
+        .pdf-title { font-size: 24px; font-weight: bold; margin: 0; }
+        .pdf-subtitle { font-size: 14px; opacity: 0.9; }
+        .pdf-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 12px; color: #666; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .pdf-box { background: #f9f9f9; border: 1px solid #eee; border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+        .pdf-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+        .pdf-label { font-weight: bold; color: #333; }
+        .pdf-value { color: #005a9e; font-weight: 600; }
+        .pdf-total { background: #f0f7ff; padding: 20px; text-align: center; border-radius: 10px; border: 2px solid #005a9e; margin-bottom: 20px; }
+        .pdf-amount { font-size: 32px; font-weight: bold; color: #005a9e; display: block; }
+        .pdf-warning { background: #fff8e1; border: 1px solid #ffeeba; color: #856404; padding: 15px; font-size: 11px; text-align: center; border-radius: 8px; }
+        .pdf-footer { text-align: center; font-size: 10px; color: #999; margin-top: 30px; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body class="home"> 
+    
+    <div id="pdf-template">
+        <div class="pdf-header">
+            <div class="pdf-title">Résultat de Simulation</div>
+            <div class="pdf-subtitle">Simulateurs Sociaux Maroc - Secteur CNSS</div>
+        </div>
+        <div class="pdf-info">
+            <span id="pdf-date"></span>
+            <span id="pdf-ref"></span>
+        </div>
+        <div class="pdf-box">
+            <div class="pdf-row"><span class="pdf-label">Date de naissance :</span><span class="pdf-value" id="pdf-birth"></span></div>
+            <div class="pdf-row"><span class="pdf-label">Jours déclarés :</span><span class="pdf-value" id="pdf-days"></span></div>
+            <div class="pdf-row"><span class="pdf-label">Salaire de référence :</span><span class="pdf-value" id="pdf-salary"></span></div>
+            <div class="pdf-row"><span class="pdf-label">Taux appliqué :</span><span class="pdf-value" id="pdf-rate"></span></div>
+        </div>
+        <div class="pdf-total">
+            <span style="font-size:14px; display:block; margin-bottom:5px; color:#555;">Pension Mensuelle Estimée</span>
+            <span class="pdf-amount" id="pdf-amount"></span>
+        </div>
+        <div class="pdf-warning">
+            <strong>AVERTISSEMENT  :</strong> Ce document est une estimation purement indicative générée par un simulateur indépendant. Il ne constitue pas un document officiel et n'a aucune valeur juridique auprès de la CNSS.
+        </div>
+        <div class="pdf-footer">
+            Simulateurs Sociaux Maroc - www.votre-site.ma <br>
+            Plateforme indépendante d'information
+        </div>
+    </div>
+
+    <div id="header-placeholder"></div>
+
+    <div class="site-container" style="margin-bottom: 0;">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Simulateur Pension CNSS</h1>
+                <p>Estimez votre retraite du secteur privé selon les règles exactes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-container">
+        <main class="main-content">
+            <div class="simulator-box">
+                
+                <div id="termsModal" class="modal-overlay">
+                    <div class="modal-box">
+                        <div style="margin-bottom: 15px; color: #005a9e;">
+                            <i class="fa-solid fa-shield-halved" style="font-size: 3rem;"></i>
+                        </div>
+                        <h3 style="margin-top:0; color: #005a9e;">Conditions d'utilisation</h3>
+                        <p style="color:#666; font-size:0.95rem; margin-bottom:20px;">
+                            Cette plateforme est <strong>indépendante</strong> et ne représente pas la CNSS. 
+                            Les résultats sont fournis à titre indicatif.
+                        </p>
+                        <div class="modal-checkbox-container" onclick="document.getElementById('acceptCheck').click()">
+                            <input type="checkbox" id="acceptCheck" onclick="event.stopPropagation(); toggleButton()">
+                            <label for="acceptCheck" style="cursor:pointer;">J'ai lu et j'accepte les <a href="/fr/conditions.html" target="_blank" style="text-decoration:underline; color:#005a9e;">conditions d'utilisation</a>.</label>
+                        </div>
+                        <button id="btnAccept" class="btn-accept" onclick="acceptTerms()" disabled>Accéder au simulateur</button>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="../assets/img/cnss_logo.png" alt="Logo CNSS" style="height: 70px;">
+                </div>
+
+                <form id="cnssForm" onsubmit="return false;" style="max-width: 800px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label for="birthDate">Date de naissance :</label>
+                        <input type="date" id="birthDate" class="form-control" onchange="calculate()" oninput="calculate()">
+                    </div>
+                    <div class="form-group">
+                        <label for="daysDeclared">Nombre de jours déclarés (Total) :</label>
+                        <input type="number" id="daysDeclared" class="form-control" placeholder="Ex: 2678" oninput="calculate()">
+                    </div>
+                    <div class="form-group" id="salaryGroup">
+                        <label for="salaryCnss">Salaire mensuel moyen (Plafonné à 6000 DH) :</label>
+                        <input type="number" id="salaryCnss" class="form-control" placeholder="Ex: 5994.71" oninput="calculate()">
+                    </div>
+                </form>
+                
+                <div id="result"></div>
+
+                <div class="legal-alert" style="margin-top: 20px; padding: 15px; background-color: #fff8e1; border: 1px solid #ffeeba; border-radius: 8px; color: #856404; font-size: 0.85rem; line-height: 1.5; text-align: center;">
+                    <i class="fa-solid fa-triangle-exclamation" style="margin-right: 5px;"></i>
+                    <strong>Avertissement :</strong> Ce résultat est une estimation indicative. Il ne remplace pas le calcul officiel de la CNSS.
+                    <br>Source officielle : <a href="https://www.macnss.ma" target="_blank" style="color: #856404; text-decoration: underline;">www.macnss.ma</a>
+                </div>
+
+                <div id="cta-box" class="cta-box" style="margin-top: 30px; display: none;">
+                    <p>Comprendre le calcul CNSS ?</p>
+                    <a href="/fr/articles/methode-calcul-cnss.html">Lire l'article sur la méthode de calcul &rarr;</a>
+                </div>
+            </div>
+        </main>
+    </div> 
+    
+    <div id="footer-placeholder"></div>
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        function toggleButton() { document.getElementById('btnAccept').disabled = !document.getElementById('acceptCheck').checked; }
+        function acceptTerms() { 
+            const modal = document.getElementById('termsModal'); modal.style.opacity = '0'; 
+            setTimeout(() => { modal.style.display = 'none'; }, 300); 
+        }
+        document.addEventListener('DOMContentLoaded', calculate);
+
+        // Variables pour le PDF
+        let pdfData = {};
+
+        function calculate() {
+            const daysInput = document.getElementById('daysDeclared');
+            const birthDateInput = document.getElementById('birthDate');
+            const salaryInputEl = document.getElementById('salaryCnss');
+            const salaryGroup = document.getElementById('salaryGroup');
+            const resultDiv = document.getElementById('result');
+            const ctaBox = document.getElementById('cta-box');
+
+            const days = parseInt(daysInput.value);
+            const birthDateVal = birthDateInput.value;
+            let salaryVal = parseFloat(salaryInputEl.value);
+
+            let age = 0;
+            if (birthDateVal) {
+                const today = new Date();
+                const birthDate = new Date(birthDateVal);
+                age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) { age--; }
+            }
+
+            if (birthDateVal && age >= 60 && days < 3240) { salaryGroup.style.display = 'none'; salaryVal = 0; } 
+            else { salaryGroup.style.display = 'block'; }
+
+            const isSalaryVisible = salaryGroup.style.display !== 'none';
+            
+            if (!days || !birthDateVal || (isSalaryVisible && (isNaN(salaryVal) || salaryVal <= 0))) {
+                resultDiv.style.display = 'none'; ctaBox.style.display = 'none'; return;
+            }
+
+            let referenceSalary = (salaryVal > 6000) ? 6000 : salaryVal;
+            let pension = 0; let rate = 0; let msgDetail = "";
+
+            if (days < 1320) {
+                resultDiv.innerHTML = `<div style='background:#fff5f5; color:#c0392b; padding:20px; border-radius:8px; text-align:center;'><strong>Non éligible :</strong> Minimum 1320 jours requis.</div>`;
+                resultDiv.style.display = 'block'; ctaBox.style.display = 'block'; return;
+            } else if (days < 3240) {
+                if (age < 60) {
+                    let rawRate = (days / 3240) * 50; rate = Math.floor(rawRate * 100) / 100;
+                    pension = referenceSalary * (rate / 100); msgDetail = "Estimation instantanée des droits acquis à ce jour (Âge < 60 ans).";
+                } else {
+                    if (days <= 1704) pension = 600; else if (days <= 2088) pension = 700; else if (days <= 2472) pension = 800; else if (days <= 2856) pension = 900; else pension = 1000;
+                    rate = 0; msgDetail = "Pension forfaitaire (Âge légal atteint).";
+                }
+            } else {
+                let extraDays = days - 3240; let bonusPoints = Math.floor(extraDays / 216); rate = 50 + bonusPoints;
+                if (rate > 70) rate = 70; pension = referenceSalary * (rate / 100); if (pension < 1000) pension = 1000;
+                msgDetail = age < 60 ? "Calcul instantané des droits acquis à ce jour (Avant 60 ans)." : "Pension de vieillesse standard (Âge légal atteint).";
+            }
+
+            let rateTxt = rate > 0 ? rate.toFixed(2) + '%' : '-';
+
+            // Sauvegarde pour le PDF
+            pdfData = {
+                birth: birthDateVal,
+                days: days + " jours",
+                salary: isSalaryVisible ? referenceSalary.toFixed(2) + " DH" : "Non applicable",
+                rate: rateTxt,
+                pension: pension.toFixed(2) + " DH"
+            };
+
+            resultDiv.innerHTML = `
+                <div class="result-grid">
+                    <div class="res-card primary">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <span>Pension brute</span>
+                        <strong>${pension.toFixed(2)} MAD</strong>
+                    </div>
+                    <div class="res-card secondary">
+                        <i class="fa-solid fa-percent"></i>
+                        <span>Taux de pension</span>
+                        <strong>${rateTxt}</strong>
+                    </div>
+                    ${isSalaryVisible ? `<div class="res-card secondary"><i class="fa-solid fa-money-bill-wave"></i><span>Salaire référence</span><strong>${referenceSalary.toFixed(2)} MAD</strong></div>` : ''}
+                    <div class="res-card secondary"><i class="fa-solid fa-calendar-days"></i><span>Jours déclarés</span><strong>${days}</strong></div>
+                </div>
+                <div class="result-note"><strong>Info :</strong> ${msgDetail}</div>
+            <div class="buttons-row">   
+                <button onclick="generateFrenchPDF()" class="btn-action btn-red">
+                    <i class="fa-solid fa-file-pdf"></i> Télécharger le résultat (PDF)
+                </button>
+                <a href="https://api.whatsapp.com/send?text=Je viens de calculer ma retraite sur ce site, c'est gratuit et très utile ! %0A👉 https://votre-site.ma" target="_blank" class="btn-action btn-green">
+                    <i class="fa-brands fa-whatsapp"></i> Partager avec un ami
+                </a>
+            </div>
+            `;
+            
+            resultDiv.style.display = 'block';
+            ctaBox.style.display = 'block';
+        }
+
+        // --- GÉNÉRATION PDF FRANÇAIS (METHODE IMAGE) ---
+        function generateFrenchPDF() {
+            const { jsPDF } = window.jspdf;
+            
+            // Remplir le template caché
+            const now = new Date();
+            const refNumber = `CNSS-${now.getFullYear()}${now.getMonth()+1}${now.getDate()}-${now.getHours()}${now.getMinutes()}`;
+            
+            document.getElementById('pdf-ref').innerText = "Réf : " + refNumber;
+            document.getElementById('pdf-date').innerText = "Date : " + now.toLocaleDateString('fr-FR');
+            document.getElementById('pdf-birth').innerText = pdfData.birth;
+            document.getElementById('pdf-days').innerText = pdfData.days;
+            document.getElementById('pdf-salary').innerText = pdfData.salary;
+            document.getElementById('pdf-rate').innerText = pdfData.rate;
+            document.getElementById('pdf-amount').innerText = pdfData.pension;
+
+            // Capture et Génération
+            const element = document.getElementById('pdf-template');
+            
+            html2canvas(element, { scale: 2 }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 190; // Largeur A4
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                
+                pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+                pdf.save(`estimation-cnss-${refNumber}.pdf`);
+            });
+        }
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const langLink = document.querySelector('.lang-switcher a');
+                if(langLink) langLink.href = "/ar/simulateur_cnss.html";
+            }, 500);
+        });
+    </script>
+</body>
+</html>

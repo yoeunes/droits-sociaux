@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page introuvable / 404 - Simulateurs Sociaux</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/img/logo.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        /* Styles spécifiques 404 */
+        .error-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 60vh;
+        }
+
+        .error-card {
+            background: white;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        /* Zone Colorée */
+        .error-code-section {
+            background: linear-gradient(135deg, #0d6efd 0%, #008080 100%);
+            padding: 40px 20px;
+            color: white;
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 1;
+            margin: 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Zone Contenu Bilingue */
+        .error-content {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Colonne Français */
+        .lang-fr {
+            border-right: 1px solid #eee;
+            padding-right: 20px;
+            text-align: left;
+        }
+        .lang-fr h2 { font-size: 1.4rem; color: #333; margin-bottom: 10px; font-weight: 700; }
+        .lang-fr p { color: #666; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
+
+        /* Colonne Arabe */
+        .lang-ar {
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        .lang-ar h2 { font-size: 1.4rem; color: #333; margin-bottom: 10px; font-weight: 700; }
+        .lang-ar p { color: #666; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
+
+        /* Boutons */
+        .btn-home {
+            display: inline-block;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .btn-fr { background-color: #005a9e; }
+        .btn-fr:hover { background-color: #004480; transform: translateY(-2px); }
+
+        .btn-ar { background-color: #008080; }
+        .btn-ar:hover { background-color: #006666; transform: translateY(-2px); }
+
+
+        /* --- AJUSTEMENTS MOBILE --- */
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 4rem; /* Plus petit sur mobile */
+            }
+            
+            .error-content {
+                grid-template-columns: 1fr; /* Une seule colonne */
+                gap: 30px;
+                padding: 30px 20px;
+            }
+
+            /* Sur mobile, on centre tout pour que ce soit plus joli */
+            .lang-fr, .lang-ar {
+                border-right: none;
+                padding-right: 0;
+                text-align: center !important; /* Force le centrage */
+            }
+
+            /* Ligne de séparation horizontale */
+            .lang-fr {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body class="home">
+
+    <div id="header-placeholder"></div>
+
+    <div class="site-container">
+        <div class="error-container">
+            <div class="error-card">
+                
+                <div class="error-code-section">
+                    <div class="error-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                    <div class="error-code">404</div>
+                </div>
+
+                <div class="error-content">
+                    
+                    <div class="lang-fr">
+                        <h2>Page introuvable</h2>
+                        <p>La page que vous recherchez n'existe pas, a été déplacée ou est temporairement indisponible.</p>
+                        <a href="/fr/home.html" class="btn-home btn-fr">
+                            <i class="fa-solid fa-house"></i> Retour à l'accueil
+                        </a>
+                    </div>
+
+                    <div class="lang-ar">
+                        <h2>الصفحة غير موجودة</h2>
+                        <p>عذراً، الصفحة التي تبحث عنها غير متوفرة، قد يكون تم نقلها أو حذفها.</p>
+                        <a href="/ar/home.html" class="btn-home btn-ar">
+                            <i class="fa-solid fa-house"></i> العودة للرئيسية
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
