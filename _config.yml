@@ -18,11 +18,9 @@ plugins:
   - jekyll-sitemap
 
 # Collections
-collections_dir: collections
 collections:
   articles:
     output: true
-    permalink: /:lang/articles/:name/
 
 # Defaults
 defaults:
@@ -56,8 +54,6 @@ exclude:
   - assets/css/input.css
 
 # Inclure ces fichiers
-include:
-  - _pages
 
 # Sass configuration
 sass:
@@ -65,4 +61,4 @@ sass:
   style: compressed
 
 # Permalinks
-permalink: pretty
+permalink: none
