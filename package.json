@@ -39,5 +39,9 @@
     "retraite",
     "social-security",
     "simulator"
-  ]
+  ],
+  "dependencies": {
+    "baseline-browser-mapping": "^2.10.0",
+    "caniuse-lite": "^1.0.30001770"
+  }
 }
