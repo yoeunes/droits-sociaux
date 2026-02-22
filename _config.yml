@@ -7,8 +7,8 @@ description: >-
   Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.
 author: Simulateurs Sociaux Maroc
 
-url: "" # Production URL (e.g., https://example.github.io)
-baseurl: ""
+url: "https://yoeunes.github.io"
+baseurl: "/droits-sociaux"
 
 # =============================================================================
 # MULTILINGUAL CONFIGURATION (jekyll-multiple-languages-plugin)

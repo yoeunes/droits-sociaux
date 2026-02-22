@@ -8,10 +8,10 @@
   {% assign assets = site.data.assets %}
 
   {% if assets and assets['style.css'] %}
-    <link rel="stylesheet" href="{{ assets['style.css'] }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}{{ assets['style.css'] }}">
   {% else %}
     {% comment %} Fallback if manifest not found {% endcomment %}
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
   {% endif %}
 {% else %}
   {% comment %} Development: Use non-hashed assets {% endcomment %}
