@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.">
+  <meta name="author" content="Simulateurs Sociaux Maroc">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1e5f8a">
+
+  
+  
+  
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="محاكاة اجتماعية المغرب - الرئيسية">
+  <meta property="og:description" content="Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.">
+  <meta property="og:image" content="https://yoeunes.github.io/droits-sociaux/assets/img/logo.png">
+  <meta property="og:locale" content="ar_MA">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="محاكاة اجتماعية المغرب - الرئيسية">
+  <meta name="twitter:description" content="Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.">
+
+  <title>محاكاة اجتماعية المغرب - الرئيسية</title>
+
+  <link rel="canonical" href="https://yoeunes.github.io/droits-sociaux/">
+  
+  
+  <link rel="alternate" hreflang="fr" href="/droits-sociaux/ar/fr">
+  
+  
+  
+  
+  <link rel="alternate" hreflang="x-default" href="/droits-sociaux/ar/fr">
+
+  <link rel="icon" type="image/png" href="/droits-sociaux/assets/img/logo.png">
+  <link rel="apple-touch-icon" href="/droits-sociaux/assets/img/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  
+
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/droits-sociaux/ar/assets/style-FFYmSWpZ.css">
+  
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="min-h-screen flex flex-col pt-16 lg:pt-[104px]">
+  
+
+
+
+
+
+<header class="fixed top-0 left-0 right-0 z-50">
+  <!-- Top bar with trust indicators -->
+  <div class="bg-footer text-footer-text text-xs py-2 hidden lg:block">
+    <div class="container-custom flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-safe"></i>
+          منصة آمنة
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-check text-safe"></i>
+          خدمة مجانية
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/" class="flex items-center gap-1.5 hover:text-white transition-colors font-tajawal">
+          <i class="fa-solid fa-globe"></i>
+          Français
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="bg-white border-b border-surface-border shadow-soft">
+    <div class="container-custom">
+      <div class="flex items-center justify-between h-16 lg:h-18">
+        <!-- Logo -->
+        <a href="/droits-sociaux/ar/" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-soft group-hover:shadow-medium transition-shadow">
+            <img src="/droits-sociaux/assets/img/logo.png" alt="Logo" class="h-6 w-6 object-contain">
+          </div>
+          <div class="hidden sm:block">
+            <span class="font-bold text-content text-sm tracking-tight">محاكاة اجتماعية</span>
+            <span class="block text-xs text-content-subtle">أتقن حقوقك الاجتماعية</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/droits-sociaux/ar/" class="nav-link text-content hover:text-primary hover:bg-surface-subtle">
+            الرئيسية
+          </a>
+
+          <!-- News Dropdown -->
+          <div class="relative group">
+            <button class="nav-link text-content hover:text-primary hover:bg-surface-subtle flex items-center gap-1.5">
+              الأخبار
+              <i class="fa-solid fa-chevron-down text-[10px] text-content-subtle group-hover:text-primary transition-transform group-hover:rotate-180"></i>
+            </button>
+            <div class="nav-dropdown right-0 left-auto">
+              <div class="py-2">
+                <a href="/droits-sociaux/ar/actualites-cnss/" class="nav-dropdown-item flex items-center gap-3">
+                  <span class="w-8 h-8 bg-cnss-light rounded-lg flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-5 object-contain">
+                  </span>
+                  <span>أخبار CNSS</span>
+                </a>
+                <a href="/droits-sociaux/ar/actualites-cmr/" class="nav-dropdown-item flex items-center gap-3">
+                  <span class="w-8 h-8 bg-cmr-light rounded-lg flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-5 object-contain">
+                  </span>
+                  <span>أخبار CMR</span>
+                </a>
+                <a href="/droits-sociaux/ar/actualites-cnops/" class="nav-dropdown-item flex items-center gap-3">
+                  <span class="w-8 h-8 bg-cnops-light rounded-lg flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cnops_logo.png" alt="CNOPS" class="h-5 object-contain">
+                  </span>
+                  <span>أخبار CNOPS</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulators Dropdown -->
+          <div class="relative group">
+            <button class="nav-link text-content hover:text-primary hover:bg-surface-subtle flex items-center gap-1.5">
+              المحاكاة
+              <i class="fa-solid fa-chevron-down text-[10px] text-content-subtle group-hover:text-primary transition-transform group-hover:rotate-180"></i>
+            </button>
+            <div class="nav-dropdown w-72 right-0 left-auto">
+              <div class="p-3">
+                <div class="text-xs font-semibold text-content-subtle uppercase tracking-wider px-3 py-2">
+                  المعاش والتقاعد
+                </div>
+                <a href="/droits-sociaux/ar/simulateurs/cnss/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cnss-light rounded-xl flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-6 object-contain">
+                  </span>
+                  <div>
+                    <span class="block font-medium">معاش CNSS</span>
+                    <span class="text-xs text-content-subtle">القطاع الخاص</span>
+                  </div>
+                </a>
+                <a href="/droits-sociaux/ar/simulateurs/cmr/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cmr-light rounded-xl flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-6 object-contain">
+                  </span>
+                  <div>
+                    <span class="block font-medium">معاش CMR</span>
+                    <span class="text-xs text-content-subtle">القطاع العام</span>
+                  </div>
+                </a>
+
+                <div class="border-t border-surface-border my-2"></div>
+
+                <div class="text-xs font-semibold text-content-subtle uppercase tracking-wider px-3 py-2">
+                  التأمين الصحي
+                </div>
+                <a href="/droits-sociaux/ar/simulateurs/amo-cnss/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cnss-light rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-heart-pulse text-cnss"></i>
+                  </span>
+                  <div>
+                    <span class="block font-medium">AMO CNSS</span>
+                    <span class="text-xs text-content-subtle">القطاع الخاص</span>
+                  </div>
+                </a>
+                <a href="/droits-sociaux/ar/simulateurs/amo-cnops/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cnops-light rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-heart-pulse text-cnops"></i>
+                  </span>
+                  <div>
+                    <span class="block font-medium">AMO CNOPS</span>
+                    <span class="text-xs text-content-subtle">القطاع العام</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/droits-sociaux/ar/about/" class="nav-link text-content hover:text-primary hover:bg-surface-subtle">
+            من نحن
+          </a>
+          <a href="/droits-sociaux/ar/contact/" class="nav-link text-content hover:text-primary hover:bg-surface-subtle">
+            اتصل بنا
+          </a>
+        </div>
+
+        <!-- Desktop Actions -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="/droits-sociaux/ar/simulateurs/cnss/" class="btn btn-primary gap-2">
+            <i class="fa-solid fa-calculator"></i>
+            محاكاة تقاعدي
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-content hover:bg-surface-subtle rounded-xl transition-colors">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 top-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
+  <!-- Mobile Header -->
+  <div class="sticky top-0 bg-white border-b border-surface-border px-5 py-4 flex items-center justify-between">
+    <a href="/droits-sociaux/ar/" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+        <img src="/droits-sociaux/assets/img/logo.png" alt="Logo" class="h-6 w-6 object-contain">
+      </div>
+      <span class="font-bold text-content">محاكاة اجتماعية</span>
+    </a>
+    <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center text-content hover:bg-surface-subtle rounded-xl transition-colors">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="p-5 space-y-2">
+    <a href="/droits-sociaux/ar/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors">
+      <i class="fa-solid fa-house w-5 text-content-subtle"></i>
+      الرئيسية
+    </a>
+
+    <!-- News Dropdown -->
+    <div class="mobile-dropdown">
+      <button class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors" onclick="toggleMobileDropdown(this)">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-newspaper w-5 text-content-subtle"></i>
+          الأخبار
+        </span>
+        <i class="fa-solid fa-chevron-down text-sm text-content-subtle transition-transform duration-200"></i>
+      </button>
+      <div class="hidden pr-8 space-y-1 mt-2">
+        <a href="/droits-sociaux/ar/actualites-cnss/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnss transition-colors">
+          <span class="w-6 h-6 bg-cnss-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-4 object-contain">
+          </span>
+          أخبار CNSS
+        </a>
+        <a href="/droits-sociaux/ar/actualites-cmr/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cmr transition-colors">
+          <span class="w-6 h-6 bg-cmr-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-4 object-contain">
+          </span>
+          أخبار CMR
+        </a>
+        <a href="/droits-sociaux/ar/actualites-cnops/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnops transition-colors">
+          <span class="w-6 h-6 bg-cnops-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cnops_logo.png" alt="CNOPS" class="h-4 object-contain">
+          </span>
+          أخبار CNOPS
+        </a>
+      </div>
+    </div>
+
+    <!-- Simulators Dropdown -->
+    <div class="mobile-dropdown">
+      <button class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors" onclick="toggleMobileDropdown(this)">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-calculator w-5 text-content-subtle"></i>
+          المحاكاة
+        </span>
+        <i class="fa-solid fa-chevron-down text-sm text-content-subtle transition-transform duration-200"></i>
+      </button>
+      <div class="hidden pr-8 space-y-1 mt-2">
+        <div class="px-4 py-2 text-xs text-content-subtle font-semibold uppercase tracking-wider">المعاش والتقاعد</div>
+        <a href="/droits-sociaux/ar/simulateurs/cnss/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnss transition-colors">
+          <span class="w-6 h-6 bg-cnss-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-4 object-contain">
+          </span>
+          معاش CNSS
+        </a>
+        <a href="/droits-sociaux/ar/simulateurs/cmr/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cmr transition-colors">
+          <span class="w-6 h-6 bg-cmr-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-4 object-contain">
+          </span>
+          معاش CMR
+        </a>
+        <div class="border-t border-surface-border my-2 mx-4"></div>
+        <div class="px-4 py-2 text-xs text-content-subtle font-semibold uppercase tracking-wider">التأمين الصحي</div>
+        <a href="/droits-sociaux/ar/simulateurs/amo-cnss/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnss transition-colors">
+          <i class="fa-solid fa-heart-pulse w-6 text-center text-cnss"></i>
+          AMO CNSS
+        </a>
+        <a href="/droits-sociaux/ar/simulateurs/amo-cnops/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnops transition-colors">
+          <i class="fa-solid fa-heart-pulse w-6 text-center text-cnops"></i>
+          AMO CNOPS
+        </a>
+      </div>
+    </div>
+
+    <a href="/droits-sociaux/ar/about/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors">
+      <i class="fa-solid fa-circle-info w-5 text-content-subtle"></i>
+      من نحن
+    </a>
+    <a href="/droits-sociaux/ar/contact/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors">
+      <i class="fa-solid fa-envelope w-5 text-content-subtle"></i>
+      اتصل بنا
+    </a>
+
+    <!-- Mobile Actions -->
+    <div class="pt-4 mt-4 border-t border-surface-border space-y-3">
+      <a href="/droits-sociaux/ar/simulateurs/cnss/" class="btn btn-primary w-full justify-center gap-2">
+        <i class="fa-solid fa-calculator"></i>
+        محاكاة تقاعدي
+      </a>
+      <a href="/" class="btn btn-outline w-full justify-center gap-2 font-tajawal">
+        <i class="fa-solid fa-globe"></i>
+        Français
+      </a>
+    </div>
+
+    <!-- Trust indicators -->
+    <div class="pt-6 mt-4 border-t border-surface-border">
+      <div class="flex items-center justify-center gap-6 text-xs text-content-subtle">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-safe"></i>
+          منصة آمنة
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-check text-safe"></i>
+          خدمة مجانية
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <main class="flex-1">
+    
+
+<!-- Hero Section -->
+<section class="hero hero-gradient relative overflow-hidden">
+  <!-- Gradient overlay for depth -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
+
+  <!-- Decorative geometric shapes -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Subtle pattern -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+  <div class="container-custom hero-content relative z-10">
+    <div class="max-w-3xl mx-auto">
+      <!-- Trust badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full text-white text-sm mb-8 border border-white/20">
+        <i class="fa-solid fa-shield-halved text-emerald-300"></i>
+        منصة مستقلة وآمنة
+      </div>
+
+      <h1 class="hero-title text-balance">محاكاة اجتماعية المغرب: أتقن حقوقك</h1>
+      <p class="hero-description mb-10">مرحباً بكم في المنصة المستقلة الأولى المخصصة لتبسيط الحماية الاجتماعية. الوصول إلى محاكيات دقيقة لتقدير معاشات التقاعد (CNSS, CMR) وتعويضات AMO (CNSS, CNOPS).</p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/droits-sociaux/ar/simulateurs/cnss/" class="btn bg-white text-primary shadow-lg hover:shadow-xl hover:bg-gray-50 gap-2 text-base px-8 py-4 w-full sm:w-auto font-bold">
+          <i class="fa-solid fa-calculator"></i>
+          الوصول إلى المحاكاة
+        </a>
+        <a href="/droits-sociaux/ar/about/" class="btn bg-white/15 backdrop-blur-sm text-white border border-white/30 hover:bg-white/25 hover:border-white/40 gap-2 text-base px-8 py-4 w-full sm:w-auto">
+          من نحن
+          <i class="fa-solid fa-arrow-left"></i>
+        </a>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="mt-12 flex flex-wrap items-center justify-center gap-6 text-white/80 text-sm">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-lock text-emerald-300"></i>
+          آمن 100%
+        </span>
+        <span class="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></span>
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-300"></i>
+          نتيجة فورية
+        </span>
+        <span class="hidden sm:block w-1 h-1 bg-white/40 rounded-full"></span>
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-gift text-sky-300"></i>
+          مجاني تماماً
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Simulators Section -->
+<section class="section bg-surface-muted">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">محاكاتنا</h2>
+      <p class="section-subtitle">اختر المحاكاة المناسبة لوضعك المهني.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- CNSS Pension -->
+      <a href="/droits-sociaux/ar/simulateurs/cnss/" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cnss-light">
+            <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-10 object-contain">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="trust-badge-primary">
+                <i class="fa-solid fa-building-columns"></i>
+                المعاش والتقاعد
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cnss transition-colors">
+              معاش CNSS
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">قدر معاشك في القطاع الخاص وفق القواعد الرسمية CNSS.</p>
+            <span class="inline-flex items-center text-cnss font-semibold text-sm">
+              الوصول إلى المحاكاة
+              <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CMR Pension -->
+      <a href="/droits-sociaux/ar/simulateurs/cmr/" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cmr-light">
+            <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-10 object-contain">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-cmr/10 text-cmr">
+                <i class="fa-solid fa-building-columns"></i>
+                المعاش والتقاعد
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cmr transition-colors">
+              معاش CMR
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">احسب معاش الموظف وفق النظام المختلط CMR.</p>
+            <span class="inline-flex items-center text-cmr font-semibold text-sm">
+              الوصول إلى المحاكاة
+              <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- AMO CNSS -->
+      <a href="/droits-sociaux/ar/simulateurs/amo-cnss/" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cnss-light">
+            <i class="fa-solid fa-heart-pulse text-2xl text-cnss"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="trust-badge-primary">
+                <i class="fa-solid fa-heart-pulse"></i>
+                التأمين الصحي
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cnss transition-colors">
+              تعويض AMO CNSS
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">قدر تعويضات المرض للقطاع الخاص.</p>
+            <span class="inline-flex items-center text-cnss font-semibold text-sm">
+              الوصول إلى المحاكاة
+              <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- AMO CNOPS -->
+      <a href="/droits-sociaux/ar/simulateurs/amo-cnops/" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cnops-light">
+            <i class="fa-solid fa-heart-pulse text-2xl text-cnops"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-cnops/10 text-cnops">
+                <i class="fa-solid fa-heart-pulse"></i>
+                التأمين الصحي
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cnops transition-colors">
+              تعويض AMO CNOPS
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">قدر تعويضات المرض للقطاع العام.</p>
+            <span class="inline-flex items-center text-cnops font-semibold text-sm">
+              الوصول إلى المحاكاة
+              <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest News Section -->
+<section class="section bg-white">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">الأخبار والأدلة</h2>
+      <p class="section-subtitle">ابق على اطلاع بآخر الإصلاحات والأخبار الاجتماعية في المغرب.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- News Card 1 - CNSS -->
+      <a href="/droits-sociaux/ar/articles/cnss-pension-1320/" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cnss-light via-cnss-muted to-cnss/5">
+          <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-16 opacity-80 group-hover:scale-110 transition-transform duration-300">
+        </div>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cnss-light text-cnss">CNSS</span>
+          <h3 class="news-card-title">معاش CNSS 1320 يوم</h3>
+          <p class="news-card-excerpt">إصلاح رسمي جديد.</p>
+          <span class="inline-flex items-center text-sm font-semibold text-cnss">
+            اقرأ المقال
+            <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+          </span>
+        </div>
+      </a>
+
+      <!-- News Card 2 - CNOPS -->
+      <a href="/droits-sociaux/ar/articles/cnops-fusion/" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cnops-light via-cnops-muted to-cnops/5">
+          <img src="/droits-sociaux/assets/img/cnops_logo.png" alt="CNOPS" class="h-16 opacity-80 group-hover:scale-110 transition-transform duration-300">
+        </div>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cnops-light text-cnops">CNOPS</span>
+          <h3 class="news-card-title">دمج CNOPS / CNSS</h3>
+          <p class="news-card-excerpt">الانتقال إلى AMO موحدة.</p>
+          <span class="inline-flex items-center text-sm font-semibold text-cnops">
+            اقرأ المقال
+            <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+          </span>
+        </div>
+      </a>
+
+      <!-- News Card 3 - CMR -->
+      <a href="/droits-sociaux/ar/articles/cmr-contrat/" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cmr-light via-cmr-muted to-cmr/5">
+          <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-16 opacity-80 group-hover:scale-110 transition-transform duration-300">
+        </div>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cmr-light text-cmr">CMR</span>
+          <h3 class="news-card-title">عقد CMR</h3>
+          <p class="news-card-excerpt">الأداء والاستدامة.</p>
+          <span class="inline-flex items-center text-sm font-semibold text-cmr">
+            اقرأ المقال
+            <i class="fa-solid fa-arrow-left mr-2 group-hover:translate-x-1 transition-transform"></i>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="section bg-surface-muted">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">كيف يعمل ؟</h2>
+      <p class="section-subtitle">احصل على تقديرك في 3 خطوات بسيطة وسريعة.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="relative">
+        <div class="card p-8 text-center h-full">
+          <div class="step-number bg-primary mx-auto">1</div>
+          <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-keyboard text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-bold text-xl text-content mb-3">املأ</h3>
+          <p class="text-content-muted leading-relaxed">أدخل معلوماتك (العمر، الراتب، سنوات الخدمة) في نموذجنا الآمن.</p>
+        </div>
+        <!-- Connector -->
+        <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-surface-border z-10"></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative">
+        <div class="card p-8 text-center h-full">
+          <div class="step-number bg-secondary mx-auto">2</div>
+          <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-calculator text-2xl text-secondary"></i>
+          </div>
+          <h3 class="font-bold text-xl text-content mb-3">احسب</h3>
+          <p class="text-content-muted leading-relaxed">يحلل خوارزميتنا بياناتك وفق أحدث قواعد CNSS/CMR السارية.</p>
+        </div>
+        <!-- Connector -->
+        <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-surface-border z-10"></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative">
+        <div class="card p-8 text-center h-full">
+          <div class="step-number bg-accent mx-auto">3</div>
+          <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-file-pdf text-2xl text-accent"></i>
+          </div>
+          <h3 class="font-bold text-xl text-content mb-3">حمّل</h3>
+          <p class="text-content-muted leading-relaxed">احصل على نتيجتك المفصلة فوراً وحمّلها بصيغة PDF مجاناً.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Section -->
+<section class="section bg-white">
+  <div class="container-custom">
+    <div class="card card-featured p-8 md:p-12">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="w-14 h-14 bg-safe/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-shield-halved text-2xl text-safe"></i>
+          </div>
+          <h3 class="font-bold text-lg text-content mb-2">آمن 100%</h3>
+          <p class="text-content-muted text-sm">بياناتك لا تغادر متصفحك أبداً. لا يتم تخزين أي معلومات.</p>
+        </div>
+        <div>
+          <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-clock text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-bold text-lg text-content mb-2">نتيجة فورية</h3>
+          <p class="text-content-muted text-sm">احصل على تقديرك في ثوانٍ، دون الحاجة إلى التسجيل.</p>
+        </div>
+        <div>
+          <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-circle-check text-2xl text-accent"></i>
+          </div>
+          <h3 class="font-bold text-lg text-content mb-2">مجاني تماماً</h3>
+          <p class="text-content-muted text-sm">جميع محاكاتنا ومواردنا متاحة مجاناً، بدون شروط.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-sm bg-footer">
+  <div class="container-custom">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">تحتاج مساعدة ؟</h2>
+      <p class="text-footer-text mb-8">فريقنا متاح للإجابة على أسئلتك ومرافقتك.</p>
+      <a href="/droits-sociaux/ar/contact/" class="btn btn-white gap-2">
+        <i class="fa-solid fa-envelope"></i>
+        تواصل معنا
+      </a>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  
+
+<footer class="bg-footer mt-auto">
+  <!-- Main Footer -->
+  <div class="container-custom py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <!-- Brand Column -->
+      <div class="lg:col-span-1">
+        <a href="/droits-sociaux/ar/" class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/logo.png" alt="Logo" class="h-7 w-7 object-contain">
+          </div>
+          <div>
+            <span class="block font-bold text-white text-sm">محاكاة اجتماعية</span>
+            <span class="block text-xs text-footer-text">أتقن حقوقك الاجتماعية</span>
+          </div>
+        </a>
+        <p class="text-footer-text text-sm leading-relaxed mb-6">
+          منصة مستقلة للمعلومات حول الحماية الاجتماعية في المغرب. مهمتنا هي تبسيط الوصول إلى الحقوق الاجتماعية.
+        </p>
+        <!-- Trust badges -->
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-lg text-xs text-footer-text">
+            <i class="fa-solid fa-shield-halved text-safe"></i>
+            آمن 100%
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-lg text-xs text-footer-text">
+            <i class="fa-solid fa-circle-check text-safe"></i>
+            مجاني
+          </span>
+        </div>
+      </div>
+
+      <!-- Simulators Column -->
+      <div>
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-primary"></i>
+          المحاكاة
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="/droits-sociaux/ar/simulateurs/cnss/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cnss group-hover:scale-125 transition-transform"></span>
+              معاش CNSS
+            </a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/simulateurs/cmr/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cmr group-hover:scale-125 transition-transform"></span>
+              معاش CMR
+            </a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/simulateurs/amo-cnss/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cnss group-hover:scale-125 transition-transform"></span>
+              AMO CNSS
+            </a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/simulateurs/amo-cnops/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cnops group-hover:scale-125 transition-transform"></span>
+              AMO CNOPS
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Resources Column -->
+      <div>
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-book-open text-secondary"></i>
+          الموارد
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="/droits-sociaux/ar/actualites-cnss/" class="footer-link text-sm">أخبار CNSS</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/actualites-cmr/" class="footer-link text-sm">أخبار CMR</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/actualites-cnops/" class="footer-link text-sm">أخبار CNOPS</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/about/" class="footer-link text-sm">من نحن</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/contact/" class="footer-link text-sm">اتصل بنا</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Legal & Social Column -->
+      <div>
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-scale-balanced text-accent"></i>
+          قانوني
+        </h4>
+        <ul class="space-y-3 mb-8">
+          <li>
+            <a href="/droits-sociaux/ar/conditions/" class="footer-link text-sm">شروط الاستخدام</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/ar/privacy/" class="footer-link text-sm">سياسة الخصوصية</a>
+          </li>
+        </ul>
+
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-share-nodes text-trust"></i>
+          تابعونا
+        </h4>
+        <div class="flex items-center gap-3 flex-row-reverse justify-end">
+          <a href="#" target="_blank" rel="noopener" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-footer-text hover:bg-blue-600 hover:text-white transition-all">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-footer-text hover:bg-red-600 hover:text-white transition-all">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-footer-text hover:bg-green-600 hover:text-white transition-all">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-footer-border">
+    <div class="container-custom py-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-footer-text">
+        <p>© 2025 محاكاة اجتماعية المغرب. منصة مستقلة.</p>
+        <div class="flex items-center gap-6">
+          <a href="/droits-sociaux/ar/conditions/" class="hover:text-white transition-colors">شروط الاستخدام</a>
+          <a href="/droits-sociaux/ar/privacy/" class="hover:text-white transition-colors">سياسة الخصوصية</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner hidden">
+  <div class="container-custom">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+          <i class="fa-solid fa-cookie-bite text-primary"></i>
+        </div>
+        <p class="text-sm text-content-muted">
+          نستخدم ملفات تعريف الارتباط لتحسين تجربتك. بالاستمرار، أنت تقبل
+          <a href="/droits-sociaux/ar/privacy/" class="text-primary hover:underline font-medium">سياسة الخصوصية</a>.
+        </p>
+      </div>
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <button onclick="acceptCookies()" class="btn btn-primary">
+          موافق
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+
+  
+    <script src="/droits-sociaux/ar/assets/main-BDrn0fxx.js" defer></script>
+  
+
+
+</body>
+</html>

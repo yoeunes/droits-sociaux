@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.">
+  <meta name="author" content="Simulateurs Sociaux Maroc">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1e5f8a">
+
+  
+  
+  
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calcul Pension CMR">
+  <meta property="og:description" content="Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.">
+  <meta property="og:image" content="https://yoeunes.github.io/droits-sociaux/assets/img/logo.png">
+  <meta property="og:locale" content="fr_MA">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calcul Pension CMR">
+  <meta name="twitter:description" content="Plateforme independante de simulation des droits sociaux au Maroc. Calculez votre pension CNSS, CMR et vos remboursements AMO gratuitement.">
+
+  <title>Calcul Pension CMR</title>
+
+  <link rel="canonical" href="https://yoeunes.github.io/droits-sociaux/articles/methode-calcul-cmr/">
+  
+  
+  
+  
+  <link rel="alternate" hreflang="ar" href="/droits-sociaux/ararticles/methode-calcul-cmr/">
+  
+  
+  <link rel="alternate" hreflang="x-default" href="/droits-sociaux/frarticles/methode-calcul-cmr/">
+
+  <link rel="icon" type="image/png" href="/droits-sociaux/assets/img/logo.png">
+  <link rel="apple-touch-icon" href="/droits-sociaux/assets/img/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  
+
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/droits-sociaux/assets/style-FFYmSWpZ.css">
+  
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="min-h-screen flex flex-col pt-16 lg:pt-[104px]">
+  
+
+
+
+
+
+<header class="fixed top-0 left-0 right-0 z-50">
+  <!-- Top bar with trust indicators -->
+  <div class="bg-footer text-footer-text text-xs py-2 hidden lg:block">
+    <div class="container-custom flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-safe"></i>
+          Plateforme sécurisée
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-check text-safe"></i>
+          Service gratuit
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/ar/articles/methode-calcul-cmr/" class="flex items-center gap-1.5 hover:text-white transition-colors font-tajawal">
+          <i class="fa-solid fa-globe"></i>
+          العربية
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main navigation -->
+  <nav class="bg-white border-b border-surface-border shadow-soft">
+    <div class="container-custom">
+      <div class="flex items-center justify-between h-16 lg:h-18">
+        <!-- Logo -->
+        <a href="/droits-sociaux/" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-soft group-hover:shadow-medium transition-shadow">
+            <img src="/droits-sociaux/assets/img/logo.png" alt="Logo" class="h-6 w-6 object-contain">
+          </div>
+          <div class="hidden sm:block">
+            <span class="font-bold text-content text-sm tracking-tight">Simulateurs Sociaux</span>
+            <span class="block text-xs text-content-subtle">Maîtrisez vos droits sociaux</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/droits-sociaux/" class="nav-link text-content hover:text-primary hover:bg-surface-subtle">
+            Accueil
+          </a>
+
+          <!-- News Dropdown -->
+          <div class="relative group">
+            <button class="nav-link text-content hover:text-primary hover:bg-surface-subtle flex items-center gap-1.5">
+              Actualités
+              <i class="fa-solid fa-chevron-down text-[10px] text-content-subtle group-hover:text-primary transition-transform group-hover:rotate-180"></i>
+            </button>
+            <div class="nav-dropdown ">
+              <div class="py-2">
+                <a href="/droits-sociaux/actualites-cnss/" class="nav-dropdown-item flex items-center gap-3">
+                  <span class="w-8 h-8 bg-cnss-light rounded-lg flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-5 object-contain">
+                  </span>
+                  <span>Actualités CNSS</span>
+                </a>
+                <a href="/droits-sociaux/actualites-cmr/" class="nav-dropdown-item flex items-center gap-3">
+                  <span class="w-8 h-8 bg-cmr-light rounded-lg flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-5 object-contain">
+                  </span>
+                  <span>Actualités CMR</span>
+                </a>
+                <a href="/droits-sociaux/actualites-cnops/" class="nav-dropdown-item flex items-center gap-3">
+                  <span class="w-8 h-8 bg-cnops-light rounded-lg flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cnops_logo.png" alt="CNOPS" class="h-5 object-contain">
+                  </span>
+                  <span>Actualités CNOPS</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulators Dropdown -->
+          <div class="relative group">
+            <button class="nav-link text-content hover:text-primary hover:bg-surface-subtle flex items-center gap-1.5">
+              Simulateurs
+              <i class="fa-solid fa-chevron-down text-[10px] text-content-subtle group-hover:text-primary transition-transform group-hover:rotate-180"></i>
+            </button>
+            <div class="nav-dropdown w-72 ">
+              <div class="p-3">
+                <div class="text-xs font-semibold text-content-subtle uppercase tracking-wider px-3 py-2">
+                  Pension & Retraite
+                </div>
+                <a href="/droits-sociaux/simulateurs/cnss/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cnss-light rounded-xl flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-6 object-contain">
+                  </span>
+                  <div>
+                    <span class="block font-medium">Pension CNSS</span>
+                    <span class="text-xs text-content-subtle">Secteur privé</span>
+                  </div>
+                </a>
+                <a href="/droits-sociaux/simulateurs/cmr/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cmr-light rounded-xl flex items-center justify-center">
+                    <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-6 object-contain">
+                  </span>
+                  <div>
+                    <span class="block font-medium">Pension CMR</span>
+                    <span class="text-xs text-content-subtle">Secteur public</span>
+                  </div>
+                </a>
+
+                <div class="border-t border-surface-border my-2"></div>
+
+                <div class="text-xs font-semibold text-content-subtle uppercase tracking-wider px-3 py-2">
+                  Assurance Maladie
+                </div>
+                <a href="/droits-sociaux/simulateurs/amo-cnss/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cnss-light rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-heart-pulse text-cnss"></i>
+                  </span>
+                  <div>
+                    <span class="block font-medium">AMO CNSS</span>
+                    <span class="text-xs text-content-subtle">Secteur privé</span>
+                  </div>
+                </a>
+                <a href="/droits-sociaux/simulateurs/amo-cnops/" class="nav-dropdown-item flex items-center gap-3 rounded-lg">
+                  <span class="w-10 h-10 bg-cnops-light rounded-xl flex items-center justify-center">
+                    <i class="fa-solid fa-heart-pulse text-cnops"></i>
+                  </span>
+                  <div>
+                    <span class="block font-medium">AMO CNOPS</span>
+                    <span class="text-xs text-content-subtle">Secteur public</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/droits-sociaux/about/" class="nav-link text-content hover:text-primary hover:bg-surface-subtle">
+            À propos
+          </a>
+          <a href="/droits-sociaux/contact/" class="nav-link text-content hover:text-primary hover:bg-surface-subtle">
+            Contact
+          </a>
+        </div>
+
+        <!-- Desktop Actions -->
+        <div class="hidden lg:flex items-center gap-3">
+          <a href="/droits-sociaux/simulateurs/cnss/" class="btn btn-primary gap-2">
+            <i class="fa-solid fa-calculator"></i>
+            Simuler ma retraite
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center text-content hover:bg-surface-subtle rounded-xl transition-colors">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 top-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
+  <!-- Mobile Header -->
+  <div class="sticky top-0 bg-white border-b border-surface-border px-5 py-4 flex items-center justify-between">
+    <a href="/droits-sociaux/" class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+        <img src="/droits-sociaux/assets/img/logo.png" alt="Logo" class="h-6 w-6 object-contain">
+      </div>
+      <span class="font-bold text-content">Simulateurs Sociaux</span>
+    </a>
+    <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center text-content hover:bg-surface-subtle rounded-xl transition-colors">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="p-5 space-y-2">
+    <a href="/droits-sociaux/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors">
+      <i class="fa-solid fa-house w-5 text-content-subtle"></i>
+      Accueil
+    </a>
+
+    <!-- News Dropdown -->
+    <div class="mobile-dropdown">
+      <button class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors" onclick="toggleMobileDropdown(this)">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-newspaper w-5 text-content-subtle"></i>
+          Actualités
+        </span>
+        <i class="fa-solid fa-chevron-down text-sm text-content-subtle transition-transform duration-200"></i>
+      </button>
+      <div class="hidden pl-8 space-y-1 mt-2">
+        <a href="/droits-sociaux/actualites-cnss/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnss transition-colors">
+          <span class="w-6 h-6 bg-cnss-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-4 object-contain">
+          </span>
+          Actualités CNSS
+        </a>
+        <a href="/droits-sociaux/actualites-cmr/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cmr transition-colors">
+          <span class="w-6 h-6 bg-cmr-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-4 object-contain">
+          </span>
+          Actualités CMR
+        </a>
+        <a href="/droits-sociaux/actualites-cnops/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnops transition-colors">
+          <span class="w-6 h-6 bg-cnops-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cnops_logo.png" alt="CNOPS" class="h-4 object-contain">
+          </span>
+          Actualités CNOPS
+        </a>
+      </div>
+    </div>
+
+    <!-- Simulators Dropdown -->
+    <div class="mobile-dropdown">
+      <button class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors" onclick="toggleMobileDropdown(this)">
+        <span class="flex items-center gap-3">
+          <i class="fa-solid fa-calculator w-5 text-content-subtle"></i>
+          Simulateurs
+        </span>
+        <i class="fa-solid fa-chevron-down text-sm text-content-subtle transition-transform duration-200"></i>
+      </button>
+      <div class="hidden pl-8 space-y-1 mt-2">
+        <div class="px-4 py-2 text-xs text-content-subtle font-semibold uppercase tracking-wider">Pension & Retraite</div>
+        <a href="/droits-sociaux/simulateurs/cnss/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnss transition-colors">
+          <span class="w-6 h-6 bg-cnss-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cnss_logo.png" alt="CNSS" class="h-4 object-contain">
+          </span>
+          Pension CNSS
+        </a>
+        <a href="/droits-sociaux/simulateurs/cmr/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cmr transition-colors">
+          <span class="w-6 h-6 bg-cmr-light rounded-md flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="CMR" class="h-4 object-contain">
+          </span>
+          Pension CMR
+        </a>
+        <div class="border-t border-surface-border my-2 mx-4"></div>
+        <div class="px-4 py-2 text-xs text-content-subtle font-semibold uppercase tracking-wider">Assurance Maladie</div>
+        <a href="/droits-sociaux/simulateurs/amo-cnss/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnss transition-colors">
+          <i class="fa-solid fa-heart-pulse w-6 text-center text-cnss"></i>
+          AMO CNSS
+        </a>
+        <a href="/droits-sociaux/simulateurs/amo-cnops/" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-content-muted hover:bg-surface-subtle hover:text-cnops transition-colors">
+          <i class="fa-solid fa-heart-pulse w-6 text-center text-cnops"></i>
+          AMO CNOPS
+        </a>
+      </div>
+    </div>
+
+    <a href="/droits-sociaux/about/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors">
+      <i class="fa-solid fa-circle-info w-5 text-content-subtle"></i>
+      À propos
+    </a>
+    <a href="/droits-sociaux/contact/" class="flex items-center gap-3 px-4 py-3 rounded-xl text-content hover:bg-surface-subtle font-medium transition-colors">
+      <i class="fa-solid fa-envelope w-5 text-content-subtle"></i>
+      Contact
+    </a>
+
+    <!-- Mobile Actions -->
+    <div class="pt-4 mt-4 border-t border-surface-border space-y-3">
+      <a href="/droits-sociaux/simulateurs/cnss/" class="btn btn-primary w-full justify-center gap-2">
+        <i class="fa-solid fa-calculator"></i>
+        Simuler ma retraite
+      </a>
+      <a href="/ar/articles/methode-calcul-cmr/" class="btn btn-outline w-full justify-center gap-2 font-tajawal">
+        <i class="fa-solid fa-globe"></i>
+        العربية
+      </a>
+    </div>
+
+    <!-- Trust indicators -->
+    <div class="pt-6 mt-4 border-t border-surface-border">
+      <div class="flex items-center justify-center gap-6 text-xs text-content-subtle">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-shield-halved text-safe"></i>
+          Plateforme sécurisée
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-circle-check text-safe"></i>
+          Service gratuit
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <main class="flex-1">
+    
+
+
+
+
+
+
+
+<article class="bg-surface-muted">
+  <!-- Article Header -->
+  <header class="bg-white border-b border-surface-border">
+    <div class="container-custom py-8 md:py-12">
+      <div class="max-w-4xl">
+        <!-- Breadcrumb & Meta -->
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          
+          <div class="flex-shrink-0 w-12 h-12 bg-cnss-light rounded-xl flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/cmr_logo.png" alt="Logo" class="h-8 object-contain">
+          </div>
+          
+          <div class="flex items-center gap-3 text-sm text-content-subtle">
+            
+            <span class="inline-flex items-center gap-1.5">
+              <i class="fa-regular fa-clock text-xs text-cnss"></i>
+              3 min de lecture
+            </span>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="article-title mb-4">Calcul Pension CMR</h1>
+
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  
+
+  <!-- Article Content -->
+  <div class="container-custom py-8 md:py-12">
+    <div class="flex gap-12">
+      <!-- Main Content -->
+      <div class="flex-1 min-w-0 max-w-4xl">
+        
+
+        <div class="article-content bg-white rounded-2xl shadow-card border border-surface-border/50 p-6 md:p-10">
+          <div class="article-prose prose-cnss">
+            <p>La Caisse Marocaine des Retraites (CMR) gère les pensions de retraite des fonctionnaires du secteur public. Suite à la réforme de 2016, le calcul de la pension se fait selon un système mixte.</p>
+
+<h2 id="1-les-conditions-déligibilité">1. Les conditions d’éligibilité</h2>
+
+<p>Pour bénéficier d’une pension de retraite CMR, vous devez :</p>
+
+<ul>
+  <li>Avoir atteint l’âge légal de départ à la retraite (63 ans pour le régime civil)</li>
+  <li>Avoir cotisé au minimum <strong>21 ans</strong> de service effectif</li>
+  <li>Pour une retraite anticipée, avoir au moins 24 ans de service</li>
+</ul>
+
+<h2 id="2-le-système-mixte-réforme-2016">2. Le système mixte (réforme 2016)</h2>
+
+<p>La réforme de 2016 a introduit un système de calcul différent selon la période de service :</p>
+
+<h3 id="avant-2017">Avant 2017</h3>
+
+<p>Pour les années de service effectuées <strong>avant janvier 2017</strong>, le taux de pension est de <strong>2,5% par année</strong>.</p>
+
+<h3 id="après-2017">Après 2017</h3>
+
+<p>Pour les années de service effectuées <strong>après janvier 2017</strong>, le taux varie selon le type de retraite :</p>
+<ul>
+  <li><strong>Retraite normale</strong> : 2% par année</li>
+  <li><strong>Retraite anticipée</strong> : 1,5% par année</li>
+</ul>
+
+<h2 id="3-la-formule-de-calcul">3. La formule de calcul</h2>
+
+<blockquote>
+  <p><strong>Pension = Salaire de référence × Taux global</strong></p>
+</blockquote>
+
+<p>Où :</p>
+<ul>
+  <li><strong>Salaire de référence</strong> = Moyenne des 8 dernières années de salaire</li>
+  <li><strong>Taux global</strong> = (Années avant 2017 × 2,5%) + (Années après 2017 × taux applicable)</li>
+</ul>
+
+<h3 id="exemple-de-calcul">Exemple de calcul</h3>
+
+<p>Un fonctionnaire qui a :</p>
+<ul>
+  <li>15 ans de service avant 2017</li>
+  <li>10 ans de service après 2017</li>
+  <li>Salaire de référence de 12 000 MAD</li>
+  <li>Retraite normale</li>
+</ul>
+
+<p>Calcul :</p>
+<ul>
+  <li>Taux avant 2017 : 15 × 2,5% = 37,5%</li>
+  <li>Taux après 2017 : 10 × 2% = 20%</li>
+  <li>Taux global : 57,5%</li>
+  <li>Pension : 12 000 × 57,5% = <strong>6 900 MAD</strong></li>
+</ul>
+
+<h2 id="4-le-plafond">4. Le plafond</h2>
+
+<p>Le taux de pension ne peut jamais dépasser <strong>100%</strong> du salaire de référence.</p>
+
+<hr />
+
+<p><strong>Source officielle :</strong> Pour plus d’informations, consultez le site officiel : <a href="https://www.cmr.gov.ma">www.cmr.gov.ma</a></p>
+
+
+          </div>
+        </div>
+
+        <!-- CTA Box -->
+        
+        
+        <div class="mt-8">
+          <div class="card p-6 md:p-8 bg-gradient-to-r from-cnss-light to-white border-l-4 border-cnss">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div class="flex-shrink-0 w-14 h-14 bg-cnss/10 rounded-2xl flex items-center justify-center">
+                <i class="fa-solid fa-calculator text-2xl text-cnss"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-content mb-1">Testez notre simulateur</h3>
+                <p class="text-sm text-content-muted">Obtenez une estimation personnalisée en quelques secondes.</p>
+              </div>
+              <a href="/droits-sociaux/simulateurs/cmr/" class="btn bg-cnss text-white hover:bg-cnss-dark flex-shrink-0 gap-2">
+                Accéder au simulateur
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- Article Footer -->
+        <div class="mt-10 pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-6">
+          <a href="/droits-sociaux/" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Retour à l'accueil
+          </a>
+
+          <div class="flex items-center gap-3">
+            <span class="text-sm text-content-subtle">Partager:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://yoeunes.github.io/droits-sociaux/articles/methode-calcul-cmr/" target="_blank" rel="noopener" class="share-btn hover:bg-blue-600">
+              <i class="fa-brands fa-facebook-f text-sm"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://yoeunes.github.io/droits-sociaux/articles/methode-calcul-cmr/&text=articles.methode_calcul_cmr.title" target="_blank" rel="noopener" class="share-btn hover:bg-sky-500">
+              <i class="fa-brands fa-twitter text-sm"></i>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://yoeunes.github.io/droits-sociaux/articles/methode-calcul-cmr/&title=articles.methode_calcul_cmr.title" target="_blank" rel="noopener" class="share-btn hover:bg-blue-700">
+              <i class="fa-brands fa-linkedin-in text-sm"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?text=articles.methode_calcul_cmr.title https://yoeunes.github.io/droits-sociaux/articles/methode-calcul-cmr/" target="_blank" rel="noopener" class="share-btn hover:bg-green-600">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar - Table of Contents -->
+      <aside class="hidden xl:block w-64 flex-shrink-0">
+        <div class="sticky top-28 space-y-6">
+          <div class="card p-5">
+            <h4 class="font-semibold text-content mb-4 text-sm uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-list text-cnss"></i>
+              Table des matières
+            </h4>
+            <nav id="toc" class="toc-nav border-l-2 border-surface-border space-y-0">
+            </nav>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const headings = document.querySelectorAll('.article-prose h2, .article-prose h3');
+  const toc = document.getElementById('toc');
+
+  if (toc && headings.length > 0) {
+    headings.forEach((heading, index) => {
+      const id = 'heading-' + index;
+      heading.id = id;
+
+      const link = document.createElement('a');
+      link.href = '#' + id;
+      link.textContent = heading.textContent;
+      link.className = 'block py-2 text-sm text-content-subtle hover:text-cnss transition-colors border-l-2 border-transparent hover:border-cnss pl-4 -ml-px ' +
+        (heading.tagName === 'H3' ? 'pl-6 text-xs' : '');
+
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      toc.appendChild(link);
+    });
+
+    // Highlight active TOC item on scroll
+    const observerOptions = {
+      rootMargin: '-100px 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const tocLink = toc.querySelector(`a[href="#${id}"]`);
+        if (tocLink) {
+          if (entry.isIntersecting) {
+            toc.querySelectorAll('a').forEach(a => {
+              a.classList.remove('text-cnss', 'border-cnss', 'font-medium');
+              a.classList.add('text-content-subtle', 'border-transparent');
+            });
+            tocLink.classList.remove('text-content-subtle', 'border-transparent');
+            tocLink.classList.add('text-cnss', 'border-cnss', 'font-medium');
+          }
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
+  }
+});
+</script>
+
+  </main>
+
+  
+
+<footer class="bg-footer mt-auto">
+  <!-- Main Footer -->
+  <div class="container-custom py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <!-- Brand Column -->
+      <div class="lg:col-span-1">
+        <a href="/droits-sociaux/" class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+            <img src="/droits-sociaux/assets/img/logo.png" alt="Logo" class="h-7 w-7 object-contain">
+          </div>
+          <div>
+            <span class="block font-bold text-white text-sm">Simulateurs Sociaux</span>
+            <span class="block text-xs text-footer-text">Maîtrisez vos droits sociaux</span>
+          </div>
+        </a>
+        <p class="text-footer-text text-sm leading-relaxed mb-6">
+          Plateforme indépendante d'information sur la protection sociale au Maroc. Notre mission est de simplifier l'accès aux droits sociaux.
+        </p>
+        <!-- Trust badges -->
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-lg text-xs text-footer-text">
+            <i class="fa-solid fa-shield-halved text-safe"></i>
+            100% Sécurisé
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-lg text-xs text-footer-text">
+            <i class="fa-solid fa-circle-check text-safe"></i>
+            Gratuit
+          </span>
+        </div>
+      </div>
+
+      <!-- Simulators Column -->
+      <div>
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-calculator text-primary"></i>
+          Simulateurs
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="/droits-sociaux/simulateurs/cnss/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cnss group-hover:scale-125 transition-transform"></span>
+              Pension CNSS
+            </a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/simulateurs/cmr/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cmr group-hover:scale-125 transition-transform"></span>
+              Pension CMR
+            </a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/simulateurs/amo-cnss/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cnss group-hover:scale-125 transition-transform"></span>
+              AMO CNSS
+            </a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/simulateurs/amo-cnops/" class="footer-link text-sm flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-cnops group-hover:scale-125 transition-transform"></span>
+              AMO CNOPS
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Resources Column -->
+      <div>
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-book-open text-secondary"></i>
+          Ressources
+        </h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="/droits-sociaux/actualites-cnss/" class="footer-link text-sm">Actualités CNSS</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/actualites-cmr/" class="footer-link text-sm">Actualités CMR</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/actualites-cnops/" class="footer-link text-sm">Actualités CNOPS</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/about/" class="footer-link text-sm">À propos</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/contact/" class="footer-link text-sm">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Legal & Social Column -->
+      <div>
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-scale-balanced text-accent"></i>
+          Légal
+        </h4>
+        <ul class="space-y-3 mb-8">
+          <li>
+            <a href="/droits-sociaux/conditions/" class="footer-link text-sm">Conditions d'utilisation</a>
+          </li>
+          <li>
+            <a href="/droits-sociaux/privacy/" class="footer-link text-sm">Politique de confidentialité</a>
+          </li>
+        </ul>
+
+        <h4 class="footer-heading flex items-center gap-2">
+          <i class="fa-solid fa-share-nodes text-trust"></i>
+          Nous suivre
+        </h4>
+        <div class="flex items-center gap-3 ">
+          <a href="#" target="_blank" rel="noopener" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-footer-text hover:bg-blue-600 hover:text-white transition-all">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-footer-text hover:bg-red-600 hover:text-white transition-all">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-footer-text hover:bg-green-600 hover:text-white transition-all">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-footer-border">
+    <div class="container-custom py-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-footer-text">
+        <p>© 2025 Simulateurs Sociaux Maroc. Plateforme indépendante.</p>
+        <div class="flex items-center gap-6">
+          <a href="/droits-sociaux/conditions/" class="hover:text-white transition-colors">Conditions d'utilisation</a>
+          <a href="/droits-sociaux/privacy/" class="hover:text-white transition-colors">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner hidden">
+  <div class="container-custom">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center">
+          <i class="fa-solid fa-cookie-bite text-primary"></i>
+        </div>
+        <p class="text-sm text-content-muted">
+          Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre
+          <a href="/droits-sociaux/privacy/" class="text-primary hover:underline font-medium">politique de confidentialité</a>.
+        </p>
+      </div>
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <button onclick="acceptCookies()" class="btn btn-primary">
+          J'accepte
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+
+  
+    <script src="/droits-sociaux/assets/main-BDrn0fxx.js" defer></script>
+  
+
+
+</body>
+</html>
