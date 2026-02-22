@@ -44,8 +44,8 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      # - name: Build assets with Vite
-      #   run: npm run vite:build
+      - name: Build assets with Vite
+        run: npm run vite:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
