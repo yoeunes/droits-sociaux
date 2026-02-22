@@ -21,11 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: '20'
-      #     cache: 'npm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -33,24 +33,24 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      # - name: Install Node dependencies
-      #   run: npm ci
+      - name: Install Node dependencies
+        run: npm ci
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # - name: Build Jekyll site
-      #   run: JEKYLL_ENV=production bundle exec jekyll build
-      #   env:
-      #     JEKYLL_ENV: production
+      - name: Build Jekyll site
+        run: JEKYLL_ENV=production bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
 
       # - name: Build assets with Vite
       #   run: npm run vite:build
 
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: ./_site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
 
   deploy:
     environment:
