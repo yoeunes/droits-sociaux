@@ -1,17 +1,29 @@
 {%- comment -%}
   Info Box Component
   Usage: {% include components/info-box.html type="cnss" icon="fa-circle-info" title="Title" content="Content" %}
-  Types: cnss, cmr, cnops, warning
+  Types: cnss, cmr, cnops, warning, success
 {%- endcomment -%}
 
 {% assign box_type = include.type | default: 'cnss' %}
+{% assign box_icon = include.icon | default: 'fa-circle-info' %}
 
-<div class="bg-{{ box_type }}-light border border-{{ box_type }}/20 p-6 rounded-xl my-8">
-  <p class="text-{{ box_type }} font-semibold mb-2">
-    {% if include.icon %}<i class="fa-solid {{ include.icon }} {% if site.lang == 'ar' %}ml-2{% else %}mr-2{% endif %}"></i>{% endif %}
-    {{ include.title }}
-  </p>
-  <p class="text-gray-700">
-    {{ include.content | markdownify }}
-  </p>
+<div class="my-8 not-prose">
+  <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-{{ box_type }}-light to-white border-l-4 border-{{ box_type }}">
+    <div class="absolute top-0 right-0 w-32 h-32 bg-{{ box_type }}/5 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+    
+    <div class="relative p-6 md:p-8">
+      <div class="flex items-start gap-4">
+        <div class="flex-shrink-0 w-12 h-12 bg-{{ box_type }}/10 rounded-xl flex items-center justify-center">
+          <i class="fa-solid {{ box_icon }} text-xl text-{{ box_type }}"></i>
+        </div>
+        
+        <div class="flex-1 min-w-0">
+          <h4 class="text-lg font-bold text-{{ box_type }} mb-2">{{ include.title }}</h4>
+          <div class="text-gray-700 leading-relaxed">
+            {{ include.content | markdownify }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
