@@ -4,49 +4,77 @@ title: actualites.cmr.meta_title
 namespace: actualites-cmr
 permalink: /actualites-cmr/
 ---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
-<section class="bg-gradient-to-br from-cmr to-cmr-dark text-white py-16 md:py-20">
-  <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-6">
+<!-- Hero Section -->
+<section class="hero relative overflow-hidden bg-gradient-to-br from-cmr via-cmr to-cmr-dark">
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 pattern-dots text-white"></div>
+  </div>
+  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="container-custom relative z-10 py-12 md:py-16">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/15 backdrop-blur-sm rounded-2xl mb-6">
         <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-12 object-contain">
       </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{% t actualites.cmr.hero_title %}</h1>
-      <p class="text-lg md:text-xl opacity-90">{% t actualites.cmr.hero_description %}</p>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+        {% t actualites.cmr.hero_title %}
+      </h1>
+      <p class="text-lg text-white/85 leading-relaxed">{% t actualites.cmr.hero_description %}</p>
     </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 60V36C240 12 480 0 720 0C960 0 1200 12 1440 36V60H0Z" fill="#f8fafc"/>
+    </svg>
   </div>
 </section>
 
-<section class="container-custom py-16">
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <a href="{% tl articles/cmr-contrat %}" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
-      <div class="aspect-video bg-gradient-to-br from-cmr-light to-cmr/10 flex items-center justify-center">
-        <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all">
-      </div>
-      <div class="p-6">
-        <span class="text-xs font-semibold text-cmr bg-cmr-light px-2 py-1 rounded-full">Programme</span>
-        <h3 class="font-bold text-lg text-gray-800 mt-3 mb-2 group-hover:text-cmr transition-colors">{% t articles.cmr_contrat.title %}</h3>
-        <p class="text-gray-500 text-sm mb-4">{% t articles.cmr_contrat.excerpt %}</p>
-        <span class="inline-flex items-center text-cmr font-semibold text-sm">
-          {% t common.read_more %}
-          <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-        </span>
-      </div>
-    </a>
+<!-- News Grid -->
+<section class="section bg-surface-muted">
+  <div class="container-custom">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Article 1 -->
+      <a href="{% tl articles/cmr-contrat %}" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cmr-light via-cmr-muted to-cmr/5">
+          <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+        </div>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cmr-light text-cmr">{% t common.program %}</span>
+          <h3 class="news-card-title">{% t articles.cmr_contrat.title %}</h3>
+          <p class="news-card-excerpt">{% t articles.cmr_contrat.excerpt %}</p>
+          <span class="inline-flex items-center text-cmr font-semibold text-sm">
+            {% t common.read_more %}
+            <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+          </span>
+        </div>
+      </a>
 
-    <a href="{% tl articles/methode-calcul-cmr %}" class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
-      <div class="aspect-video bg-gradient-to-br from-cmr-light to-cmr/10 flex items-center justify-center">
-        <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all">
-      </div>
-      <div class="p-6">
-        <span class="text-xs font-semibold text-cmr bg-cmr-light px-2 py-1 rounded-full">Guide</span>
-        <h3 class="font-bold text-lg text-gray-800 mt-3 mb-2 group-hover:text-cmr transition-colors">{% t articles.methode_calcul_cmr.title %}</h3>
-        <p class="text-gray-500 text-sm mb-4">{% t articles.methode_calcul_cmr.excerpt %}</p>
-        <span class="inline-flex items-center text-cmr font-semibold text-sm">
-          {% t common.read_more %}
-          <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-        </span>
-      </div>
-    </a>
+      <!-- Article 2 -->
+      <a href="{% tl articles/methode-calcul-cmr %}" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cmr-light via-cmr-muted to-cmr/5">
+          <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+        </div>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cmr-light text-cmr">{% t common.guide %}</span>
+          <h3 class="news-card-title">{% t articles.methode_calcul_cmr.title %}</h3>
+          <p class="news-card-excerpt">{% t articles.methode_calcul_cmr.excerpt %}</p>
+          <span class="inline-flex items-center text-cmr font-semibold text-sm">
+            {% t common.read_more %}
+            <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-12 text-center">
+      <a href="{% tl home %}" class="back-link">
+        <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}right{% else %}left{% endif %}"></i>
+        {% t common.back_to_home %}
+      </a>
+    </div>
   </div>
 </section>

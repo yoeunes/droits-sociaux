@@ -4,27 +4,58 @@ title: conditions.meta_title
 namespace: conditions
 permalink: /conditions/
 ---
+{% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
-<section class="bg-gradient-to-br from-cnss via-cnss to-cmr text-white py-16 md:py-20">
-  <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{% t conditions.hero_title %}</h1>
-      <p class="text-lg md:text-xl opacity-90">{% t conditions.hero_description %}</p>
+<!-- Hero Section -->
+<section class="hero hero-gradient relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 pattern-dots text-white"></div>
+  </div>
+  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="container-custom hero-content py-12 md:py-16">
+    <div class="max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
+        <i class="fa-solid fa-scale-balanced"></i>
+        {% t common.legal %}
+      </div>
+      <h1 class="hero-title text-balance">{% t conditions.hero_title %}</h1>
+      <p class="hero-description">{% t conditions.hero_description %}</p>
     </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 60V36C240 12 480 0 720 0C960 0 1200 12 1440 36V60H0Z" fill="#f8fafc"/>
+    </svg>
   </div>
 </section>
 
-<section class="container-custom py-16">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100 prose prose-gray prose-lg max-w-none
-      prose-headings:text-gray-900 prose-headings:font-bold
-      prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-100
-      prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3 prose-h3:text-gray-800
-      prose-p:text-gray-600 prose-p:leading-relaxed
-      prose-a:text-cnss prose-a:font-medium hover:prose-a:underline
-      prose-ul:my-4 prose-ul:space-y-2 prose-li:text-gray-600
-      prose-strong:text-gray-800">
-      {% tf conditions.md %}
+<!-- Content Section -->
+<section class="section bg-surface-muted">
+  <div class="container-custom">
+    <div class="max-w-4xl mx-auto">
+      <div class="card shadow-medium p-8 md:p-12">
+        <div class="prose prose-lg max-w-none
+          prose-headings:text-content prose-headings:font-bold
+          prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-5 prose-h2:pb-3 prose-h2:border-b prose-h2:border-surface-border
+          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-content
+          prose-p:text-content-muted prose-p:leading-relaxed prose-p:mb-5
+          prose-a:text-primary prose-a:font-medium hover:prose-a:underline
+          prose-ul:my-5 prose-ul:space-y-2 prose-li:text-content-muted
+          prose-strong:text-content
+          {% if direction == 'rtl' %}text-right{% endif %}">
+          {% tf conditions.md %}
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="mt-8 text-center">
+        <a href="{% tl home %}" class="back-link">
+          <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}right{% else %}left{% endif %}"></i>
+          {% t common.back_to_home %}
+        </a>
+      </div>
     </div>
   </div>
 </section>

@@ -6,154 +6,214 @@ permalink: /
 ---
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
-<section class="bg-gradient-to-br from-cnss via-cnss to-cmr text-white py-16 md:py-24">
-  <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">{% t home.hero_title %}</h1>
-      <p class="text-lg md:text-xl opacity-90 mb-10 leading-relaxed">{% t home.hero_description %}</p>
+<!-- Hero Section -->
+<section class="hero hero-gradient relative overflow-hidden">
+  <!-- Subtle pattern overlay -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 pattern-dots text-white"></div>
+  </div>
+
+  <!-- Decorative shapes -->
+  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-96 h-96 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 {% if direction == 'rtl' %}right-0{% else %}left-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+  <div class="container-custom hero-content">
+    <div class="max-w-3xl mx-auto">
+      <!-- Trust badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-8">
+        <i class="fa-solid fa-shield-halved text-safe"></i>
+        {% t home.hero_badge %}
+      </div>
+
+      <h1 class="hero-title text-balance">{% t home.hero_title %}</h1>
+      <p class="hero-description mb-10">{% t home.hero_description %}</p>
+
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="{% tl simulateurs/cnss %}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-cnss font-bold rounded-xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+        <a href="{% tl simulateurs/cnss %}" class="btn btn-white gap-2 text-base px-8 py-4 w-full sm:w-auto">
           <i class="fa-solid fa-calculator"></i>
           {% t common.access_simulator %}
         </a>
-        <a href="{% tl about %}" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur text-white font-semibold rounded-xl hover:bg-white/20 transition-all border border-white/20">
+        <a href="{% tl about %}" class="btn bg-white/10 backdrop-blur-sm text-white border border-white/20 hover:bg-white/20 gap-2 text-base px-8 py-4 w-full sm:w-auto">
           {% t nav.about %}
-          <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %}"></i>
         </a>
       </div>
     </div>
   </div>
-</section>
 
-<section class="container-custom py-16">
-  <div class="grid md:grid-cols-2 gap-6">
-    <a href="{% tl simulateurs/cnss %}" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:border-cnss/20 transition-all">
-      <div class="flex items-start gap-6">
-        <div class="flex-shrink-0 w-16 h-16 bg-cnss-light rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-10 object-contain">
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-semibold text-cnss bg-cnss-light px-2 py-1 rounded-full">{% t nav.pension_section %}</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-cnss transition-colors">{% t home.simulators.cnss_title %}</h3>
-          <p class="text-gray-500 text-sm mb-4">{% t home.simulators.cnss_desc %}</p>
-          <span class="inline-flex items-center text-cnss font-semibold text-sm">
-            {% t common.access_simulator %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-
-    <a href="{% tl simulateurs/cmr %}" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:border-cmr/20 transition-all">
-      <div class="flex items-start gap-6">
-        <div class="flex-shrink-0 w-16 h-16 bg-cmr-light rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-10 object-contain">
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-semibold text-cmr bg-cmr-light px-2 py-1 rounded-full">{% t nav.pension_section %}</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-cmr transition-colors">{% t home.simulators.cmr_title %}</h3>
-          <p class="text-gray-500 text-sm mb-4">{% t home.simulators.cmr_desc %}</p>
-          <span class="inline-flex items-center text-cmr font-semibold text-sm">
-            {% t common.access_simulator %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-
-    <a href="{% tl simulateurs/amo-cnss %}" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:border-cnss/20 transition-all">
-      <div class="flex items-start gap-6">
-        <div class="flex-shrink-0 w-16 h-16 bg-cnss-light rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="AMO CNSS" class="h-10 object-contain">
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-semibold text-cnss bg-cnss-light px-2 py-1 rounded-full">{% t nav.amo_section %}</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-cnss transition-colors">{% t home.simulators.amo_cnss_title %}</h3>
-          <p class="text-gray-500 text-sm mb-4">{% t home.simulators.amo_cnss_desc %}</p>
-          <span class="inline-flex items-center text-cnss font-semibold text-sm">
-            {% t common.access_simulator %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-          </span>
-        </div>
-      </div>
-    </a>
-
-    <a href="{% tl simulateurs/amo-cnops %}" class="group bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-xl hover:border-cnops/20 transition-all">
-      <div class="flex items-start gap-6">
-        <div class="flex-shrink-0 w-16 h-16 bg-cnops-light rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-          <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="CNOPS" class="h-10 object-contain">
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-semibold text-cnops bg-cnops-light px-2 py-1 rounded-full">{% t nav.amo_section %}</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-cnops transition-colors">{% t home.simulators.amo_cnops_title %}</h3>
-          <p class="text-gray-500 text-sm mb-4">{% t home.simulators.amo_cnops_desc %}</p>
-          <span class="inline-flex items-center text-cnops font-semibold text-sm">
-            {% t common.access_simulator %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-          </span>
-        </div>
-      </div>
-    </a>
+  <!-- Bottom wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 100V60C240 20 480 0 720 0C960 0 1200 20 1440 60V100H0Z" fill="#f8fafc"/>
+    </svg>
   </div>
 </section>
 
-<section class="bg-white py-16">
+<!-- Simulators Section -->
+<section class="section bg-surface-muted">
   <div class="container-custom">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">{% t home.news_title %}</h2>
-      <p class="text-gray-500 max-w-xl mx-auto">{% t home.news_subtitle %}</p>
+    <div class="section-header">
+      <h2 class="section-title">{% t home.simulators_title %}</h2>
+      <p class="section-subtitle">{% t home.simulators_subtitle %}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- CNSS Pension -->
+      <a href="{% tl simulateurs/cnss %}" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cnss-light">
+            <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-10 object-contain">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="trust-badge-primary">
+                <i class="fa-solid fa-building-columns"></i>
+                {% t nav.pension_section %}
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cnss transition-colors">
+              {% t home.simulators.cnss_title %}
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">{% t home.simulators.cnss_desc %}</p>
+            <span class="inline-flex items-center text-cnss font-semibold text-sm">
+              {% t common.access_simulator %}
+              <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CMR Pension -->
+      <a href="{% tl simulateurs/cmr %}" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cmr-light">
+            <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-10 object-contain">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-cmr/10 text-cmr">
+                <i class="fa-solid fa-building-columns"></i>
+                {% t nav.pension_section %}
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cmr transition-colors">
+              {% t home.simulators.cmr_title %}
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">{% t home.simulators.cmr_desc %}</p>
+            <span class="inline-flex items-center text-cmr font-semibold text-sm">
+              {% t common.access_simulator %}
+              <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- AMO CNSS -->
+      <a href="{% tl simulateurs/amo-cnss %}" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cnss-light">
+            <i class="fa-solid fa-heart-pulse text-2xl text-cnss"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="trust-badge-primary">
+                <i class="fa-solid fa-heart-pulse"></i>
+                {% t nav.amo_section %}
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cnss transition-colors">
+              {% t home.simulators.amo_cnss_title %}
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">{% t home.simulators.amo_cnss_desc %}</p>
+            <span class="inline-flex items-center text-cnss font-semibold text-sm">
+              {% t common.access_simulator %}
+              <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- AMO CNOPS -->
+      <a href="{% tl simulateurs/amo-cnops %}" class="group card card-hover p-6 md:p-8">
+        <div class="flex items-start gap-5">
+          <div class="simulator-card-icon bg-cnops-light">
+            <i class="fa-solid fa-heart-pulse text-2xl text-cnops"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide bg-cnops/10 text-cnops">
+                <i class="fa-solid fa-heart-pulse"></i>
+                {% t nav.amo_section %}
+              </span>
+            </div>
+            <h3 class="font-bold text-xl text-content mb-2 group-hover:text-cnops transition-colors">
+              {% t home.simulators.amo_cnops_title %}
+            </h3>
+            <p class="text-content-muted text-sm mb-4 line-clamp-2">{% t home.simulators.amo_cnops_desc %}</p>
+            <span class="inline-flex items-center text-cnops font-semibold text-sm">
+              {% t common.access_simulator %}
+              <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+            </span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest News Section -->
+<section class="section bg-white">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">{% t home.news_title %}</h2>
+      <p class="section-subtitle">{% t home.news_subtitle %}</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">
-      <a href="{% tl articles/cnss-pension-1320 %}" class="group bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
-        <div class="aspect-[16/9] bg-gradient-to-br from-cnss-light to-cnss/10 flex items-center justify-center">
-          <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 group-hover:scale-110 transition-transform">
+      <!-- News Card 1 - CNSS -->
+      <a href="{% tl articles/cnss-pension-1320 %}" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cnss-light via-cnss-muted to-cnss/5">
+          <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="CNSS" class="h-16 opacity-80 group-hover:scale-110 transition-transform duration-300">
         </div>
-        <div class="p-6">
-          <span class="text-xs font-semibold text-cnss">CNSS</span>
-          <h3 class="font-bold text-gray-800 mt-2 mb-2 group-hover:text-cnss transition-colors">{% t home.news_cnss_title %}</h3>
-          <p class="text-sm text-gray-500 mb-4">{% t home.news_cnss_desc %}</p>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cnss-light text-cnss">CNSS</span>
+          <h3 class="news-card-title">{% t home.news_cnss_title %}</h3>
+          <p class="news-card-excerpt">{% t home.news_cnss_desc %}</p>
           <span class="inline-flex items-center text-sm font-semibold text-cnss">
             {% t common.read_more %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
+            <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
           </span>
         </div>
       </a>
 
-      <a href="{% tl articles/cnops-fusion %}" class="group bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
-        <div class="aspect-[16/9] bg-gradient-to-br from-cnops-light to-cnops/10 flex items-center justify-center">
-          <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="CNOPS" class="h-16 group-hover:scale-110 transition-transform">
+      <!-- News Card 2 - CNOPS -->
+      <a href="{% tl articles/cnops-fusion %}" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cnops-light via-cnops-muted to-cnops/5">
+          <img src="{{ '/assets/img/cnops_logo.png' | relative_url }}" alt="CNOPS" class="h-16 opacity-80 group-hover:scale-110 transition-transform duration-300">
         </div>
-        <div class="p-6">
-          <span class="text-xs font-semibold text-cnops">CNOPS</span>
-          <h3 class="font-bold text-gray-800 mt-2 mb-2 group-hover:text-cnops transition-colors">{% t home.news_fusion_title %}</h3>
-          <p class="text-sm text-gray-500 mb-4">{% t home.news_fusion_desc %}</p>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cnops-light text-cnops">CNOPS</span>
+          <h3 class="news-card-title">{% t home.news_fusion_title %}</h3>
+          <p class="news-card-excerpt">{% t home.news_fusion_desc %}</p>
           <span class="inline-flex items-center text-sm font-semibold text-cnops">
             {% t common.read_more %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
+            <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
           </span>
         </div>
       </a>
 
-      <a href="{% tl articles/cmr-contrat %}" class="group bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all">
-        <div class="aspect-[16/9] bg-gradient-to-br from-cmr-light to-cmr/10 flex items-center justify-center">
-          <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 group-hover:scale-110 transition-transform">
+      <!-- News Card 3 - CMR -->
+      <a href="{% tl articles/cmr-contrat %}" class="news-card">
+        <div class="news-card-image bg-gradient-to-br from-cmr-light via-cmr-muted to-cmr/5">
+          <img src="{{ '/assets/img/cmr_logo.png' | relative_url }}" alt="CMR" class="h-16 opacity-80 group-hover:scale-110 transition-transform duration-300">
         </div>
-        <div class="p-6">
-          <span class="text-xs font-semibold text-cmr">CMR</span>
-          <h3 class="font-bold text-gray-800 mt-2 mb-2 group-hover:text-cmr transition-colors">{% t home.news_cmr_title %}</h3>
-          <p class="text-sm text-gray-500 mb-4">{% t home.news_cmr_desc %}</p>
+        <div class="news-card-body">
+          <span class="news-card-tag bg-cmr-light text-cmr">CMR</span>
+          <h3 class="news-card-title">{% t home.news_cmr_title %}</h3>
+          <p class="news-card-excerpt">{% t home.news_cmr_desc %}</p>
           <span class="inline-flex items-center text-sm font-semibold text-cmr">
             {% t common.read_more %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
+            <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
           </span>
         </div>
       </a>
@@ -161,51 +221,99 @@ permalink: /
   </div>
 </section>
 
-<section class="container-custom py-16">
-  <div class="text-center mb-12">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">{% t home.how_it_works.title %}</h2>
-    <p class="text-gray-500 max-w-xl mx-auto">{% t home.how_it_works.subtitle %}</p>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-8">
-    <div class="relative">
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 relative z-10">
-        <div class="w-14 h-14 bg-cnss text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-6">1</div>
-        <div class="text-4xl text-cnss mb-4"><i class="fa-solid fa-keyboard"></i></div>
-        <h3 class="font-bold text-xl text-gray-800 mb-3">{% t home.how_it_works.step1_title %}</h3>
-        <p class="text-gray-500 leading-relaxed">{% t home.how_it_works.step1_desc %}</p>
-      </div>
-      <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-200"></div>
+<!-- How It Works Section -->
+<section class="section bg-surface-muted">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">{% t home.how_it_works.title %}</h2>
+      <p class="section-subtitle">{% t home.how_it_works.subtitle %}</p>
     </div>
 
-    <div class="relative">
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 relative z-10">
-        <div class="w-14 h-14 bg-cmr text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-6">2</div>
-        <div class="text-4xl text-cmr mb-4"><i class="fa-solid fa-calculator"></i></div>
-        <h3 class="font-bold text-xl text-gray-800 mb-3">{% t home.how_it_works.step2_title %}</h3>
-        <p class="text-gray-500 leading-relaxed">{% t home.how_it_works.step2_desc %}</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Step 1 -->
+      <div class="relative">
+        <div class="card p-8 text-center h-full">
+          <div class="step-number bg-primary mx-auto">1</div>
+          <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-keyboard text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-bold text-xl text-content mb-3">{% t home.how_it_works.step1_title %}</h3>
+          <p class="text-content-muted leading-relaxed">{% t home.how_it_works.step1_desc %}</p>
+        </div>
+        <!-- Connector -->
+        <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-surface-border z-10"></div>
       </div>
-      <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gray-200"></div>
-    </div>
 
-    <div class="relative">
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-        <div class="w-14 h-14 bg-cnops text-white rounded-xl flex items-center justify-center text-2xl font-bold mb-6">3</div>
-        <div class="text-4xl text-cnops mb-4"><i class="fa-solid fa-file-pdf"></i></div>
-        <h3 class="font-bold text-xl text-gray-800 mb-3">{% t home.how_it_works.step3_title %}</h3>
-        <p class="text-gray-500 leading-relaxed">{% t home.how_it_works.step3_desc %}</p>
+      <!-- Step 2 -->
+      <div class="relative">
+        <div class="card p-8 text-center h-full">
+          <div class="step-number bg-secondary mx-auto">2</div>
+          <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-calculator text-2xl text-secondary"></i>
+          </div>
+          <h3 class="font-bold text-xl text-content mb-3">{% t home.how_it_works.step2_title %}</h3>
+          <p class="text-content-muted leading-relaxed">{% t home.how_it_works.step2_desc %}</p>
+        </div>
+        <!-- Connector -->
+        <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-surface-border z-10"></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative">
+        <div class="card p-8 text-center h-full">
+          <div class="step-number bg-accent mx-auto">3</div>
+          <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-file-pdf text-2xl text-accent"></i>
+          </div>
+          <h3 class="font-bold text-xl text-content mb-3">{% t home.how_it_works.step3_title %}</h3>
+          <p class="text-content-muted leading-relaxed">{% t home.how_it_works.step3_desc %}</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="bg-footer py-16">
-  <div class="container-custom text-center">
-    <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">{% t home.help_title %}</h2>
-    <p class="text-footer-text mb-8 max-w-xl mx-auto">{% t home.help_subtitle %}</p>
-    <a href="{% tl contact %}" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-footer font-bold rounded-xl hover:bg-gray-100 transition-all">
-      <i class="fa-solid fa-envelope"></i>
-      {% t home.help_button %}
-    </a>
+<!-- Trust Section -->
+<section class="section bg-white">
+  <div class="container-custom">
+    <div class="card card-featured p-8 md:p-12">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="w-14 h-14 bg-safe/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-shield-halved text-2xl text-safe"></i>
+          </div>
+          <h3 class="font-bold text-lg text-content mb-2">{% t home.trust.security_title %}</h3>
+          <p class="text-content-muted text-sm">{% t home.trust.security_desc %}</p>
+        </div>
+        <div>
+          <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-clock text-2xl text-primary"></i>
+          </div>
+          <h3 class="font-bold text-lg text-content mb-2">{% t home.trust.instant_title %}</h3>
+          <p class="text-content-muted text-sm">{% t home.trust.instant_desc %}</p>
+        </div>
+        <div>
+          <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-circle-check text-2xl text-accent"></i>
+          </div>
+          <h3 class="font-bold text-lg text-content mb-2">{% t home.trust.free_title %}</h3>
+          <p class="text-content-muted text-sm">{% t home.trust.free_desc %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-sm bg-footer">
+  <div class="container-custom">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">{% t home.help_title %}</h2>
+      <p class="text-footer-text mb-8">{% t home.help_subtitle %}</p>
+      <a href="{% tl contact %}" class="btn btn-white gap-2">
+        <i class="fa-solid fa-envelope"></i>
+        {% t home.help_button %}
+      </a>
+    </div>
   </div>
 </section>

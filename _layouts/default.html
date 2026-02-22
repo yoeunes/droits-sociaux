@@ -6,7 +6,7 @@
   <meta name="description" content="{{ page.description | default: site.description }}">
   <meta name="author" content="{{ site.author }}">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#005a9e">
+  <meta name="theme-color" content="#1e5f8a">
 
   {% capture page_title %}{% t {{ page.title }} %}{% endcapture %}
   {% assign page_title = page_title | strip %}
@@ -44,10 +44,12 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.css_version }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="pt-16">
+<body class="min-h-screen flex flex-col pt-16 lg:pt-[104px]">
   {% include header.html %}
 
-  {{ content }}
+  <main class="flex-1">
+    {{ content }}
+  </main>
 
   {% include footer.html %}
 

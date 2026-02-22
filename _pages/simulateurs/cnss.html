@@ -14,23 +14,37 @@ cta_text_key: simulators.cnss.cta_text
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
 <div class="text-center mb-8">
-  <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="Logo CNSS" class="h-16 mx-auto mb-4">
+  <div class="inline-flex items-center justify-center w-20 h-20 bg-cnss-light rounded-2xl mb-4">
+    <img src="{{ '/assets/img/cnss_logo.png' | relative_url }}" alt="Logo CNSS" class="h-12 object-contain">
+  </div>
+  <p class="text-content-muted text-sm">{% t simulators.cnss.subtitle %}</p>
 </div>
 
 <form id="cnss-form" class="space-y-6">
-  <div>
-    <label for="birth-date" class="form-label">{% t simulators.cnss.birth_date %} :</label>
+  <div class="form-group">
+    <label for="birth-date" class="form-label">
+      <i class="fa-regular fa-calendar text-cnss {% if direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
+      {% t simulators.cnss.birth_date %}
+    </label>
     <input type="date" id="birth-date" class="form-input" onchange="calculate()" oninput="calculate()">
   </div>
 
-  <div>
-    <label for="days-declared" class="form-label">{% t simulators.cnss.days_declared %} :</label>
+  <div class="form-group">
+    <label for="days-declared" class="form-label">
+      <i class="fa-regular fa-calendar-days text-cnss {% if direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
+      {% t simulators.cnss.days_declared %}
+    </label>
     <input type="number" id="days-declared" class="form-input" placeholder="{% t simulators.cnss.days_placeholder %}" oninput="calculate()">
+    <p class="form-helper">{% t simulators.cnss.days_helper %}</p>
   </div>
 
-  <div id="salary-group">
-    <label for="salary" class="form-label">{% t simulators.cnss.salary %} :</label>
+  <div id="salary-group" class="form-group">
+    <label for="salary" class="form-label">
+      <i class="fa-solid fa-money-bill-wave text-cnss {% if direction == 'rtl' %}ml-2{% else %}mr-2{% endif %}"></i>
+      {% t simulators.cnss.salary %}
+    </label>
     <input type="number" id="salary" class="form-input" placeholder="{% t simulators.cnss.salary_placeholder %}" oninput="calculate()">
+    <p class="form-helper">{% t simulators.cnss.salary_helper %}</p>
   </div>
 </form>
 
@@ -78,7 +92,11 @@ function calculate() {
   let pension = 0, rate = 0;
 
   if (days < 1320) {
-    resultDiv.innerHTML = `<div class="p-6 bg-red-50 text-red-700 rounded-lg text-center"><strong>${LABELS.notEligible}</strong></div>`;
+    resultDiv.innerHTML = `
+      <div class="p-6 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-center">
+        <i class="fa-solid fa-circle-xmark text-2xl mb-2"></i>
+        <p class="font-semibold">${LABELS.notEligible}</p>
+      </div>`;
     resultDiv.classList.remove('hidden');
     return;
   } else if (days < 3240) {
@@ -109,29 +127,34 @@ function calculate() {
 
   resultDiv.innerHTML = `
     <div class="grid grid-cols-2 gap-4 mb-6">
-      <div class="bg-cnss text-white p-6 rounded-xl text-center">
-        <i class="fa-solid fa-sack-dollar text-2xl mb-2"></i>
-        <span class="block text-sm opacity-90">${LABELS.pension}</span>
-        <strong class="text-2xl bg-white text-cnss px-4 py-1 rounded-full mt-2 inline-block">${pension.toFixed(2)} MAD</strong>
+      <div class="result-card-primary col-span-2 sm:col-span-1">
+        <i class="fa-solid fa-sack-dollar text-3xl mb-3 opacity-80"></i>
+        <span class="block text-sm opacity-90 mb-1">${LABELS.pension}</span>
+        <strong class="text-2xl font-bold">${pension.toFixed(2)} MAD</strong>
       </div>
-      <div class="bg-white border p-6 rounded-xl text-center">
-        <i class="fa-solid fa-percent text-2xl text-cnss mb-2"></i>
-        <span class="block text-sm text-gray-500">${LABELS.rate}</span>
-        <strong class="text-xl text-cnss">${rate > 0 ? rate.toFixed(2) + '%' : '-'}</strong>
+      <div class="result-card-secondary col-span-2 sm:col-span-1">
+        <i class="fa-solid fa-percent text-2xl text-cnss mb-3"></i>
+        <span class="block text-sm text-content-muted mb-1">${LABELS.rate}</span>
+        <strong class="text-xl font-bold text-cnss">${rate > 0 ? rate.toFixed(2) + '%' : '-'}</strong>
       </div>
-      ${showSalary ? `<div class="bg-white border p-6 rounded-xl text-center"><i class="fa-solid fa-money-bill-wave text-2xl text-cnss mb-2"></i><span class="block text-sm text-gray-500">${LABELS.salaryRef}</span><strong class="text-xl text-cnss">${referenceSalary.toFixed(2)} MAD</strong></div>` : ''}
-      <div class="bg-white border p-6 rounded-xl text-center">
-        <i class="fa-solid fa-calendar-days text-2xl text-cnss mb-2"></i>
-        <span class="block text-sm text-gray-500">${LABELS.days}</span>
-        <strong class="text-xl text-cnss">${days}</strong>
+      ${showSalary ? `
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-money-bill-wave text-xl text-cnss mb-2"></i>
+        <span class="block text-xs text-content-muted mb-1">${LABELS.salaryRef}</span>
+        <strong class="text-lg font-bold text-cnss">${referenceSalary.toFixed(2)} MAD</strong>
+      </div>` : ''}
+      <div class="result-card-secondary">
+        <i class="fa-solid fa-calendar-days text-xl text-cnss mb-2"></i>
+        <span class="block text-xs text-content-muted mb-1">${LABELS.days}</span>
+        <strong class="text-lg font-bold text-cnss">${days}</strong>
       </div>
     </div>
     <div class="flex flex-col sm:flex-row gap-3">
-      <button onclick="generatePDF()" class="btn bg-red-600 hover:bg-red-700 text-white flex-1">
-        <i class="fa-solid fa-file-pdf mr-2"></i> ${LABELS.download}
+      <button onclick="generatePDF()" class="btn bg-red-600 hover:bg-red-700 text-white flex-1 gap-2">
+        <i class="fa-solid fa-file-pdf"></i> ${LABELS.download}
       </button>
-      <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Simulateurs Sociaux Maroc')}" target="_blank" class="btn bg-green-600 hover:bg-green-700 text-white flex-1 text-center">
-        <i class="fa-brands fa-whatsapp mr-2"></i> ${LABELS.share}
+      <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Simulateurs Sociaux Maroc')}" target="_blank" class="btn bg-green-600 hover:bg-green-700 text-white flex-1 justify-center gap-2">
+        <i class="fa-brands fa-whatsapp"></i> ${LABELS.share}
       </a>
     </div>
   `;
@@ -145,7 +168,7 @@ function generatePDF() {
   const now = new Date();
   const ref = `CNSS-${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2,'0')}${now.getDate().toString().padStart(2,'0')}`;
 
-  doc.setFillColor(0, 90, 158);
+  doc.setFillColor(30, 95, 138);
   doc.rect(0, 0, 210, 40, 'F');
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(22);
@@ -171,19 +194,19 @@ function generatePDF() {
     doc.setFont(undefined, 'bold');
     doc.text(label, 20, y);
     doc.setFont(undefined, 'normal');
-    doc.setTextColor(0, 90, 158);
+    doc.setTextColor(30, 95, 138);
     doc.text(String(value), 80, y);
     doc.setTextColor(0, 0, 0);
     y += 12;
   });
 
-  doc.setFillColor(230, 247, 255);
+  doc.setFillColor(240, 247, 252);
   doc.rect(20, y + 10, 170, 40, 'F');
   doc.setFontSize(12);
   doc.setTextColor(100);
   doc.text('Pension Mensuelle Estimee', 105, y + 25, { align: 'center' });
   doc.setFontSize(28);
-  doc.setTextColor(0, 90, 158);
+  doc.setTextColor(30, 95, 138);
   doc.text(pdfData.pension + ' DH', 105, y + 42, { align: 'center' });
 
   doc.setFillColor(255, 248, 225);

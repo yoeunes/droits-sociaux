@@ -6,75 +6,126 @@ permalink: /contact/
 ---
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 
-<section class="bg-gradient-to-br from-cnss via-cnss to-cmr text-white py-16 md:py-20">
+<!-- Hero Section -->
+<section class="hero hero-gradient relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0 pattern-dots text-white"></div>
+  </div>
+  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+
+  <div class="container-custom hero-content py-12 md:py-16">
+    <div class="max-w-2xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
+        <i class="fa-solid fa-headset"></i>
+        {% t contact.badge %}
+      </div>
+      <h1 class="hero-title text-balance">{% t contact.hero_title %}</h1>
+      <p class="hero-description">{% t contact.hero_description %}</p>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 60V36C240 12 480 0 720 0C960 0 1200 12 1440 36V60H0Z" fill="#f8fafc"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Contact Methods Section -->
+<section class="section bg-surface-muted">
   <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{% t contact.hero_title %}</h1>
-      <p class="text-lg md:text-xl opacity-90">{% t contact.hero_description %}</p>
+    <div class="section-header">
+      <h2 class="section-title">{% t contact.help_title %}</h2>
+      <p class="section-subtitle">{% t contact.help_subtitle %}</p>
+    </div>
+
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 mb-12">
+      <!-- Email Card -->
+      <a href="mailto:contact@simulateurs-sociaux.ma" class="group card card-hover p-8 text-center">
+        <div class="feature-icon bg-primary/10">
+          <i class="fa-solid fa-envelope text-2xl text-primary"></i>
+        </div>
+        <h3 class="font-bold text-content mb-2 group-hover:text-primary transition-colors">
+          {% t contact.email_title %}
+        </h3>
+        <p class="text-sm text-content-muted mb-4">{% t contact.email_desc %}</p>
+        <span class="inline-flex items-center text-primary font-semibold text-sm">
+          {% t contact.email_btn %}
+          <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+        </span>
+      </a>
+
+      <!-- WhatsApp Card -->
+      <a href="https://wa.me/212600000000" target="_blank" rel="noopener" class="group card card-hover p-8 text-center">
+        <div class="feature-icon bg-green-500/10">
+          <i class="fa-brands fa-whatsapp text-2xl text-green-600"></i>
+        </div>
+        <h3 class="font-bold text-content mb-2 group-hover:text-green-600 transition-colors">
+          {% t contact.whatsapp_title %}
+        </h3>
+        <p class="text-sm text-content-muted mb-4">{% t contact.whatsapp_desc %}</p>
+        <span class="inline-flex items-center text-green-600 font-semibold text-sm">
+          {% t contact.whatsapp_btn %}
+          <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+        </span>
+      </a>
+
+      <!-- Suggestion Card -->
+      <a href="mailto:contact@simulateurs-sociaux.ma?subject=Suggestion" class="group card card-hover p-8 text-center">
+        <div class="feature-icon bg-amber-500/10">
+          <i class="fa-solid fa-lightbulb text-2xl text-amber-600"></i>
+        </div>
+        <h3 class="font-bold text-content mb-2 group-hover:text-amber-600 transition-colors">
+          {% t contact.suggestion_title %}
+        </h3>
+        <p class="text-sm text-content-muted mb-4">{% t contact.suggestion_desc %}</p>
+        <span class="inline-flex items-center text-amber-600 font-semibold text-sm">
+          {% t contact.suggestion_btn %}
+          <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
+        </span>
+      </a>
+    </div>
+
+    <!-- Social Links Card -->
+    <div class="max-w-4xl mx-auto">
+      <div class="card p-8">
+        <div class="text-center mb-6">
+          <h3 class="font-bold text-content text-lg mb-2">{% t contact.social_title %}</h3>
+          <p class="text-content-muted text-sm">{% t contact.social_subtitle %}</p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#" target="_blank" rel="noopener" class="flex items-center gap-3 px-6 py-3 bg-surface-subtle rounded-xl hover:bg-blue-600 hover:text-white text-content transition-all duration-200 group">
+            <i class="fa-brands fa-facebook-f text-lg text-blue-600 group-hover:text-white"></i>
+            <span class="font-medium">Facebook</span>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="flex items-center gap-3 px-6 py-3 bg-surface-subtle rounded-xl hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white text-content transition-all duration-200 group">
+            <i class="fa-brands fa-instagram text-lg text-pink-500 group-hover:text-white"></i>
+            <span class="font-medium">Instagram</span>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="flex items-center gap-3 px-6 py-3 bg-surface-subtle rounded-xl hover:bg-red-600 hover:text-white text-content transition-all duration-200 group">
+            <i class="fa-brands fa-youtube text-lg text-red-600 group-hover:text-white"></i>
+            <span class="font-medium">YouTube</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="container-custom py-16">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">{% t contact.help_title %}</h2>
-      <p class="text-gray-500 max-w-xl mx-auto">{% t contact.help_subtitle %}</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
-      <a href="mailto:contact@simulateurs-sociaux.ma" class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-cnss/20 transition-all text-center">
-        <div class="w-16 h-16 bg-cnss-light rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-envelope text-2xl text-cnss"></i>
+<!-- FAQ or Additional Info Section -->
+<section class="section bg-white">
+  <div class="container-custom">
+    <div class="max-w-4xl mx-auto">
+      <div class="card card-featured p-8 md:p-10">
+        <div class="flex items-start gap-5">
+          <div class="flex-shrink-0 w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
+            <i class="fa-solid fa-clock text-2xl text-primary"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-xl text-content mb-2">{% t contact.response_title %}</h3>
+            <p class="text-content-muted leading-relaxed">{% t contact.response_desc %}</p>
+          </div>
         </div>
-        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-cnss transition-colors">{% t contact.email_title %}</h3>
-        <p class="text-sm text-gray-500 mb-4">{% t contact.email_desc %}</p>
-        <span class="inline-flex items-center text-cnss font-semibold text-sm">
-          {% t contact.email_btn %}
-          <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-        </span>
-      </a>
-
-      <a href="https://wa.me/212600000000" target="_blank" class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-green-500/20 transition-all text-center">
-        <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fa-brands fa-whatsapp text-2xl text-green-500"></i>
-        </div>
-        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">{% t contact.whatsapp_title %}</h3>
-        <p class="text-sm text-gray-500 mb-4">{% t contact.whatsapp_desc %}</p>
-        <span class="inline-flex items-center text-green-600 font-semibold text-sm">
-          {% t contact.whatsapp_btn %}
-          <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-        </span>
-      </a>
-
-      <a href="mailto:contact@simulateurs-sociaux.ma?subject=Suggestion" class="group bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:border-amber-500/20 transition-all text-center">
-        <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-          <i class="fa-solid fa-lightbulb text-2xl text-amber-500"></i>
-        </div>
-        <h3 class="font-bold text-gray-800 mb-2 group-hover:text-amber-600 transition-colors">{% t contact.suggestion_title %}</h3>
-        <p class="text-sm text-gray-500 mb-4">{% t contact.suggestion_desc %}</p>
-        <span class="inline-flex items-center text-amber-600 font-semibold text-sm">
-          {% t contact.suggestion_btn %}
-          <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} group-hover:translate-x-1 transition-transform"></i>
-        </span>
-      </a>
-    </div>
-
-    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-      <h3 class="font-bold text-gray-800 mb-6 text-center">{% t contact.social_title %}</h3>
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#" target="_blank" class="flex items-center gap-3 px-6 py-3 bg-gray-50 rounded-xl hover:bg-blue-600 hover:text-white text-gray-600 transition-all">
-          <i class="fa-brands fa-facebook-f text-lg"></i>
-          <span class="font-medium">Facebook</span>
-        </a>
-        <a href="#" target="_blank" class="flex items-center gap-3 px-6 py-3 bg-gray-50 rounded-xl hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white text-gray-600 transition-all">
-          <i class="fa-brands fa-instagram text-lg"></i>
-          <span class="font-medium">Instagram</span>
-        </a>
-        <a href="#" target="_blank" class="flex items-center gap-3 px-6 py-3 bg-gray-50 rounded-xl hover:bg-red-600 hover:text-white text-gray-600 transition-all">
-          <i class="fa-brands fa-youtube text-lg"></i>
-          <span class="font-medium">YouTube</span>
-        </a>
       </div>
     </div>
   </div>

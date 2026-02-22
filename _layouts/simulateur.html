@@ -14,50 +14,95 @@ layout: default
 {% capture hero_title %}{% t {{ page.hero_title_key }} %}{% endcapture %}
 {% assign hero_title = hero_title | strip %}
 
-<section class="bg-gradient-to-br from-{{ org_colors }} via-{{ org_colors }} to-{% if org_colors == 'cnss' %}cmr{% else %}{{ org_colors }}-dark{% endif %} text-white py-16 md:py-20">
+<!-- Hero Section -->
+<section class="hero relative overflow-hidden bg-gradient-to-br from-{{ org_colors }} via-{{ org_colors }} to-{{ org_colors }}-dark">
+  <!-- Subtle pattern overlay -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 pattern-dots text-white"></div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-0 {% if direction == 'rtl' %}left-0{% else %}right-0{% endif %} w-72 h-72 bg-white/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 {% if direction == 'rtl' %}right-0{% else %}left-0{% endif %} w-56 h-56 bg-white/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+  <div class="container-custom relative z-10 py-12 md:py-16">
+    <div class="max-w-2xl mx-auto text-center">
+      <!-- Trust badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
+        <i class="fa-solid fa-calculator"></i>
+        {% t common.simulator_badge %}
+      </div>
+
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight">
+        {{ hero_title }}
+      </h1>
+      <p class="text-lg text-white/85 leading-relaxed">
+        {% t {{ page.hero_description_key }} %}
+      </p>
+    </div>
+  </div>
+
+  <!-- Bottom wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 60V36C240 12 480 0 720 0C960 0 1200 12 1440 36V60H0Z" fill="#f8fafc"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Simulator Content -->
+<section class="bg-surface-muted py-8 md:py-12">
   <div class="container-custom">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{{ hero_title }}</h1>
-      <p class="text-lg md:text-xl opacity-90">{% t {{ page.hero_description_key }} %}</p>
+    <div class="max-w-2xl mx-auto">
+      <!-- Main Calculator Card -->
+      <div class="card shadow-medium p-6 md:p-10">
+        {{ content }}
+      </div>
+
+      <!-- Article Link -->
+      {% if page.cta_link %}
+      <div class="mt-6 card p-5 bg-gradient-to-r from-{{ org_colors }}-light to-white border-l-4 border-{{ org_colors }}">
+        <div class="flex items-center gap-4">
+          <div class="flex-shrink-0 w-12 h-12 bg-{{ org_colors }}/10 rounded-xl flex items-center justify-center">
+            <i class="fa-solid fa-book-open text-xl text-{{ org_colors }}"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="font-bold text-content text-sm mb-0.5">{% t {{ page.cta_title_key }} %}</p>
+            <a href="{% tl {{ page.cta_link }} %}" class="inline-flex items-center text-{{ org_colors }} hover:underline font-medium text-sm">
+              {% t {{ page.cta_text_key }} %}
+              <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %} {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %} text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Warning Box -->
+      <div class="mt-6 alert-warning">
+        <div class="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
+          <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm leading-relaxed">
+            <strong class="font-semibold">{% t common.warning_label %}:</strong>
+            {% t {{ page.warning_text_key }} %}
+          </p>
+          <p class="text-sm mt-2">
+            {% t common.official_source %}:
+            <a href="{{ page.official_link }}" class="underline hover:no-underline font-medium" target="_blank" rel="noopener">
+              {{ page.official_link }}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="mt-8 text-center">
+        <a href="{% tl home %}" class="back-link">
+          <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}right{% else %}left{% endif %}"></i>
+          {% t common.back_to_home %}
+        </a>
+      </div>
     </div>
   </div>
 </section>
-
-<section class="container-custom py-16">
-  <div class="max-w-2xl mx-auto">
-    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-100">
-      {{ content }}
-    </div>
-
-    {% if page.cta_link %}
-    <div class="mt-8 bg-gray-50 rounded-2xl p-6 border border-gray-100">
-      <div class="flex items-center gap-4">
-        <div class="flex-shrink-0 w-12 h-12 bg-{{ org_colors }}-light rounded-xl flex items-center justify-center">
-          <i class="fa-solid fa-book-open text-{{ org_colors }}"></i>
-        </div>
-        <div class="flex-1">
-          <p class="font-bold text-gray-800 mb-1">{% t {{ page.cta_title_key }} %}</p>
-          <a href="{% tl {{ page.cta_link }} %}" class="inline-flex items-center text-{{ org_colors }} hover:underline font-medium">
-            {% t {{ page.cta_text_key }} %}
-            <i class="fa-solid fa-arrow-right {% if direction == 'rtl' %}mr-2{% else %}ml-2{% endif %}"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-  </div>
-</section>
-
-<div class="container-custom pb-16">
-  <div class="max-w-2xl mx-auto p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 text-sm">
-    <div class="flex items-start gap-3">
-      <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
-      <div>
-        <strong>{% t common.warning_label %}:</strong>
-        {% t {{ page.warning_text_key }} %}
-        <br>{% t common.official_source %}:
-        <a href="{{ page.official_link }}" class="underline hover:no-underline" target="_blank">{{ page.official_link }}</a>
-      </div>
-    </div>
-  </div>
-</div>

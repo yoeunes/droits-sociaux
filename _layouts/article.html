@@ -17,135 +17,144 @@ layout: default
   {% assign article_title = page.title %}
 {% endif %}
 
-<article class="py-8 md:py-12">
-  <div class="container-custom">
-    <header class="mb-8">
-      <div class="flex items-center gap-4 mb-6">
-        {% if page.logo %}
-        <div class="flex-shrink-0">
-          <img src="{{ page.logo | relative_url }}" alt="Logo" class="h-12 object-contain">
-        </div>
-        {% endif %}
-        <div class="h-8 w-px bg-gray-200"></div>
-        <div class="flex items-center gap-3 text-sm text-gray-500">
-          {% if page.date_published %}
-          <span class="inline-flex items-center gap-1.5">
-            <i class="fa-regular fa-calendar text-xs"></i>
-            {{ page.date_published }}
-          </span>
+<article class="bg-surface-muted">
+  <!-- Article Header -->
+  <header class="bg-white border-b border-surface-border">
+    <div class="container-custom py-8 md:py-12">
+      <div class="max-w-4xl">
+        <!-- Breadcrumb & Meta -->
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          {% if page.logo %}
+          <div class="flex-shrink-0 w-12 h-12 bg-{{ org_colors }}-light rounded-xl flex items-center justify-center">
+            <img src="{{ page.logo | relative_url }}" alt="Logo" class="h-8 object-contain">
+          </div>
           {% endif %}
-          <span class="inline-flex items-center gap-1.5">
-            <i class="fa-regular fa-clock text-xs"></i>
-            {% t common.reading_time %}
-          </span>
+          <div class="flex items-center gap-3 text-sm text-content-subtle">
+            {% if page.date_published %}
+            <span class="inline-flex items-center gap-1.5">
+              <i class="fa-regular fa-calendar text-xs text-{{ org_colors }}"></i>
+              {{ page.date_published }}
+            </span>
+            <span class="w-1 h-1 rounded-full bg-content-subtle"></span>
+            {% endif %}
+            <span class="inline-flex items-center gap-1.5">
+              <i class="fa-regular fa-clock text-xs text-{{ org_colors }}"></i>
+              {% t common.reading_time %}
+            </span>
+          </div>
         </div>
-      </div>
-      
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-        {{ article_title }}
-      </h1>
-      
-      {% if page.excerpt %}
-      <p class="text-lg md:text-xl text-gray-600 max-w-3xl">
-        {{ page.excerpt }}
-      </p>
-      {% endif %}
-    </header>
 
-    {% if page.featured_image %}
-    <div class="mb-10">
-      <div class="aspect-video rounded-xl overflow-hidden">
+        <!-- Title -->
+        <h1 class="article-title mb-4">{{ article_title }}</h1>
+
+        {% if page.excerpt %}
+        <p class="article-excerpt">{{ page.excerpt }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  {% if page.featured_image %}
+  <div class="container-custom -mt-4 mb-8 relative z-10">
+    <div class="max-w-4xl">
+      <div class="aspect-video rounded-2xl overflow-hidden shadow-medium">
         <img src="{{ page.featured_image | relative_url }}" alt="{{ article_title }}" class="w-full h-full object-cover">
       </div>
     </div>
-    {% endif %}
+  </div>
+  {% endif %}
 
-    <div class="flex gap-10">
-      <div class="flex-1 min-w-0">
+  <!-- Article Content -->
+  <div class="container-custom py-8 md:py-12">
+    <div class="flex gap-12">
+      <!-- Main Content -->
+      <div class="flex-1 min-w-0 max-w-4xl">
         {% if page.image and page.featured_image == nil %}
         <div class="mb-8">
-          <img src="{{ page.image | relative_url }}" alt="{{ article_title }}" class="w-full rounded-xl">
+          <img src="{{ page.image | relative_url }}" alt="{{ article_title }}" class="w-full rounded-2xl shadow-soft">
         </div>
         {% endif %}
 
-        <div class="prose prose-lg max-w-none
-          prose-headings:text-gray-900 prose-headings:font-bold prose-headings:scroll-mt-20
-          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-100
-          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-gray-800
-          prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
-          prose-a:text-{{ org_colors }} prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-          prose-ul:my-6 prose-ul:space-y-3 prose-li:text-gray-600 prose-li:marker:text-{{ org_colors }}
-          prose-ol:my-6 prose-ol:space-y-3
-          prose-strong:text-gray-800 prose-strong:font-semibold
-          prose-table:my-8 prose-table:w-full prose-table:border-collapse prose-table:rounded-lg prose-table:overflow-hidden
-          prose-thead:bg-gray-50
-          prose-th:px-6 prose-th:py-4 prose-th:text-left prose-th:font-semibold prose-th:text-gray-700 prose-th:border-b prose-th:border-gray-200
-          prose-td:px-6 prose-td:py-4 prose-td:border-b prose-td:border-gray-100 prose-td:text-gray-600
-          prose-tr:last-child:prose-td:border-b-0
-          prose-blockquote:border-l-4 prose-blockquote:border-{{ org_colors }} prose-blockquote:bg-{{ org_colors }}-light/30 prose-blockquote:py-1 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-          prose-code:text-{{ org_colors }} prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm
-          prose-hr:my-12 prose-hr:border-gray-200
-          {% if direction == 'rtl' %}text-right{% endif %}">
-          {{ content }}
+        <div class="article-content bg-white rounded-2xl shadow-card border border-surface-border/50 p-6 md:p-10">
+          <div class="prose prose-lg max-w-none
+            prose-headings:text-content prose-headings:font-bold prose-headings:scroll-mt-24
+            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-5 prose-h2:pb-3 prose-h2:border-b prose-h2:border-surface-border
+            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-content
+            prose-p:text-content-muted prose-p:leading-relaxed prose-p:mb-5
+            prose-a:text-{{ org_colors }} prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+            prose-ul:my-5 prose-ul:space-y-2 prose-li:text-content-muted prose-li:marker:text-{{ org_colors }}
+            prose-ol:my-5 prose-ol:space-y-2
+            prose-strong:text-content prose-strong:font-semibold
+            prose-table:my-8 prose-table:w-full prose-table:border-collapse prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-soft
+            prose-thead:bg-surface-subtle
+            prose-th:px-5 prose-th:py-4 prose-th:text-left prose-th:font-semibold prose-th:text-content prose-th:text-sm prose-th:border-b prose-th:border-surface-border
+            prose-td:px-5 prose-td:py-4 prose-td:border-b prose-td:border-surface-border/50 prose-td:text-content-muted prose-td:text-sm
+            prose-tr:last-child:prose-td:border-b-0
+            prose-blockquote:border-l-4 prose-blockquote:border-{{ org_colors }} prose-blockquote:bg-{{ org_colors }}-light/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:my-6
+            prose-code:text-{{ org_colors }} prose-code:bg-surface-subtle prose-code:px-2 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm prose-code:font-normal
+            prose-hr:my-10 prose-hr:border-surface-border
+            {% if direction == 'rtl' %}text-right{% endif %}">
+            {{ content }}
+          </div>
         </div>
 
+        <!-- CTA Box -->
         {% if page.cta_link %}
         {% capture cta_text %}{% t {{ page.cta_text_key }} %}{% endcapture %}
-        <div class="mt-12 pt-8 border-t border-gray-200">
-          <div class="flex items-center gap-6 p-6 bg-{{ org_colors }}-light rounded-xl">
-            <div class="flex-shrink-0 w-14 h-14 bg-{{ org_colors }}/10 rounded-full flex items-center justify-center">
-              <i class="fa-solid fa-calculator text-xl text-{{ org_colors }}"></i>
+        <div class="mt-8">
+          <div class="card p-6 md:p-8 bg-gradient-to-r from-{{ org_colors }}-light to-white border-l-4 border-{{ org_colors }}">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div class="flex-shrink-0 w-14 h-14 bg-{{ org_colors }}/10 rounded-2xl flex items-center justify-center">
+                <i class="fa-solid fa-calculator text-2xl text-{{ org_colors }}"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-content mb-1">{% t common.try_simulator %}</h3>
+                <p class="text-sm text-content-muted">{% t common.simulator_description %}</p>
+              </div>
+              <a href="{% tl {{ page.cta_link }} %}" class="btn bg-{{ org_colors }} text-white hover:bg-{{ org_colors }}-dark flex-shrink-0 gap-2">
+                {{ cta_text }}
+                <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}left{% else %}right{% endif %}"></i>
+              </a>
             </div>
-            <div class="flex-1">
-              <h3 class="font-bold text-gray-800 mb-1">{% t common.try_simulator %}</h3>
-              <p class="text-sm text-gray-600">{% t common.simulator_description %}</p>
-            </div>
-            <a href="{% tl {{ page.cta_link }} %}" class="flex-shrink-0 inline-flex items-center px-6 py-3 bg-{{ org_colors }} text-white font-semibold rounded-lg hover:bg-{{ org_colors }}-dark transition-colors">
-              {% if direction == 'rtl' %}
-              {{ cta_text }} <i class="fa-solid fa-arrow-left mr-2"></i>
-              {% else %}
-              <i class="fa-solid fa-arrow-right mr-2"></i> {{ cta_text }}
-              {% endif %}
-            </a>
           </div>
         </div>
         {% endif %}
 
-        <div class="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <a href="{% tl home %}" class="inline-flex items-center text-gray-600 hover:text-{{ org_colors }} transition-colors">
-            {% if direction == 'rtl' %}
-            <i class="fa-solid fa-arrow-right ml-2"></i>
-            {% else %}
-            <i class="fa-solid fa-arrow-left mr-2"></i>
-            {% endif %}
+        <!-- Article Footer -->
+        <div class="mt-10 pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-6">
+          <a href="{% tl home %}" class="back-link">
+            <i class="fa-solid fa-arrow-{% if direction == 'rtl' %}right{% else %}left{% endif %}"></i>
             {% t common.back_to_home %}
           </a>
-          
-          <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-500">{% t common.share %}:</span>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-blue-500 hover:text-white transition-all">
+
+          <div class="flex items-center gap-3">
+            <span class="text-sm text-content-subtle">{% t common.share %}:</span>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn hover:bg-blue-600">
               <i class="fa-brands fa-facebook-f text-sm"></i>
             </a>
-            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" rel="noopener" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-sky-500 hover:text-white transition-all">
+            <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" rel="noopener" class="share-btn hover:bg-sky-500">
               <i class="fa-brands fa-twitter text-sm"></i>
             </a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank" rel="noopener" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-blue-700 hover:text-white transition-all">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank" rel="noopener" class="share-btn hover:bg-blue-700">
               <i class="fa-brands fa-linkedin-in text-sm"></i>
             </a>
-            <a href="https://api.whatsapp.com/send?text={{ page.title }} {{ page.url | absolute_url }}" target="_blank" rel="noopener" class="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-green-500 hover:text-white transition-all">
+            <a href="https://api.whatsapp.com/send?text={{ page.title }} {{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-btn hover:bg-green-600">
               <i class="fa-brands fa-whatsapp text-sm"></i>
             </a>
           </div>
         </div>
       </div>
 
+      <!-- Sidebar - Table of Contents -->
       <aside class="hidden xl:block w-64 flex-shrink-0">
-        <div class="sticky top-24 space-y-6">
-          <div class="border-l-2 border-gray-200 pl-4">
-            <h4 class="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wide">
+        <div class="sticky top-28 space-y-6">
+          <div class="card p-5">
+            <h4 class="font-semibold text-content mb-4 text-sm uppercase tracking-wide flex items-center gap-2">
+              <i class="fa-solid fa-list text-{{ org_colors }}"></i>
               {% t common.table_of_contents %}
             </h4>
-            <nav id="toc" class="toc-nav space-y-1">
+            <nav id="toc" class="toc-nav border-l-2 border-surface-border space-y-0">
             </nav>
           </div>
         </div>
@@ -158,25 +167,50 @@ layout: default
 document.addEventListener('DOMContentLoaded', function() {
   const headings = document.querySelectorAll('.prose h2, .prose h3');
   const toc = document.getElementById('toc');
-  
+
   if (toc && headings.length > 0) {
     headings.forEach((heading, index) => {
       const id = 'heading-' + index;
       heading.id = id;
-      
+
       const link = document.createElement('a');
       link.href = '#' + id;
       link.textContent = heading.textContent;
-      link.className = 'block py-1.5 text-sm text-gray-500 hover:text-{{ org_colors }} transition-colors border-l-2 border-transparent hover:border-{{ org_colors }} -ml-4 pl-4 ' + 
-        (heading.tagName === 'H3' ? 'pl-6' : '');
-      
+      link.className = 'block py-2 text-sm text-content-subtle hover:text-{{ org_colors }} transition-colors border-l-2 border-transparent hover:border-{{ org_colors }} pl-4 -ml-px ' +
+        (heading.tagName === 'H3' ? 'pl-6 text-xs' : '');
+
       link.addEventListener('click', function(e) {
         e.preventDefault();
         heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
-      
+
       toc.appendChild(link);
     });
+
+    // Highlight active TOC item on scroll
+    const observerOptions = {
+      rootMargin: '-100px 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const tocLink = toc.querySelector(`a[href="#${id}"]`);
+        if (tocLink) {
+          if (entry.isIntersecting) {
+            toc.querySelectorAll('a').forEach(a => {
+              a.classList.remove('text-{{ org_colors }}', 'border-{{ org_colors }}', 'font-medium');
+              a.classList.add('text-content-subtle', 'border-transparent');
+            });
+            tocLink.classList.remove('text-content-subtle', 'border-transparent');
+            tocLink.classList.add('text-{{ org_colors }}', 'border-{{ org_colors }}', 'font-medium');
+          }
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
   }
 });
 </script>
