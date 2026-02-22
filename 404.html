@@ -8,172 +8,60 @@ permalink: /404.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page introuvable / 404 - Simulateurs Sociaux</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/assets/img/logo.png">
     <link rel="stylesheet" href="/assets/css/style.css?v={{ site.css_version }}">
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f9fafb;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .error-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 120px 20px 40px;
-            min-height: 60vh;
-        }
-
-        .error-card {
-            background: white;
-            max-width: 700px;
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            overflow: hidden;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-
-        .error-code-section {
-            background: linear-gradient(135deg, #005a9e 0%, #008080 100%);
-            padding: 40px 20px;
-            color: white;
-        }
-        .error-code {
-            font-size: 6rem;
-            font-weight: 800;
-            line-height: 1;
-            margin: 0;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .error-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            opacity: 0.8;
-        }
-
-        .error-content {
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .lang-fr {
-            border-right: 1px solid #eee;
-            padding-right: 20px;
-            text-align: left;
-        }
-        .lang-fr h2 { font-size: 1.4rem; color: #333; margin-bottom: 10px; font-weight: 700; }
-        .lang-fr p { color: #666; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
-
-        .lang-ar {
-            font-family: 'Tajawal', sans-serif;
-            direction: rtl;
-            text-align: right;
-        }
-        .lang-ar h2 { font-size: 1.4rem; color: #333; margin-bottom: 10px; font-weight: 700; }
-        .lang-ar p { color: #666; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5; }
-
-        .btn-home {
-            display: inline-block;
-            padding: 12px 25px;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        
-        .btn-fr { background-color: #005a9e; }
-        .btn-fr:hover { background-color: #004480; transform: translateY(-2px); }
-
-        .btn-ar { background-color: #008080; }
-        .btn-ar:hover { background-color: #006666; transform: translateY(-2px); }
-
-        @media (max-width: 768px) {
-            .error-code {
-                font-size: 4rem;
-            }
-            
-            .error-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 30px 20px;
-            }
-
-            .lang-fr, .lang-ar {
-                border-right: none;
-                padding-right: 0;
-                text-align: center !important;
-            }
-
-            .lang-fr {
-                border-bottom: 1px solid #eee;
-                padding-bottom: 30px;
-            }
-        }
-    </style>
 </head>
-<body style="padding-top: 0;">
+<body class="bg-gray-50 font-inter pt-0">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 shadow-lg" style="background: #1a1a2e;">
-        <div class="max-w-6xl mx-auto px-4">
+    <nav class="fixed top-0 left-0 right-0 z-50 shadow-lg bg-footer">
+        <div class="container-custom">
             <div class="flex items-center justify-between h-16">
                 <a href="/" class="flex items-center text-white font-bold">
                     <img src="/assets/img/logo.png" alt="Logo" class="h-8 mr-3">
-                    <span class="hidden sm:inline">Simulateurs Sociaux</span>
+                    <span class="hidden sm:inline">{% t site_name %}</span>
                 </a>
                 <div class="flex items-center gap-4">
-                    <a href="/" class="text-gray-400 hover:text-white transition-colors font-medium">Francais</a>
-                    <a href="/ar/" class="px-3 py-1.5 border rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition-colors font-tajawal">العربية</a>
+                    <a href="/" class="text-footer-text hover:text-white transition-colors font-medium">Francais</a>
+                    <a href="/ar/" class="px-3 py-1.5 border border-footer-border rounded-lg text-footer-text hover:bg-footer-border hover:text-white transition-colors font-tajawal">العربية</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="error-container">
-        <div class="error-card">
+    <div class="flex justify-center items-center pt-32 pb-16 px-4 min-h-[70vh]">
+        <div class="bg-white max-w-2xl w-full rounded-2xl shadow-lg overflow-hidden text-center border border-gray-100">
             
-            <div class="error-code-section">
-                <div class="error-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
-                <div class="error-code">404</div>
+            <div class="bg-gradient-to-br from-cnss to-cmr py-12 px-6 text-white">
+                <div class="text-5xl mb-3 opacity-80">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <div class="text-7xl md:text-8xl font-extrabold leading-none drop-shadow-lg">404</div>
             </div>
 
-            <div class="error-content">
-                
-                <div class="lang-fr">
-                    <h2>Page introuvable</h2>
-                    <p>La page que vous recherchez n'existe pas, a ete deplacee ou est temporairement indisponible.</p>
-                    <a href="/" class="btn-home btn-fr">
+            <div class="p-8 md:p-10 grid md:grid-cols-2 gap-8">
+                <div class="md:border-r md:pr-8 text-left md:text-left border-b md:border-b-0 md:pb-0 pb-8 mb-8 md:mb-0">
+                    <h2 class="text-xl font-bold text-gray-800 mb-3">Page introuvable</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">La page que vous recherchez n'existe pas, a ete deplacee ou est temporairement indisponible.</p>
+                    <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-cnss text-white rounded-lg font-semibold hover:bg-cnss-dark transition-all hover:-translate-y-0.5">
                         <i class="fa-solid fa-house"></i> Retour a l'accueil
                     </a>
                 </div>
 
-                <div class="lang-ar">
-                    <h2>الصفحة غير موجودة</h2>
-                    <p>عذراً، الصفحة التي تبحث عنها غير متوفرة، قد يكون تم نقلها أو حذفها.</p>
-                    <a href="/ar/" class="btn-home btn-ar">
+                <div class="font-tajawal rtl text-right" dir="rtl">
+                    <h2 class="text-xl font-bold text-gray-800 mb-3">الصفحة غير موجودة</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">عذراً، الصفحة التي تبحث عنها غير متوفرة، قد يكون تم نقلها أو حذفها.</p>
+                    <a href="/ar/" class="inline-flex items-center gap-2 px-6 py-3 bg-cmr text-white rounded-lg font-semibold hover:bg-cmr-dark transition-all hover:-translate-y-0.5">
                         <i class="fa-solid fa-house"></i> العودة للرئيسية
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <footer style="background: #1a1a2e; color: #a9b3be; padding: 2rem 0; text-align: center;">
-        <div class="max-w-6xl mx-auto px-4">
-            <p style="font-size: 0.875rem;">&copy; 2025 Simulateurs Sociaux Maroc. Plateforme independante.</p>
+    <footer class="bg-footer text-footer-text py-8 text-center">
+        <div class="container-custom">
+            <p class="text-sm">{% t footer.copyright %}</p>
         </div>
     </footer>
 
