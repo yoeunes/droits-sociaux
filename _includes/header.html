@@ -1,5 +1,24 @@
 {% assign direction = site.language_data[site.lang].direction | default: 'ltr' %}
 {% assign other_lang = site.languages | where_exp: "l", "l != site.lang" | first %}
+{% assign current_url = page.url %}
+{% if current_url == '/ar/' or current_url == '/ar' %}
+  {% assign path_without_lang = '' %}
+{% else %}
+  {% assign path_without_lang = current_url | replace: '/ar/', '/' | replace: '//', '/' %}
+{% endif %}
+{% if other_lang == site.default_lang %}
+  {% if path_without_lang == '' or path_without_lang == '/' %}
+    {% assign switch_url = '/' %}
+  {% else %}
+    {% assign switch_url = path_without_lang %}
+  {% endif %}
+{% else %}
+  {% if path_without_lang == '' or path_without_lang == '/' %}
+    {% assign switch_url = '/ar/' %}
+  {% else %}
+    {% assign switch_url = path_without_lang | prepend: '/ar' %}
+  {% endif %}
+{% endif %}
 
 <nav class="fixed top-0 left-0 right-0 bg-footer z-50 shadow-lg">
   <div class="container-custom">
@@ -52,7 +71,7 @@
           <a href="#" target="_blank" class="text-footer-text hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
         </div>
 
-        <a href="/{{ other_lang }}{{ page.url | remove_first: '/' | remove_first: site.lang | prepend: '/' }}" class="px-3 py-1.5 border border-footer-border rounded-lg text-footer-text hover:bg-footer-border hover:text-white transition-colors font-tajawal">
+        <a href="{{ switch_url }}" class="px-3 py-1.5 border border-footer-border rounded-lg text-footer-text hover:bg-footer-border hover:text-white transition-colors font-tajawal">
           {% t lang_switch %}
         </a>
       </div>
@@ -99,7 +118,7 @@
     <a href="{% tl contact %}" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 font-medium">{% t nav.contact %}</a>
 
     <div class="border-t pt-4 mt-4 flex items-center justify-between px-4">
-      <a href="/{{ other_lang }}{{ page.url | remove_first: '/' | remove_first: site.lang | prepend: '/' }}" class="px-4 py-2 border border-gray-200 rounded-lg text-gray-700 font-tajawal font-medium hover:bg-gray-50 transition-colors">
+      <a href="{{ switch_url }}" class="px-4 py-2 border border-gray-200 rounded-lg text-gray-700 font-tajawal font-medium hover:bg-gray-50 transition-colors">
         {% t lang_switch %}
       </a>
       <div class="flex items-center space-x-4 {% if direction == 'rtl' %}space-x-reverse{% endif %}">
