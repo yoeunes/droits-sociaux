@@ -67,6 +67,7 @@ home:
   hero_description: "Bienvenue sur la première plateforme indépendante dédiée à la simplification de la protection sociale. Accédez à des simulateurs précis pour estimer vos pensions de retraite (CNSS, CMR) et vos remboursements AMO (CNSS, CNOPS)."
 
   news_title: "À la une"
+  news_subtitle: "Restez informes des dernieres reformes et actualites sociales au Maroc."
   news_cnss_title: "Pension CNSS 1320j"
   news_cnss_desc: "Nouvelle réforme officielle."
   news_fusion_title: "Fusion CNOPS / CNSS"
@@ -83,6 +84,10 @@ home:
     step2_desc: "Notre algorithme analyse vos données selon les dernières règles CNSS/CMR en vigueur."
     step3_title: "Téléchargez"
     step3_desc: "Obtenez instantanément votre résultat détaillé et téléchargez-le en PDF gratuitement."
+
+  help_title: "Besoin d'aide ?"
+  help_subtitle: "Notre equipe est disponible pour repondre a vos questions et vous accompagner."
+  help_button: "Nous contacter"
 
   simulators:
     pension_title: "Simulateurs de Pension"

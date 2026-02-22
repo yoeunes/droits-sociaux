@@ -67,6 +67,7 @@ home:
   hero_description: "مرحباً بكم في المنصة المستقلة الأولى المخصصة لتبسيط الحماية الاجتماعية. الوصول إلى محاكيات دقيقة لتقدير معاشات التقاعد (CNSS, CMR) وتعويضات AMO (CNSS, CNOPS)."
 
   news_title: "على الصفحة الرئيسية"
+  news_subtitle: "ابق على اطلاع بآخر الإصلاحات والأخبار الاجتماعية في المغرب."
   news_cnss_title: "معاش CNSS 1320 يوم"
   news_cnss_desc: "إصلاح رسمي جديد."
   news_fusion_title: "دمج CNOPS / CNSS"
@@ -83,6 +84,10 @@ home:
     step2_desc: "يحلل خوارزميتنا بياناتك وفق أحدث قواعد CNSS/CMR السارية."
     step3_title: "حمّل"
     step3_desc: "احصل على نتيجتك المفصلة فوراً وحمّلها بصيغة PDF مجاناً."
+
+  help_title: "تحتاج مساعدة ؟"
+  help_subtitle: "فريقنا متاح للإجابة على أسئلتك ومرافقتك."
+  help_button: "تواصل معنا"
 
   simulators:
     pension_title: "محاكيات المعاش"
